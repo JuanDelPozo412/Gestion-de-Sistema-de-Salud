@@ -2,7 +2,7 @@ import java.util.LinkedList;
 
 public class Historial {
     private Paciente paciente;
-    private LinkedList<Turno>personas = new ArrayList<>();
+    private LinkedList<Turno>personas = new LinkedList<>();
 
     public Historial(Paciente paciente, LinkedList<Turno> personas) {
         this.paciente = paciente;
