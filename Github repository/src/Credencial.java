@@ -36,9 +36,8 @@ public class Credencial {
         this.token = token;
     }
     public int randomToken(){
-       int numeroAleatorio = (int)(Math.random() * 100);
-        this.token =  numeroAleatorio;
-        return token;
+       int tokenAleatorio = (int)(Math.random() * 10000);
+        return tokenAleatorio;
     };
 
     @Override
