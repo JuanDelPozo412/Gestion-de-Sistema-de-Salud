@@ -1,7 +1,10 @@
+import java.util.Random;
+
 public class Credencial {
     private int nroSocio;
     private int plan;
     private int token;
+
 
     public Credencial(int nroSocio, int plan, int token) {
         this.nroSocio = nroSocio;
@@ -32,6 +35,11 @@ public class Credencial {
     public void setToken(int token) {
         this.token = token;
     }
+    public int randomToken(){
+       int numeroAleatorio = (int)(Math.random() * 100);
+        this.token =  numeroAleatorio;
+        return token;
+    };
 
     @Override
     public String toString() {
