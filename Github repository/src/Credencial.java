@@ -4,12 +4,16 @@ public class Credencial {
     private int nroSocio;
     private int plan;
     private int token;
+    private static int nroAleatorio;
+    private Paciente paciente;
+
 
 
     public Credencial(int nroSocio, int plan, int token) {
-        this.nroSocio = nroSocio;
+        this.nroSocio = nroAleatorio;
         this.plan = plan;
         this.token = token;
+        nroAleatorio++;
     }
 
     public int getNroSocio() {
