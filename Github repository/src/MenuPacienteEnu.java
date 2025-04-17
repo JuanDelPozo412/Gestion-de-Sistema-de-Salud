@@ -1,3 +1,3 @@
 public enum MenuPacienteEnu {
-    VerInfo,VerTurnos,SolicitarMedicamentos,VerHorariosMedicos
+    VerInfo,VerTurnos,SolicitarMedicamentos,VerHorariosMedicos,salir
 }

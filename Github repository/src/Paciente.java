@@ -99,7 +99,7 @@ public class Paciente  { //extends Persona
                     break;
 
             }
-        }while (opcion!=2);
+        }while (opcion!=3);
 
     }
 
