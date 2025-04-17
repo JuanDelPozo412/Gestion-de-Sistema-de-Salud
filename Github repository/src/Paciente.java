@@ -39,40 +39,6 @@ public class Paciente  { //extends Persona
 
     }
 
-    public void verInformacionPersonal() {
-            int opcion;
-            do {
-                opcion = JOptionPane.showOptionDialog(null,
-                        "Seleccione una opcion:",
-                        "Menu de Informacion del Paciente",
-                        0,
-                        0,
-                        null,
-                        MenuPacienteEnu.values(),
-                        MenuPacienteEnu.values());
-                switch (opcion) {
-                    case 0:
-                        verInformacionPersonal();
-                        break;
-                    case 1:
-
-                        break;
-                    case 2:
-
-                        break;
-                    case 3:
-
-                        break;
-                    case 4:
-                        JOptionPane.showMessageDialog(null, "Saliendo...");
-                        break;
-                }
-            }while (opcion!=4);
-
-
-
-    }
-
     public void verTurnos() {
     }
 
@@ -105,6 +71,36 @@ public class Paciente  { //extends Persona
     }
 
     public void verInformacionMedico() {
+    }
+    public void verInformacionPersonal() {
+        String[] opciones = new String[]{"Ver Informacion Personal", "Ver Estudios","Ver Credencial","Salir"};
+        int opcion;
+        do {
+            opcion = JOptionPane.showOptionDialog(null,
+                    "Seleccione una opcion:",
+                    "Menu de Informacion del Paciente",
+                    0,
+                    0,
+                    null,
+                    opciones,
+                   opciones);
+            switch (opcion) {
+                case 0:
+                    // Aca seria tipo que puedas ver sus datos cargados , su numero de telefono, su nombre apellido etc o tal vez la credencial
+                    break;
+                case 1:
+                    verEstudio(); // aca puede ver sus estudios con sus resultados supongo
+                    break;
+                case 2:
+                    verDatosCredencial();
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(null, "Saliendo...");
+                    break;
+
+            }
+        }while (opcion!=2);
+
     }
 
     public void menuPaciente() {
