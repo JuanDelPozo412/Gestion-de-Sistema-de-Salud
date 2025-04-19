@@ -5,13 +5,15 @@ public class Persona {
     private String nombre;
     private String apellido;
     private String mail;
+    private int dni;
     private String contrasenia;
     private LocalDate fechaNacimiento;
 
-    public Persona(String nombre, String apellido, String mail, String contrasenia, LocalDate fechaNacimiento) {
+    public Persona(String nombre, String apellido, String mail,int dni, String contrasenia, LocalDate fechaNacimiento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;
+        this.dni = dni;
         this.contrasenia = contrasenia;
         this.fechaNacimiento = fechaNacimiento;
     }
@@ -38,6 +40,14 @@ public class Persona {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public String getContrasenia() {
