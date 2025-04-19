@@ -1,21 +1,21 @@
 import java.time.LocalDate;
 
 public class Medico extends Persona {
-    private String especialidad;
+    private Especialidades especialidades;
     private int matricula;
 
-    public Medico(String nombre, String apellido, String mail, String contrasenia, LocalDate fechaNacimiento, String especialidad, int matricula) {
-        super(nombre, apellido, mail, contrasenia, fechaNacimiento);
-        this.especialidad = especialidad;
+    public Medico(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento, Especialidades especialidades, int matricula) {
+        super(nombre, apellido, mail, dni, contrasenia, fechaNacimiento);
+        this.especialidades = especialidades;
         this.matricula = matricula;
     }
 
-    public String getEspecialidad() {
-        return especialidad;
+    public Especialidades getEspecialidades() {
+        return especialidades;
     }
 
-    public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
+    public void setEspecialidades(Especialidades especialidades) {
+        this.especialidades = especialidades;
     }
 
     public int getMatricula() {
@@ -31,7 +31,7 @@ public class Medico extends Persona {
         return "Medico{" +
                 "nombre=" + getNombre() +
                 ", apellido=" + getApellido() +
-                ", especialidad='" + especialidad + '\'' +
+                ", especialidad='" + especialidades + '\'' +
                 ", matricula=" + matricula +
                 '}';
     }
