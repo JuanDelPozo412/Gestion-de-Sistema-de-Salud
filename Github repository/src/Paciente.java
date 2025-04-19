@@ -72,7 +72,6 @@ public class Paciente extends Persona { //extends Persona
 
     public void verTurnos() {
 
-
     }
 
     public void pedirTurno() {
@@ -122,12 +121,14 @@ public class Paciente extends Persona { //extends Persona
                    opciones);
             switch (opcion) {
                 case 0:
-                    // Aca el paciente va a poder ver su historial
+                    JOptionPane.showMessageDialog(null,"Informacion personal del paciente");
                     break;
                 case 1:
+                    JOptionPane.showMessageDialog(null,"Estudios del paciente");
                     verEstudio(); // aca puede ver sus estudios con sus resultados
                     break;
                 case 2:
+                    JOptionPane.showMessageDialog(null,"Datos de la credencial");
                     verDatosCredencial(); // va a ver su plan actual y su numero de socio habria que ver si tambien sus datos como nombre, telefono etc
                     break;
                 case 3:
@@ -186,15 +187,18 @@ public class Paciente extends Persona { //extends Persona
             switch (opcion) {
                 case 0:
                     verTurnos();
+                    JOptionPane.showMessageDialog(null,"Informacion del turno: \nNumero de turno:  \nTipo de turno: \nMedico: \nHorario: \nFecha: \nMotivo de la consulta: \nDiagnostico: \nTratamiento: \nDetalles: ");
                     break;
                 case 1:
                     pedirTurno();
                     break;
                 case 2:
                     reprogramarTurno();
+                    JOptionPane.showMessageDialog(null,"Reprogramar turno:");
                     break;
                 case 3:
                     cancelarTurno();
+                    JOptionPane.showMessageDialog(null,"Cancelar Turno");
                     break;
                 case 4:
                     JOptionPane.showMessageDialog(null, "Saliendo...");
@@ -218,11 +222,11 @@ public class Paciente extends Persona { //extends Persona
             );
             switch (opcion) {
                 case 0:
-                    JOptionPane.showMessageDialog(null,"Agenda medica");
+                    JOptionPane.showMessageDialog(null,"Agenda medica: horarios ");
                     verInformacionHorarios();
                     break;
                 case 1:
-                    JOptionPane.showMessageDialog(null,"Ver informacion de los medicos");
+                    JOptionPane.showMessageDialog(null,"Ver informacion de los medicos: \nNombre Medico: \nEspecialidad: \nHorarios:");
                     verInformacionMedico();
                     break;
                 case 2:
