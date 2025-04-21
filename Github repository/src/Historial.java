@@ -6,9 +6,9 @@ public class Historial {
     private LinkedList<Turno> turnosHistorial = new LinkedList<>();
     private static Historial instancia;
 
-    public Historial(Paciente paciente, LinkedList<Turno> personas) {
+    public Historial(Paciente paciente, LinkedList<Turno> turnos) {
         this.paciente = paciente;
-        this.turnosHistorial = personas;
+        this.turnosHistorial = turnos;
     }
     private Historial() {
         turnosHistorial = new LinkedList<>();
