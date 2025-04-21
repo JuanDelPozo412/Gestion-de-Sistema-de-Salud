@@ -3,15 +3,15 @@ import java.util.LinkedList;
 
 public class Historial {
     private Paciente paciente;
-    private LinkedList<Turno> turno = new LinkedList<>();
+    private LinkedList<Turno> turnosHistorial = new LinkedList<>();
     private static Historial instancia;
 
     public Historial(Paciente paciente, LinkedList<Turno> personas) {
         this.paciente = paciente;
-        this.turno = personas;
+        this.turnosHistorial = personas;
     }
     private Historial() {
-        turno = new LinkedList<>();
+        turnosHistorial = new LinkedList<>();
     }
     // la funcion  hace que solamente haya una instancia sola de la clase, y la retorna;
     public static Historial getInstance() {
@@ -23,17 +23,17 @@ public class Historial {
 
 
     //Funcion para agregar turnos al historial
-    public void agregarTurno(turno Turno){
+    public void agregarTurno(Turno turno){
         JOptionPane.showMessageDialog(null,"Funcion de agregar historial");
-        turno.add(Turno);
+        turnosHistorial.add(turno);
 
     }
     public LinkedList<Turno> getPersonas() {
-        return turno;
+        return turnosHistorial;
     }
 
     public void setPersonas(LinkedList<Turno> personas) {
-        this.turno = personas;
+        this.turnosHistorial = personas;
     }
 
     public Paciente getPaciente() {
@@ -45,18 +45,18 @@ public class Historial {
     }
 
     public LinkedList<Turno> getTurno() {
-        return turno;
+        return turnosHistorial;
     }
 
     public void setTurno(LinkedList<Turno> turno) {
-        this.turno = turno;
+        this.turnosHistorial = turno;
     }
 
     @Override
     public String toString() {
         return "Historial{" +
                 "paciente=" + paciente +
-                ", turno=" + turno +
+                ", turno=" + turnosHistorial +
                 '}';
     }
 }
