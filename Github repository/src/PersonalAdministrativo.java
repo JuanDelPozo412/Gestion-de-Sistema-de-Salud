@@ -4,8 +4,8 @@ import java.time.LocalDate;
 public class PersonalAdministrativo extends Persona {
    private String sector;
 
-    public PersonalAdministrativo(String nombre, String apellido, String mail, String contrasenia, LocalDate fechaNacimiento, String sector) {
-        super(nombre, apellido, mail, contrasenia, fechaNacimiento);
+    public PersonalAdministrativo(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento, String sector) {
+        super(nombre, apellido, mail, dni, contrasenia, fechaNacimiento);
         this.sector = sector;
     }
 

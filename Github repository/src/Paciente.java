@@ -10,20 +10,17 @@ public class Paciente extends Persona { //extends Persona
 
     //Constructor
 
-
-    public Paciente(String nombre, String apellido, String mail, String contrasenia, LocalDate fechaNacimiento, Credencial credencial, String sexo,Historial historial) {
-        super(nombre, apellido, mail, contrasenia, fechaNacimiento);
+    public Paciente(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento, Credencial credencial, String sexo, Historial historial) {
+        super(nombre, apellido, mail, dni, contrasenia, fechaNacimiento);
         this.credencial = credencial;
         this.sexo = sexo;
         this.historial = historial;
     }
 
-    public Paciente(String nombre, String apellido, String mail, String contrasenia, LocalDate fechaNacimiento, String sexo) {
-        super(nombre, apellido, mail, contrasenia, fechaNacimiento);
+    public Paciente(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento, String sexo) {
+        super(nombre, apellido, mail, dni, contrasenia, fechaNacimiento);
         this.sexo = sexo;
     }
-
-
     //Get y Set
 
     public String getSexo() {
