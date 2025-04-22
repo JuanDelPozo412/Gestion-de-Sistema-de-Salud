@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.time.LocalDate;
 
-public class Administrador extends Persona {
+public class Administrador extends Usuario {
     private String cargo;
 
     public Administrador(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento, String cargo) {
