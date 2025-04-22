@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.time.LocalDate;
 
-public class Persona {
+public class Usuario {
     private String nombre;
     private String apellido;
     private String mail;
@@ -9,7 +9,7 @@ public class Persona {
     private String contrasenia;
     private LocalDate fechaNacimiento;
 
-    public Persona(String nombre, String apellido, String mail,int dni, String contrasenia, LocalDate fechaNacimiento) {
+    public Usuario(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;

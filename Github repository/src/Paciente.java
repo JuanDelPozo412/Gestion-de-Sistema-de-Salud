@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.time.LocalDate;
 import java.util.LinkedList;
 
-public class Paciente extends Persona { //extends Persona
+public class Paciente extends Usuario { //extends Persona
     //Atributos
     private Credencial credencial;
     private String sexo;
