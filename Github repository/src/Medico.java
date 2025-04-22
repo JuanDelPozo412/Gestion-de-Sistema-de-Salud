@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.time.LocalDate;
 
 public class Medico extends Persona {
@@ -38,5 +39,40 @@ public class Medico extends Persona {
 
     public void login() {
         System.out.println("sesion iniciada como médico.");
+    }
+
+    public void menuMedico() {
+        int opcion;
+        do {
+            opcion = JOptionPane.showOptionDialog(null,
+                    "Seleccione una opcion:",
+                    "Menu de Medico",
+                    0,
+                    0,
+                    null,
+                    MenuMedico.values(),
+                    MenuMedico.values());
+            switch (opcion) {
+                case 0:
+
+                    break;
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+                    JOptionPane.showMessageDialog(null, "Saliendo...");
+                    break;
+            }
+        }while (opcion!=5);
+
     }
 }

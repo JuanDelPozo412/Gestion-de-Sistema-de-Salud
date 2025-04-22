@@ -13,7 +13,7 @@ public class Main {
 
        PersonalAdministrativo personal = new PersonalAdministrativo("Juan","Del pozo","@gmail.com",123,"1234",LocalDate.now(),"adminstrativo");
 
-
+       Medico medico1 = new Medico("Fer", "Fernandez", "@gmail", 43335197, "1234", LocalDate.of(2004,03,03), Especialidades.CLINICO, 5335);
 
             String[] opciones = new String[]{"Menu paciente", "Menu medicos","Menu Administrador","Menu Personal Administrativo","Salir"};
             int opcion;
@@ -31,7 +31,7 @@ public class Main {
                         paciente1.menuPaciente();
                         break;
                     case 1:
-                        // Aca poner el menu de medico
+                        medico1.menuMedico();
                         break;
                     case 2:
                         admin.menuadministrador();
