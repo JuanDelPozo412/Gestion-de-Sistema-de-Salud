@@ -126,7 +126,7 @@ public class Paciente extends Persona { //extends Persona
                     break;
                 case 2:
                     JOptionPane.showMessageDialog(null,"Datos de la credencial");
-                    verDatosCredencial(); // va a ver su plan actual y su numero de socio habria que ver si tambien sus datos como nombre, telefono etc
+                     // va a ver su plan actual y su numero de socio habria que ver si tambien sus datos como nombre, telefono etc
                     break;
                 case 3:
                     JOptionPane.showMessageDialog(null, "Saliendo...");
