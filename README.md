@@ -1,6 +1,3 @@
-# Gestión de Sistema de Salud
-Gestión de Sistema de Salud para Programación Avanzada
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
