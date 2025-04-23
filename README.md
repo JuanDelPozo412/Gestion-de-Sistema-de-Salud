@@ -10,7 +10,7 @@ El sistema web de **Medifed** permite a los pacientes reservar sus turnos médic
 
 ### 🔷 Diagrama de Clases
 
-<img src="src/img/clases.png" alt="Diagrama de Clases" width="600"/>
+<img src="Github%20repository/src/img/clases.png" alt="Diagrama de Clases" width="600"/>
 
 [Ver en Lucidchart](https://lucid.app/lucidchart/9e00b2da-0039-4392-ba96-04e8bdd8247f/edit?invitationId=inv_604d9ea7-82ab-4074-80b5-f6d6e19499c6&page=0_0#)
 
@@ -18,4 +18,4 @@ El sistema web de **Medifed** permite a los pacientes reservar sus turnos médic
 
 ### 🔷 Modelo Lógico (DER)
 
-<img src="src/img/der.png" alt="Modelo DER" width="600"/>
+<img src="Github%20repository/src/img/der.png" alt="Modelo DER" width="600"/>
