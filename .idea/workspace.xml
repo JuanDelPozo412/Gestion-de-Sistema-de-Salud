@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20644e24-cf16-4926-88a6-732a653840f6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Github repository/src/img/admin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Github repository/src/img/medico.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Github repository/src/img/paciente.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Historial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Historial.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Medico.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Medico.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Paciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Paciente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Paciente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +46,12 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Agustin/Documents/GitHub/Gestion-de-Sistema-de-Salud&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Florh11\Documents\GitHub\Gestion-de-Sistema-de-Salud\Github repository\src\img" />
+      <recent name="C:\Users\Florh11\Documents\GitHub\Gestion-de-Sistema-de-Salud\Github repository\src\menu" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

@@ -138,6 +138,7 @@ public class Paciente extends Usuario { //extends Persona
     }
 
     public void menuPaciente() {
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/paciente.png"));
         int opcion;
         do {
             opcion = JOptionPane.showOptionDialog(null,
@@ -145,7 +146,7 @@ public class Paciente extends Usuario { //extends Persona
                     "Menu de Paciente",
                     0,
                     0,
-                    null,
+                    icon,
                     MenuPacienteEnu.values(),
                     MenuPacienteEnu.values());
             switch (opcion) {

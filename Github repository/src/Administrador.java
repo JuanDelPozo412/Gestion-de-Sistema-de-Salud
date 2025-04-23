@@ -31,6 +31,7 @@ public class Administrador extends Usuario {
     }
 
     public void menuadministrador () {
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/admin.png"));
         String[] opciones = new String[]{"Ver pacientes", "Ver medicos", "Ver personal administrativo", "Ver administrador", "Salir"};
         int opcion;
         do {
@@ -39,7 +40,7 @@ public class Administrador extends Usuario {
                     "Menu administradores",
                     0,
                     0,
-                    null,
+                    icon,
                     opciones,
                     opciones
             );
