@@ -19,3 +19,10 @@ El sistema web de **Medifed** permite a los pacientes reservar sus turnos médic
 ### 🔷 Modelo Lógico (DER)
 
 <img src="Github%20repository/src/img/der.png" alt="Modelo DER" width="600"/>
+
+----
+### 🔷 Diagrama de Casos de Uso
+
+<img src="Github%20repository/src/img/usos.png" alt="Casos de Uso" width="600"/>
+
+[Ver en Lucidchart](https://lucid.app/lucidchart/b191c730-45d1-4a24-b78c-97db690370ea/edit?invitationId=inv_d384d9de-36ef-4e10-b458-c988ae983807&page=0_0#)
