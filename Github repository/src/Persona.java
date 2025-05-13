@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Persona {
     private String nombre;
@@ -7,9 +8,9 @@ public class Persona {
     private String mail;
     private int dni;
     private String contrasenia;
-    private LocalDate fechaNacimiento;
+    private Date fechaNacimiento;
 
-    public Persona(String nombre, String apellido, String mail,int dni, String contrasenia, LocalDate fechaNacimiento) {
+    public Persona(String nombre, String apellido, String mail,int dni, String contrasenia, Date fechaNacimiento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;
@@ -58,11 +59,11 @@ public class Persona {
         this.contrasenia = contrasenia;
     }
 
-    public LocalDate getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

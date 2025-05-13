@@ -1,5 +1,8 @@
 import javax.swing.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.LinkedList;
 
 public class Paciente extends Persona { //extends Persona
@@ -10,14 +13,14 @@ public class Paciente extends Persona { //extends Persona
 
     //Constructor
 
-    public Paciente(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento, Credencial credencial, String sexo, Historial historial) {
+    public Paciente(String nombre, String apellido, String mail, int dni, String contrasenia, Date fechaNacimiento, Credencial credencial, String sexo, Historial historial) {
         super(nombre, apellido, mail, dni, contrasenia, fechaNacimiento);
         this.credencial = credencial;
         this.sexo = sexo;
         this.historial = historial;
     }
 
-    public Paciente(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento, String sexo) {
+    public Paciente(String nombre, String apellido, String mail, int dni, String contrasenia, Date fechaNacimiento, String sexo) {
         super(nombre, apellido, mail, dni, contrasenia, fechaNacimiento);
         this.sexo = sexo;
     }
@@ -234,5 +237,97 @@ public class Paciente extends Persona { //extends Persona
         }while (opcion!=2);
     }
 
+    //FUNCIONES LOGIN Y REGISTER
+
+    public static void agregarPaciente(Paciente paciente) {
+        try {
+            PreparedStatement statement = con.prepareStatement(
+                    "INSERT INTO `paciente`( `nombre`, `tipo`, `email`, `password`) VALUES (?,?,?,?,?,?,?)"
+            );
+            statement.setString(1, paciente.getNombre());
+            statement.setString(2, paciente.getApellido());
+            statement.setString(2, paciente.getMail());
+            statement.setString(3, String.valueOf(paciente.getDni()));
+            statement.setString(3, paciente.getContrasenia());
+            statement.setString(3, String.valueOf(paciente.getFechaNacimiento()));
+            statement.setString(3, paciente.getSexo());
+
+//            aciente.add(new Paciente(nombre, apellido, email, dni, password, fechaNacimiento,sexo));
+
+
+            int filas = statement.executeUpdate();
+            if (filas > 0) {
+                System.out.println("Paciente agregado correctamente.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static Paciente login(String nombre, String password) {
+        Paciente paciente = new Paciente();
+        try {
+            PreparedStatement stmt = con.prepareStatement(
+                    "SELECT * FROM paciente WHERE nombre = ? AND password = ?"
+            );
+            stmt.setString(1, nombre);
+            stmt.setString(2,paciente.encriptar(password));
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                String email = rs.getString("email");
+                String tipo = rs.getString("tipo");
+                paciente =  new Paciente(id, nombre, email, tipo, password);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return paciente;
+    }
+
+    public static void RegistrarPaciente(Paciente paciente) {
+
+        LinkedList<Paciente> existentes = mostrarPaciente();
+        boolean flag = true;
+        for (Paciente existente : existentes) {
+            if (existente.getEmail().equals(paciente.getEmail())) {
+                flag = false;
+                break;
+            }
+        }
+        if (flag) {
+            agregarPaciente(paciente);
+        }else {
+            JOptionPane.showMessageDialog(null, "paciente ya creado");
+        }
+
+
+    }
+
+    public static LinkedList<Paciente> mostrarPaciente() {
+        LinkedList<Paciente> paciente = new LinkedList<>();
+        try {
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM paciente");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                String email = rs.getString("mail");
+                int dni = rs.getInt("dni");
+                String password = rs.getString("password");
+                Date fechaNacimiento = rs.getDate("fechaNacimiento");
+                String sexo = rs.getString("sexo");
+
+                paciente.add(new Paciente(nombre, apellido, email, dni, password, fechaNacimiento ,sexo));
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return paciente;
+    }
 
 }
