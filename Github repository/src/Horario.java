@@ -1,12 +1,22 @@
 import java.time.LocalDate;
 
 public class Horario {
+    private int idHorario;
     private LocalDate horario;
     private EstadoHorario estado;
 
-    public Horario(LocalDate horario, EstadoHorario estado) {
+    public Horario(int idHorario, LocalDate horario, EstadoHorario estado) {
+        this.idHorario = idHorario;
         this.horario = horario;
         this.estado = estado;
+    }
+
+    public int getIdHorario() {
+        return idHorario;
+    }
+
+    public void setIdHorario(int idHorario) {
+        this.idHorario = idHorario;
     }
 
     public LocalDate getHorario() {

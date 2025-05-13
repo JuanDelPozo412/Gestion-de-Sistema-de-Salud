@@ -1,54 +1,43 @@
 import java.time.LocalDate;
 
 public class Turno {
-    private String nombre;
-    private int nroTurno;
-    private TipoTurno tipoTurno;
-    private Medico medico;
-    private Horario horario;
-    private LocalDate fecha;
-    private String motivoDeConsulta;
-    private String diagnostico;
-    private String tratamiento;
-    private String detalles;
+    //Atributos
     private EstadoTurno estadoTurno;
+    private Paciente paciente;
+    private Medico medico;
+    private LocalDate fechaTurno;
+    private int idTurno;
+    private Consulta consulta;
 
-    public Turno(String nombre, int nroTurno, TipoTurno tipoTurno, Medico medico, Horario horario, LocalDate fecha, String motivoDeConsulta, String diagnostico, String tratamiento, String detalles, EstadoTurno estadoTurno) {
-        this.nombre = nombre;
-        this.nroTurno = nroTurno;
-        this.tipoTurno = tipoTurno;
+    //constructor
+
+    public Turno(EstadoTurno estadoTurno, Paciente paciente, Medico medico, LocalDate fechaTurno, int idTurno, Consulta consulta) {
+        this.estadoTurno = estadoTurno;
+        this.paciente = paciente;
         this.medico = medico;
-        this.horario = horario;
-        this.fecha = fecha;
-        this.motivoDeConsulta = motivoDeConsulta;
-        this.diagnostico = diagnostico;
-        this.tratamiento = tratamiento;
-        this.detalles = detalles;
+        this.fechaTurno = fechaTurno;
+        this.idTurno = idTurno;
+        this.consulta = consulta;
+    }
+
+
+    //get y set
+
+
+    public EstadoTurno getEstadoTurno() {
+        return estadoTurno;
+    }
+
+    public void setEstadoTurno(EstadoTurno estadoTurno) {
         this.estadoTurno = estadoTurno;
     }
 
-    public String getNombre() {
-        return nombre;
+    public Paciente getPaciente() {
+        return paciente;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getNroTurno() {
-        return nroTurno;
-    }
-
-    public void setNroTurno(int nroTurno) {
-        this.nroTurno = nroTurno;
-    }
-
-    public TipoTurno getTipoTurno() {
-        return tipoTurno;
-    }
-
-    public void setTipoTurno(TipoTurno tipoTurno) {
-        this.tipoTurno = tipoTurno;
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 
     public Medico getMedico() {
@@ -59,76 +48,39 @@ public class Turno {
         this.medico = medico;
     }
 
-    public Horario getHorario() {
-        return horario;
+    public LocalDate getFechaTurno() {
+        return fechaTurno;
     }
 
-    public void setHorario(Horario horario) {
-        this.horario = horario;
+    public void setFechaTurno(LocalDate fechaTurno) {
+        this.fechaTurno = fechaTurno;
     }
 
-    public LocalDate getFecha() {
-        return fecha;
+    public int getIdTurno() {
+        return idTurno;
     }
 
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
+    public void setIdTurno(int idTurno) {
+        this.idTurno = idTurno;
     }
 
-    public String getMotivoDeConsulta() {
-        return motivoDeConsulta;
+    public Consulta getConsulta() {
+        return consulta;
     }
 
-    public void setMotivoDeConsulta(String motivoDeConsulta) {
-        this.motivoDeConsulta = motivoDeConsulta;
-    }
-
-    public String getDiagnostico() {
-        return diagnostico;
-    }
-
-    public void setDiagnostico(String diagnostico) {
-        this.diagnostico = diagnostico;
-    }
-
-    public String getTratamiento() {
-        return tratamiento;
-    }
-
-    public void setTratamiento(String tratamiento) {
-        this.tratamiento = tratamiento;
-    }
-
-    public String getDetalles() {
-        return detalles;
-    }
-
-    public void setDetalles(String detalles) {
-        this.detalles = detalles;
-    }
-
-    public EstadoTurno getEstadoTurno() {
-        return estadoTurno;
-    }
-
-    public void setEstadoTurno(EstadoTurno estadoTurno) {
-        this.estadoTurno = estadoTurno;
+    public void setConsulta(Consulta consulta) {
+        this.consulta = consulta;
     }
 
     @Override
     public String toString() {
         return "Turno{" +
-                "nombre='" + nombre + '\'' +
-                ", nroTurno=" + nroTurno +
-                ", tipoTurno=" + tipoTurno +
+                "estadoTurno=" + estadoTurno +
+                ", paciente=" + paciente +
                 ", medico=" + medico +
-                ", horario=" + horario +
-                ", fecha=" + fecha +
-                ", motivoDeConsulta='" + motivoDeConsulta + '\'' +
-                ", diagnostico='" + diagnostico + '\'' +
-                ", tratamiento='" + tratamiento + '\'' +
-                ", detalles='" + detalles + '\'' +
-                ", estadoTurno=" + estadoTurno +
+                ", fechaTurno=" + fechaTurno +
+                ", idTurno=" + idTurno +
+                ", consulta=" + consulta +
                 '}';
     }
 }

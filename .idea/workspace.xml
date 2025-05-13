@@ -5,11 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20644e24-cf16-4926-88a6-732a653840f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Github repository/src/img/admin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Github repository/src/img/medico.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Github repository/src/img/paciente.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Github repository/src/Conexion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Github repository/src/Consulta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Github repository/src/GestionTurnos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Github repository/src/IMenus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gestion-de-Sistema-de-Salud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gestion-de-Sistema-de-Salud.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Administrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Credencial.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/EstadoTurno.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/EstadoTurno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Historial.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Historial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/HistorialTotal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Horario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Horario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Medico.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Medico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Paciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/PersonalAdministrativo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/PersonalAdministrativo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Plan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Plan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Turno.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Turno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Usuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +33,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -43,7 +57,10 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Florencia&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Agustin/Documents/GitHub/Gestion-de-Sistema-de-Salud&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Florh11/Documents/GitHub/Gestion-de-Sistema-de-Salud&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
 }</component>
   <component name="RecentsManager">

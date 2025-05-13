@@ -3,10 +3,12 @@ import java.time.LocalDate;
 
 public class PersonalAdministrativo extends Usuario {
    private String sector;
+   private int idPersonalAdministrativo;
 
-    public PersonalAdministrativo(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento, String sector) {
-        super(nombre, apellido, mail, dni, contrasenia, fechaNacimiento);
+    public PersonalAdministrativo(String nombre, String apellido, String email, String dni, String contrasenia, LocalDate fechaNacimiento, int idUsuario, String sector, int idPersonalAdministrativo) {
+        super(nombre, apellido, email, dni, contrasenia, fechaNacimiento, idUsuario);
         this.sector = sector;
+        this.idPersonalAdministrativo = idPersonalAdministrativo;
     }
 
     public String getSector() {
@@ -15,6 +17,14 @@ public class PersonalAdministrativo extends Usuario {
 
     public void setSector(String sector) {
         this.sector = sector;
+    }
+
+    public int getIdPersonalAdministrativo() {
+        return idPersonalAdministrativo;
+    }
+
+    public void setIdPersonalAdministrativo(int idPersonalAdministrativo) {
+        this.idPersonalAdministrativo = idPersonalAdministrativo;
     }
 
     @Override

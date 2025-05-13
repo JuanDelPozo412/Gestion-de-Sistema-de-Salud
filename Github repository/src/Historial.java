@@ -1,39 +1,39 @@
-import javax.swing.*;
-import java.util.LinkedList;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Historial {
+    private int idHistorial;
+    private LocalDateTime fechaActualizacion;
     private Paciente paciente;
-    private LinkedList<Turno> turnosHistorial = new LinkedList<>();
-    private static Historial instancia;
+    private Medico medico;
+    private List<Consulta> consultas;
 
-    public Historial(Paciente paciente, LinkedList<Turno> turnos) {
+    public Historial(int idHistorial, LocalDateTime fechaActualizacion, Paciente paciente, Medico medico, List<Consulta> consultas) {
+        this.idHistorial = idHistorial;
+        this.fechaActualizacion = fechaActualizacion;
         this.paciente = paciente;
-        this.turnosHistorial = turnos;
-    }
-    private Historial() {
-        turnosHistorial = new LinkedList<>();
-    }
-    // la funcion  hace que solamente haya una instancia sola de la clase, y la retorna;
-    public static Historial getInstance() {
-        if (instancia == null) {
-            instancia = new Historial();
-        }
-        return instancia;
+        this.medico = medico;
+        this.consultas = consultas;
     }
 
+    // Getters / setters básicos
 
-    //Funcion para agregar turnos al historial
-    public void agregarTurno(Turno turno){
-        JOptionPane.showMessageDialog(null,"Funcion de agregar historial");
-        turnosHistorial.add(turno);
 
-    }
-    public LinkedList<Turno> getPersonas() {
-        return turnosHistorial;
+    public int getIdHistorial() {
+        return idHistorial;
     }
 
-    public void setPersonas(LinkedList<Turno> personas) {
-        this.turnosHistorial = personas;
+    public void setIdHistorial(int idHistorial) {
+        this.idHistorial = idHistorial;
+    }
+
+    public LocalDateTime getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(LocalDateTime fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public Paciente getPaciente() {
@@ -44,19 +44,24 @@ public class Historial {
         this.paciente = paciente;
     }
 
-    public LinkedList<Turno> getTurno() {
-        return turnosHistorial;
+    public Medico getMedico() {
+        return medico;
     }
 
-    public void setTurno(LinkedList<Turno> turno) {
-        this.turnosHistorial = turno;
+    public void setMedico(Medico medico) {
+        this.medico = medico;
     }
 
-    @Override
-    public String toString() {
-        return "Historial{" +
-                "paciente=" + paciente +
-                ", turno=" + turnosHistorial +
-                '}';
+    public List<Consulta> getConsultas() {
+        return consultas;
+    }
+
+    public void setConsultas(List<Consulta> consultas) {
+        this.consultas = consultas;
+    }
+
+    public void agregarConsulta(Consulta consulta) {
+        this.consultas.add(consulta);
+        this.fechaActualizacion = LocalDateTime.now();
     }
 }

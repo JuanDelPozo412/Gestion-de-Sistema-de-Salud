@@ -1,42 +1,37 @@
 import javax.swing.*;
 import java.time.LocalDate;
 import java.util.LinkedList;
-
 public class Paciente extends Usuario { //extends Persona
     //Atributos
-    private Credencial credencial;
-    private String sexo;
+    private int idPaciente;
+    private String direccion;
     private Historial historial;
-
     //Constructor
 
-    public Paciente(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento, Credencial credencial, String sexo, Historial historial) {
-        super(nombre, apellido, mail, dni, contrasenia, fechaNacimiento);
-        this.credencial = credencial;
-        this.sexo = sexo;
+    public Paciente(String nombre, String apellido, String email, String dni, String contrasenia, LocalDate fechaNacimiento, int idUsuario, int idPaciente, String direccion, Historial historial) {
+        super(nombre, apellido, email, dni, contrasenia, fechaNacimiento, idUsuario);
+        this.idPaciente = idPaciente;
+        this.direccion = direccion;
         this.historial = historial;
     }
 
-    public Paciente(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento, String sexo) {
-        super(nombre, apellido, mail, dni, contrasenia, fechaNacimiento);
-        this.sexo = sexo;
-    }
+
     //Get y Set
 
-    public String getSexo() {
-        return sexo;
+    public int getIdPaciente() {
+        return idPaciente;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
-    public Credencial getCredencial() {
-        return credencial;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setCredencial(Credencial credencial) {
-        this.credencial = credencial;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public Historial getHistorial() {
@@ -46,16 +41,19 @@ public class Paciente extends Usuario { //extends Persona
     public void setHistorial(Historial historial) {
         this.historial = historial;
     }
+
+
     //to String
 
     @Override
     public String toString() {
         return "Paciente{" +
-                "credencial=" + credencial +
-                ", sexo='" + sexo + '\'' +
+                "idPaciente=" + idPaciente +
+                ", direccion='" + direccion + '\'' +
                 ", historial=" + historial +
                 '}';
     }
+
 
     //Metodos
     //el Paciente loguea y como paciente tiene su propio menu
@@ -88,9 +86,7 @@ public class Paciente extends Usuario { //extends Persona
         //deberiamos hacer una clase sucursales?
     }
 
-    public void verDatosCredencial() {
-        credencial.toString();
-    }
+
 
     public void solicitarMedicamentos() {
     }

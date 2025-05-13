@@ -1,3 +1,2 @@
-public enum EstadoTurno {
-    Pendiente, Completo
+public enum EstadoTurno {RESERVADO, CANCELADO, REPROGRAMADO, FINALIZADO
 }

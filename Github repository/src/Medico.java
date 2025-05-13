@@ -3,12 +3,12 @@ import java.time.LocalDate;
 
 public class Medico extends Usuario {
     private Especialidades especialidades;
-    private int matricula;
+    private int idMedico;
 
-    public Medico(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento, Especialidades especialidades, int matricula) {
-        super(nombre, apellido, mail, dni, contrasenia, fechaNacimiento);
+    public Medico(String nombre, String apellido, String email, String dni, String contrasenia, LocalDate fechaNacimiento, int idUsuario, Especialidades especialidades, int idMedico) {
+        super(nombre, apellido, email, dni, contrasenia, fechaNacimiento, idUsuario);
         this.especialidades = especialidades;
-        this.matricula = matricula;
+        this.idMedico = idMedico;
     }
 
     public Especialidades getEspecialidades() {
@@ -19,21 +19,19 @@ public class Medico extends Usuario {
         this.especialidades = especialidades;
     }
 
-    public int getMatricula() {
-        return matricula;
+    public int getIdMedico() {
+        return idMedico;
     }
 
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
+    public void setIdMedico(int idMedico) {
+        this.idMedico = idMedico;
     }
 
     @Override
     public String toString() {
         return "Medico{" +
-                "nombre=" + getNombre() +
-                ", apellido=" + getApellido() +
-                ", especialidad='" + especialidades + '\'' +
-                ", matricula=" + matricula +
+                "especialidades=" + especialidades +
+                ", idMedico=" + idMedico +
                 '}';
     }
 

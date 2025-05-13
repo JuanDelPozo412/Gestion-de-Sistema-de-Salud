@@ -4,18 +4,20 @@ import java.time.LocalDate;
 public class Usuario {
     private String nombre;
     private String apellido;
-    private String mail;
-    private int dni;
+    private String email;
+    private String dni;
     private String contrasenia;
     private LocalDate fechaNacimiento;
+    private int idUsuario;
 
-    public Usuario(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento) {
+    public Usuario(String nombre, String apellido, String email, String dni, String contrasenia, LocalDate fechaNacimiento, int idUsuario) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.mail = mail;
+        this.email = email;
         this.dni = dni;
         this.contrasenia = contrasenia;
         this.fechaNacimiento = fechaNacimiento;
+        this.idUsuario = idUsuario;
     }
 
     public String getNombre() {
@@ -34,19 +36,19 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String Email) {
+        this.email = email;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
@@ -66,8 +68,16 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
     public void login(String mailIngresado, String contraseniaIngresada) {
-        if (mailIngresado.equals(mail) && contraseniaIngresada.equals(contrasenia)){
+        if (mailIngresado.equals(email) && contraseniaIngresada.equals(contrasenia)){
             JOptionPane.showMessageDialog(null, "Puede Ingresar :)");
         }else{
             JOptionPane.showMessageDialog(null, "No puede ingresar :( ");
