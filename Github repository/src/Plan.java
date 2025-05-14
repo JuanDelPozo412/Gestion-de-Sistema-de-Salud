@@ -1,15 +1,17 @@
-import javax.swing.*;
-import java.util.LinkedList;
-
 public class Plan {
     private int idPlan;
-      private int nroPlan;
-      private LinkedList<Medico> medicosPlan = new LinkedList<>();
+    private String nombre;
+    private String descripcion;
+    private double costoMensual;
+    private String cobertura;
 
-    public Plan(int idPlan, int nroPlan, LinkedList<Medico> medicosPlan) {
-        this.idPlan = idPlan;
-        this.nroPlan = nroPlan;
-        this.medicosPlan = medicosPlan;
+    public Plan() {}
+
+    public Plan(String nombre, String descripcion, double costoMensual, String cobertura) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.costoMensual = costoMensual;
+        this.cobertura = cobertura;
     }
 
     public int getIdPlan() {
@@ -20,30 +22,46 @@ public class Plan {
         this.idPlan = idPlan;
     }
 
-    public int getNroPlan() {
-        return nroPlan;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNroPlan(int nroPlan) {
-        this.nroPlan = nroPlan;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public LinkedList<Medico> getMedicosPlan() {
-        JOptionPane.showMessageDialog(null,"Funcion que muestra los medicos disponibles");
-        return medicosPlan;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setMedicosPlan(LinkedList<Medico> medicosPlan) {
-        JOptionPane.showMessageDialog(null,"Funcion para editar la lista de medicos");
-        this.medicosPlan = medicosPlan;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
+    public double getCostoMensual() {
+        return costoMensual;
+    }
+
+    public void setCostoMensual(double costoMensual) {
+        this.costoMensual = costoMensual;
+    }
+
+    public String getCobertura() {
+        return cobertura;
+    }
+
+    public void setCobertura(String cobertura) {
+        this.cobertura = cobertura;
     }
 
     @Override
     public String toString() {
         return "Plan{" +
-                "nroPlan=" + nroPlan +
-                ", medicosPlan=" + medicosPlan +
+                "idPlan=" + idPlan +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", costoMensual=" + costoMensual +
+                ", cobertura='" + cobertura + '\'' +
                 '}';
     }
 }

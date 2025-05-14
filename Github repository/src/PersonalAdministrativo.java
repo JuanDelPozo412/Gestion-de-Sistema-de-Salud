@@ -2,13 +2,14 @@ import javax.swing.*;
 import java.time.LocalDate;
 
 public class PersonalAdministrativo extends Usuario {
+    //esta clase desaparece es una sola con administrador
    private String sector;
    private int idPersonalAdministrativo;
 
-    public PersonalAdministrativo(String nombre, String apellido, String email, String dni, String contrasenia, LocalDate fechaNacimiento, int idUsuario, String sector, int idPersonalAdministrativo) {
-        super(nombre, apellido, email, dni, contrasenia, fechaNacimiento, idUsuario);
+
+    public PersonalAdministrativo(String nombre, String apellido, String email, String dni, String contrasenia, LocalDate fechaNacimiento, int idUsuario, TipoUsuario tipoUsuario, String sector) {
+        super(nombre, apellido, email, dni, contrasenia, fechaNacimiento, idUsuario, tipoUsuario);
         this.sector = sector;
-        this.idPersonalAdministrativo = idPersonalAdministrativo;
     }
 
     public String getSector() {
@@ -26,6 +27,7 @@ public class PersonalAdministrativo extends Usuario {
     public void setIdPersonalAdministrativo(int idPersonalAdministrativo) {
         this.idPersonalAdministrativo = idPersonalAdministrativo;
     }
+
 
     @Override
     public String toString() {

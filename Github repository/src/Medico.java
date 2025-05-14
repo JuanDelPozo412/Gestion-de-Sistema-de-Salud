@@ -1,56 +1,42 @@
 import javax.swing.*;
+import java.sql.Connection;
 import java.time.LocalDate;
 
+
 public class Medico extends Usuario {
-    private Especialidades especialidades;
-    private int idMedico;
+    private EspecialidadMedico especialidadMedico;
+    private static Connection con = Conexion.getInstance().getConnection();
 
-    public Medico(String nombre, String apellido, String email, String dni, String contrasenia, LocalDate fechaNacimiento, int idUsuario, Especialidades especialidades, int idMedico) {
-        super(nombre, apellido, email, dni, contrasenia, fechaNacimiento, idUsuario);
-        this.especialidades = especialidades;
-        this.idMedico = idMedico;
+    public Medico(String nombre, String apellido, String email, String dni, String contrasenia, LocalDate fechaNacimiento, int idUsuario, TipoUsuario tipoUsuario, EspecialidadMedico especialidadMedico) {
+        super(nombre, apellido, email, dni, contrasenia, fechaNacimiento, idUsuario, tipoUsuario);
+        this.especialidadMedico = especialidadMedico;
+    }
+    public Medico() {
+        super();
+        this.setTipoUsuario(TipoUsuario.MEDICO);
     }
 
-    public Especialidades getEspecialidades() {
-        return especialidades;
+    public EspecialidadMedico getEspecialidadMedico() {
+        return especialidadMedico;
     }
 
-    public void setEspecialidades(Especialidades especialidades) {
-        this.especialidades = especialidades;
-    }
-
-    public int getIdMedico() {
-        return idMedico;
-    }
-
-    public void setIdMedico(int idMedico) {
-        this.idMedico = idMedico;
+    public void setEspecialidadMedico(EspecialidadMedico especialidadMedico) {
+        this.especialidadMedico = especialidadMedico;
     }
 
     @Override
     public String toString() {
         return "Medico{" +
-                "especialidades=" + especialidades +
-                ", idMedico=" + idMedico +
+                "especialidadMedico=" + especialidadMedico +
                 '}';
     }
 
-    public void login() {
-        System.out.println("sesion iniciada como médico.");
-    }
-
-    public void verTurnos() {
-
-    }
-    public void verTurnoIndividual() {
-
-    }
-    public void cancelarTurno() {
-    }
-    public void reprogramarTurno() {
-    }
-    public void verEstudio() {
-    }
+    public void login() {}
+    public void verTurnos() {}
+    public void verTurnoIndividual() {}
+    public void cancelarTurno() {}
+    public void reprogramarTurno() {}
+    public void verEstudio() {}
 
     public void menuMedico() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/medico.png"));
@@ -93,4 +79,6 @@ public class Medico extends Usuario {
         }while (opcion!=5);
 
     }
+
+
 }

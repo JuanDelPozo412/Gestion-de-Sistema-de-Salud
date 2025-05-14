@@ -1,23 +1,18 @@
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Historial {
     private int idHistorial;
     private LocalDateTime fechaActualizacion;
     private Paciente paciente;
     private Medico medico;
-    private List<Consulta> consultas;
 
-    public Historial(int idHistorial, LocalDateTime fechaActualizacion, Paciente paciente, Medico medico, List<Consulta> consultas) {
+
+    public Historial(int idHistorial, LocalDateTime fechaActualizacion, Paciente paciente, Medico medico) {
         this.idHistorial = idHistorial;
         this.fechaActualizacion = fechaActualizacion;
         this.paciente = paciente;
         this.medico = medico;
-        this.consultas = consultas;
-    }
 
-    // Getters / setters básicos
+    }
 
 
     public int getIdHistorial() {
@@ -52,16 +47,7 @@ public class Historial {
         this.medico = medico;
     }
 
-    public List<Consulta> getConsultas() {
-        return consultas;
-    }
 
-    public void setConsultas(List<Consulta> consultas) {
-        this.consultas = consultas;
-    }
 
-    public void agregarConsulta(Consulta consulta) {
-        this.consultas.add(consulta);
-        this.fechaActualizacion = LocalDateTime.now();
-    }
+
 }

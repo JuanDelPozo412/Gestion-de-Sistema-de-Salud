@@ -2,21 +2,12 @@ import javax.swing.*;
 import java.time.LocalDate;
 
 public class Administrador extends Usuario {
-    private int idAdmin;
+
     private String cargo;
 
-    public Administrador(String nombre, String apellido, String email, String dni, String contrasenia, LocalDate fechaNacimiento, int idUsuario, String cargo, int idAdmin) {
-        super(nombre, apellido, email, dni, contrasenia, fechaNacimiento, idUsuario);
+    public Administrador(String nombre, String apellido, String email, String dni, String contrasenia, LocalDate fechaNacimiento, int idUsuario, TipoUsuario tipoUsuario, String cargo) {
+        super(nombre, apellido, email, dni, contrasenia, fechaNacimiento, idUsuario, tipoUsuario);
         this.cargo = cargo;
-        this.idAdmin = idAdmin;
-    }
-
-    public int getIdAdmin() {
-        return idAdmin;
-    }
-
-    public void setIdAdmin(int idAdmin) {
-        this.idAdmin = idAdmin;
     }
 
     public String getCargo() {

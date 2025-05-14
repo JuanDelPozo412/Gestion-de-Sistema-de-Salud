@@ -3,13 +3,17 @@ public class Consulta {
     private Paciente paciente;
     private Medico medico;
     private String detallesConsulta;
+    private Historial  historial;
 
-    public Consulta(int idConsulta, Paciente paciente, Medico medico, String detallesConsulta) {
+    public Consulta(int idConsulta, Paciente paciente, Medico medico, String detallesConsulta, Historial historial) {
         this.idConsulta = idConsulta;
         this.paciente = paciente;
         this.medico = medico;
         this.detallesConsulta = detallesConsulta;
+        this.historial = historial;
     }
+
+    public Consulta(){}
 
     public int getIdConsulta() {
         return idConsulta;
@@ -43,6 +47,14 @@ public class Consulta {
         this.detallesConsulta = detallesConsulta;
     }
 
+    public Historial getHistorial() {
+        return historial;
+    }
+
+    public void setHistorial(Historial historial) {
+        this.historial = historial;
+    }
+
     @Override
     public String toString() {
         return "Consulta{" +
@@ -50,6 +62,7 @@ public class Consulta {
                 ", paciente=" + paciente +
                 ", medico=" + medico +
                 ", detallesConsulta='" + detallesConsulta + '\'' +
+                ", historial=" + historial +
                 '}';
     }
 }

@@ -1,30 +1,22 @@
 import javax.swing.*;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.LinkedList;
 public class Paciente extends Usuario { //extends Persona
     //Atributos
-    private int idPaciente;
     private String direccion;
-    private Historial historial;
+    private Plan plan;
+    private static Connection con = Conexion.getInstance().getConnection();
     //Constructor
 
-    public Paciente(String nombre, String apellido, String email, String dni, String contrasenia, LocalDate fechaNacimiento, int idUsuario, int idPaciente, String direccion, Historial historial) {
-        super(nombre, apellido, email, dni, contrasenia, fechaNacimiento, idUsuario);
-        this.idPaciente = idPaciente;
+    public Paciente(String nombre, String apellido, String email, String dni, String contrasenia, LocalDate fechaNacimiento, int idUsuario, TipoUsuario tipoUsuario, String direccion, Plan plan) {
+        super(nombre, apellido, email, dni, contrasenia, fechaNacimiento, idUsuario, tipoUsuario);
         this.direccion = direccion;
-        this.historial = historial;
+        this.plan = plan;
     }
 
 
     //Get y Set
-
-    public int getIdPaciente() {
-        return idPaciente;
-    }
-
-    public void setIdPaciente(int idPaciente) {
-        this.idPaciente = idPaciente;
-    }
 
     public String getDireccion() {
         return direccion;
@@ -34,13 +26,14 @@ public class Paciente extends Usuario { //extends Persona
         this.direccion = direccion;
     }
 
-    public Historial getHistorial() {
-        return historial;
+    public Plan getPlan() {
+        return plan;
     }
 
-    public void setHistorial(Historial historial) {
-        this.historial = historial;
+    public void setPlan(Plan plan) {
+        this.plan = plan;
     }
+
 
 
     //to String
@@ -48,9 +41,8 @@ public class Paciente extends Usuario { //extends Persona
     @Override
     public String toString() {
         return "Paciente{" +
-                "idPaciente=" + idPaciente +
-                ", direccion='" + direccion + '\'' +
-                ", historial=" + historial +
+                "direccion='" + direccion + '\'' +
+                ", plan=" + plan +
                 '}';
     }
 
@@ -230,6 +222,9 @@ public class Paciente extends Usuario { //extends Persona
             }
         }while (opcion!=2);
     }
+
+
+
 
 
 }
