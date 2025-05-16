@@ -1,3 +1,5 @@
+import com.mysql.jdbc.ConnectionImpl;
+
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,15 +9,14 @@ import java.util.LinkedList;
 
 public class Paciente extends Usuario { //extends Persona
     //Atributos
-    private Credencial credencial;
     private String sexo;
     private Historial historial;
 
     //Constructor
 
-    public Paciente(String nombre, String apellido, String mail, int dni, String contrasenia, Date fechaNacimiento, Credencial credencial, String sexo, Historial historial) {
+
+    public Paciente(String nombre, String apellido, String mail, int dni, String contrasenia, Date fechaNacimiento, String sexo, Historial historial) {
         super(nombre, apellido, mail, dni, contrasenia, fechaNacimiento);
-        this.credencial = credencial;
         this.sexo = sexo;
         this.historial = historial;
     }
@@ -34,13 +35,6 @@ public class Paciente extends Usuario { //extends Persona
         this.sexo = sexo;
     }
 
-    public Credencial getCredencial() {
-        return credencial;
-    }
-
-    public void setCredencial(Credencial credencial) {
-        this.credencial = credencial;
-    }
 
     public Historial getHistorial() {
         return historial;
@@ -54,7 +48,6 @@ public class Paciente extends Usuario { //extends Persona
     @Override
     public String toString() {
         return "Paciente{" +
-                "credencial=" + credencial +
                 ", sexo='" + sexo + '\'' +
                 ", historial=" + historial +
                 '}';

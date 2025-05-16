@@ -1,14 +1,14 @@
 import javax.swing.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Medico extends Usuario {
     private Especialidades especialidades;
-    private int matricula;
 
-    public Medico(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento, Especialidades especialidades, int matricula) {
+
+    public Medico(String nombre, String apellido, String mail, int dni, String contrasenia, Date fechaNacimiento, Especialidades especialidades) {
         super(nombre, apellido, mail, dni, contrasenia, fechaNacimiento);
         this.especialidades = especialidades;
-        this.matricula = matricula;
     }
 
     public Especialidades getEspecialidades() {
@@ -19,13 +19,7 @@ public class Medico extends Usuario {
         this.especialidades = especialidades;
     }
 
-    public int getMatricula() {
-        return matricula;
-    }
 
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
-    }
 
     @Override
     public String toString() {
@@ -33,7 +27,6 @@ public class Medico extends Usuario {
                 "nombre=" + getNombre() +
                 ", apellido=" + getApellido() +
                 ", especialidad='" + especialidades + '\'' +
-                ", matricula=" + matricula +
                 '}';
     }
 

@@ -1,10 +1,11 @@
 import javax.swing.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 public class PersonalAdministrativo extends Usuario {
    private String sector;
 
-    public PersonalAdministrativo(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento, String sector) {
+    public PersonalAdministrativo(String nombre, String apellido, String mail, int dni, String contrasenia, Date fechaNacimiento, String sector) {
         super(nombre, apellido, mail, dni, contrasenia, fechaNacimiento);
         this.sector = sector;
     }
