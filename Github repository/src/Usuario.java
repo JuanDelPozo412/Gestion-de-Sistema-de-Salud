@@ -1,21 +1,38 @@
-import javax.swing.*;
+import com.mysql.jdbc.Connection;
 import java.util.Date;
-
 public class Usuario {
+    private int idUsuario;
     private String nombre;
     private String apellido;
     private String mail;
-    private int dni;
+    private String dni;
     private String contrasenia;
     private Date fechaNacimiento;
+    private String tipoUsuario;
 
-    public Usuario(String nombre, String apellido, String mail, int dni, String contrasenia, Date fechaNacimiento) {
+    private static Connection con = Conexion.getInstance().getConnection();
+
+    public Usuario(int idUsuario, String nombre, String apellido, String mail, String dni, String contrasenia, Date fechaNacimiento, String tipoUsuario) {
+        this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;
         this.dni = dni;
         this.contrasenia = contrasenia;
         this.fechaNacimiento = fechaNacimiento;
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public Usuario(){
+
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getNombre() {
@@ -42,11 +59,11 @@ public class Usuario {
         this.mail = mail;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
@@ -66,12 +83,34 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public void login(String mailIngresado, String contraseniaIngresada) {
-        if (mailIngresado.equals(mail) && contraseniaIngresada.equals(contrasenia)){
-            JOptionPane.showMessageDialog(null, "Puede Ingresar :)");
-        }else{
-            JOptionPane.showMessageDialog(null, "No puede ingresar :( ");
-        }
+    public String getTipoUsuario() {
+        return tipoUsuario;
     }
-    
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "idUsuario=" + idUsuario +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", mail='" + mail + '\'' +
+                ", dni='" + dni + '\'' +
+                ", contrasenia='" + contrasenia + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", tipoUsuario='" + tipoUsuario + '\'' +
+                '}';
+    }
+
+    //    public void login(String mailIngresado, String contraseniaIngresada) {
+//        if (mailIngresado.equals(mail) && contraseniaIngresada.equals(contrasenia)){
+//            JOptionPane.showMessageDialog(null, "Puede Ingresar :)");
+//        }else{
+//            JOptionPane.showMessageDialog(null, "No puede ingresar :( ");
+//        }
+//    }
+//
 }

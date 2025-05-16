@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         //JOptionPane.showMessageDialog(null, "Hola Mundo");
         //JOptionPane.showMessageDialog(null, "Hola Mundo 2");
-        Paciente paciente1 = new Paciente("flor","bergman","@gmail.com",3435,"123",LocalDate.now(),"sexo");
+        //Paciente paciente1 = new Paciente("flor","bergman","@gmail.com",3435,"123",LocalDate.now(),"sexo");
 
 
        //Administrador admin = new Administrador("agus","Panno","@gmail.com",123,"1234",LocalDate.of(2004,03,03),"admin");
