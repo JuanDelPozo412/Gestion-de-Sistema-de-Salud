@@ -5,40 +5,74 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20644e24-cf16-4926-88a6-732a653840f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Github repository/src/BD" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Github repository/src/TipoUsuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gestion-de-Sistema-de-Salud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gestion-de-Sistema-de-Salud.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/.idea/git_toolbox_blame.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/.idea/git_toolbox_blame.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Administrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/Consulta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Consulta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/Especialidades.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/EspecialidadMedico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/EstadoHorario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/BD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Conexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Conexion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Consulta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/EspecialidadMedico.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/EstadoTurno.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/EstadoTurno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/GestionTurnos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/GestionTurnos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/GestionTurnos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Github repository.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Github repository.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/Historial.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Historial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/Horario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/IMenus.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/Medico.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Medico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/MenuMedico.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/MenuMedico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/MenuPacienteEnu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/MenuPacienteEnu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Paciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Persona.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/PersonalAdministrativo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/PersonalAdministrativo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/Plan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Plan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/TipoTurno.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/TipoUsuario.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/Turno.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Turno.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Administrador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Administrador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Consulta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Consulta.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Especialidades.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/EstadoHorario.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/EstadoTurno.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/EstadoTurno.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Historial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Historial.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Horario.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Medico.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Medico.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Paciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Paciente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/PersonalAdministrativo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/PersonalAdministrativo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Plan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Plan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/TipoTurno.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Turno.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Turno.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/iValidaciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/iValidaciones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/.idea/git_toolbox_blame.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/.idea/git_toolbox_blame.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Administrador.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Conexion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Consulta.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/EspecialidadMedico.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/EstadoTurno.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GestionTurnos.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Github repository.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Github repository.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Historial.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/IMenus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Medico.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/MenuMedico.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/MenuPacienteEnu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Paciente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/PersonalAdministrativo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Plan.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/TipoUsuario.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Turno.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Usuario.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/iValidaciones.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,9 +82,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -66,20 +98,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Florencia&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Florh11/Documents/GitHub/Gestion-de-Sistema-de-Salud&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Florencia",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Agustin/Documents/GitHub/Gestion-de-Sistema-de-Salud",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Florh11\Documents\GitHub\Gestion-de-Sistema-de-Salud\Github repository\src\img" />

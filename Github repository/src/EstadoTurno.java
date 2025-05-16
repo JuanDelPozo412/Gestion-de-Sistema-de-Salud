@@ -1,4 +1,3 @@
 public enum EstadoTurno {
-    ACTIVO,
-    CANCELADO
+    Pendiente, Completo
 }

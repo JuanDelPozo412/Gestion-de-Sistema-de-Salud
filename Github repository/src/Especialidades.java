@@ -1,4 +1,4 @@
-public enum EspecialidadMedico {
+public enum Especialidades {
     CLINICO,
     DERMATOLOGO,
     CARDIOLOGO,

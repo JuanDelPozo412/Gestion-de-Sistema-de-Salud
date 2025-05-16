@@ -3,7 +3,7 @@ import java.sql.SQLException;
 import com.mysql.jdbc.Connection;
 
 public class Conexion {
-    private static String URL ="jdbc:mysql://localhost:3306/salud";
+    private static String URL ="jdbc:mysql://localhost:3306/salud"; // cambiar esto
     private static String USER = "root";
     private static String PASSWORD ="";
 

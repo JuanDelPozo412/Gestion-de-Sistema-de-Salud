@@ -1,120 +1,135 @@
-import com.mysql.jdbc.Connection;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-
 
 public class Turno {
-    //Atributos
-    private int idTurno;
-    private int idPaciente;
-    private int idMedico;
-    private LocalDate fechaTurno;
-    private LocalTime horaTurno;
-    private EstadoTurno estado;
-    private LocalDateTime fechaReservacion;
-    private LocalDateTime fechaCancelacion;
+    private String nombre;
+    private int nroTurno;
+    private TipoTurno tipoTurno;
+    private Medico medico;
+    private Horario horario;
+    private LocalDate fecha;
+    private String motivoDeConsulta;
+    private String diagnostico;
+    private String tratamiento;
+    private String detalles;
+    private EstadoTurno estadoTurno;
 
-    private static Connection con = Conexion.getInstance().getConnection();
-
-    public Turno() {
-
+    public Turno(String nombre, int nroTurno, TipoTurno tipoTurno, Medico medico, Horario horario, LocalDate fecha, String motivoDeConsulta, String diagnostico, String tratamiento, String detalles, EstadoTurno estadoTurno) {
+        this.nombre = nombre;
+        this.nroTurno = nroTurno;
+        this.tipoTurno = tipoTurno;
+        this.medico = medico;
+        this.horario = horario;
+        this.fecha = fecha;
+        this.motivoDeConsulta = motivoDeConsulta;
+        this.diagnostico = diagnostico;
+        this.tratamiento = tratamiento;
+        this.detalles = detalles;
+        this.estadoTurno = estadoTurno;
     }
 
-    //constructor
-
-    public Turno(int idTurno, int idPaciente, int idMedico, LocalDate fechaTurno, LocalTime horaTurno, EstadoTurno estado, LocalDateTime fechaReservacion, LocalDateTime fechaCancelacion) {
-        this.idTurno = idTurno;
-        this.idPaciente = idPaciente;
-        this.idMedico = idMedico;
-        this.fechaTurno = fechaTurno;
-        this.horaTurno = horaTurno;
-        this.estado = estado;
-        this.fechaReservacion = fechaReservacion;
-        this.fechaCancelacion = fechaCancelacion;
+    public String getNombre() {
+        return nombre;
     }
 
-
-    //get y set
-
-
-    public int getIdTurno() {
-        return idTurno;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setIdTurno(int idTurno) {
-        this.idTurno = idTurno;
+    public int getNroTurno() {
+        return nroTurno;
     }
 
-    public int getIdPaciente() {
-        return idPaciente;
+    public void setNroTurno(int nroTurno) {
+        this.nroTurno = nroTurno;
     }
 
-    public void setIdPaciente(int idPaciente) {
-        this.idPaciente = idPaciente;
+    public TipoTurno getTipoTurno() {
+        return tipoTurno;
     }
 
-    public int getIdMedico() {
-        return idMedico;
+    public void setTipoTurno(TipoTurno tipoTurno) {
+        this.tipoTurno = tipoTurno;
     }
 
-    public void setIdMedico(int idMedico) {
-        this.idMedico = idMedico;
+    public Medico getMedico() {
+        return medico;
     }
 
-    public LocalDate getFechaTurno() {
-        return fechaTurno;
+    public void setMedico(Medico medico) {
+        this.medico = medico;
     }
 
-    public void setFechaTurno(LocalDate fechaTurno) {
-        this.fechaTurno = fechaTurno;
+    public Horario getHorario() {
+        return horario;
     }
 
-    public LocalTime getHoraTurno() {
-        return horaTurno;
+    public void setHorario(Horario horario) {
+        this.horario = horario;
     }
 
-    public void setHoraTurno(LocalTime horaTurno) {
-        this.horaTurno = horaTurno;
+    public LocalDate getFecha() {
+        return fecha;
     }
 
-    public EstadoTurno getEstado() {
-        return estado;
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
 
-    public void setEstado(EstadoTurno estado) {
-        this.estado = estado;
+    public String getMotivoDeConsulta() {
+        return motivoDeConsulta;
     }
 
-    public LocalDateTime getFechaReservacion() {
-        return fechaReservacion;
+    public void setMotivoDeConsulta(String motivoDeConsulta) {
+        this.motivoDeConsulta = motivoDeConsulta;
     }
 
-    public void setFechaReservacion(LocalDateTime fechaReservacion) {
-        this.fechaReservacion = fechaReservacion;
+    public String getDiagnostico() {
+        return diagnostico;
     }
 
-    public LocalDateTime getFechaCancelacion() {
-        return fechaCancelacion;
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
     }
 
-    public void setFechaCancelacion(LocalDateTime fechaCancelacion) {
-        this.fechaCancelacion = fechaCancelacion;
+    public String getTratamiento() {
+        return tratamiento;
+    }
+
+    public void setTratamiento(String tratamiento) {
+        this.tratamiento = tratamiento;
+    }
+
+    public String getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(String detalles) {
+        this.detalles = detalles;
+    }
+
+    public EstadoTurno getEstadoTurno() {
+        return estadoTurno;
+    }
+
+    public void setEstadoTurno(EstadoTurno estadoTurno) {
+        this.estadoTurno = estadoTurno;
     }
 
     @Override
     public String toString() {
         return "Turno{" +
-                "idTurno=" + idTurno +
-                ", idPaciente=" + idPaciente +
-                ", idMedico=" + idMedico +
-                ", fechaTurno=" + fechaTurno +
-                ", horaTurno=" + horaTurno +
-                ", estado=" + estado +
-                ", fechaReservacion=" + fechaReservacion +
-                ", fechaCancelacion=" + fechaCancelacion +
+                "nombre='" + nombre + '\'' +
+                ", nroTurno=" + nroTurno +
+                ", tipoTurno=" + tipoTurno +
+                ", medico=" + medico +
+                ", horario=" + horario +
+                ", fecha=" + fecha +
+                ", motivoDeConsulta='" + motivoDeConsulta + '\'' +
+                ", diagnostico='" + diagnostico + '\'' +
+                ", tratamiento='" + tratamiento + '\'' +
+                ", detalles='" + detalles + '\'' +
+                ", estadoTurno=" + estadoTurno +
                 '}';
     }
 
 }
-

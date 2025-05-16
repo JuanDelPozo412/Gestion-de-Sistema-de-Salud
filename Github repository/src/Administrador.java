@@ -1,12 +1,12 @@
 import javax.swing.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Administrador extends Usuario {
-
     private String cargo;
 
-    public Administrador(String nombre, String apellido, String email, String dni, String contrasenia, LocalDate fechaNacimiento, int idUsuario, TipoUsuario tipoUsuario, String cargo) {
-        super(nombre, apellido, email, dni, contrasenia, fechaNacimiento, idUsuario, tipoUsuario);
+    public Administrador(String nombre, String apellido, String mail, int dni, String contrasenia, Date fechaNacimiento, String cargo) {
+        super(nombre, apellido, mail, dni, contrasenia, fechaNacimiento);
         this.cargo = cargo;
     }
 

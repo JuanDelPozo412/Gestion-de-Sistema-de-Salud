@@ -1,67 +1,35 @@
+import javax.swing.*;
+import java.util.LinkedList;
+
 public class Plan {
-    private int idPlan;
-    private String nombre;
-    private String descripcion;
-    private double costoMensual;
-    private String cobertura;
+      private int nroPlan;
+      private LinkedList<Medico> medicosPlan = new LinkedList<>();
 
-    public Plan() {}
-
-    public Plan(String nombre, String descripcion, double costoMensual, String cobertura) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.costoMensual = costoMensual;
-        this.cobertura = cobertura;
+    public int getNroPlan() {
+        JOptionPane.showMessageDialog(null,"Funcion que muestra nro de plan");
+        return nroPlan;
     }
 
-    public int getIdPlan() {
-        return idPlan;
+    public void setNroPlan(int nroPlan) {
+        this.nroPlan = nroPlan;
     }
 
-    public void setIdPlan(int idPlan) {
-        this.idPlan = idPlan;
+    public LinkedList<Medico> getMedicosPlan() {
+        JOptionPane.showMessageDialog(null,"Funcion que muestra los medicos disponibles");
+        return medicosPlan;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public void setMedicosPlan(LinkedList<Medico> medicosPlan) {
+        JOptionPane.showMessageDialog(null,"Funcion para editar la lista de medicos");
+        this.medicosPlan = medicosPlan;
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public double getCostoMensual() {
-        return costoMensual;
-    }
-
-    public void setCostoMensual(double costoMensual) {
-        this.costoMensual = costoMensual;
-    }
-
-    public String getCobertura() {
-        return cobertura;
-    }
-
-    public void setCobertura(String cobertura) {
-        this.cobertura = cobertura;
     }
 
     @Override
     public String toString() {
         return "Plan{" +
-                "idPlan=" + idPlan +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", costoMensual=" + costoMensual +
-                ", cobertura='" + cobertura + '\'' +
+                "nroPlan=" + nroPlan +
+                ", medicosPlan=" + medicosPlan +
                 '}';
     }
 }

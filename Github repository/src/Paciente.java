@@ -1,19 +1,22 @@
+import com.mysql.jdbc.ConnectionImpl;
+
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.LinkedList;
+
 public class Paciente extends Usuario { //extends Persona
     //Atributos
-    private String direccion;
-    private Plan plan;
-    private static Connection con = Conexion.getInstance().getConnection();
+    private String sexo;
+    private Historial historial;
+
     //Constructor
 
-    public Paciente(String nombre, String apellido, String mail, int dni, String contrasenia, Date fechaNacimiento, Credencial credencial, String sexo, Historial historial) {
+
+    public Paciente(String nombre, String apellido, String mail, int dni, String contrasenia, Date fechaNacimiento, String sexo, Historial historial) {
         super(nombre, apellido, mail, dni, contrasenia, fechaNacimiento);
-        this.credencial = credencial;
         this.sexo = sexo;
         this.historial = historial;
     }
@@ -24,34 +27,31 @@ public class Paciente extends Usuario { //extends Persona
     }
     //Get y Set
 
-    public String getDireccion() {
-        return direccion;
+    public String getSexo() {
+        return sexo;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public Plan getPlan() {
-        return plan;
-    }
-
-    public void setPlan(Plan plan) {
-        this.plan = plan;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
 
+    public Historial getHistorial() {
+        return historial;
+    }
 
+    public void setHistorial(Historial historial) {
+        this.historial = historial;
+    }
     //to String
 
     @Override
     public String toString() {
         return "Paciente{" +
-                "direccion='" + direccion + '\'' +
-                ", plan=" + plan +
+                ", sexo='" + sexo + '\'' +
+                ", historial=" + historial +
                 '}';
     }
-
 
     //Metodos
     //el Paciente loguea y como paciente tiene su propio menu
@@ -84,7 +84,9 @@ public class Paciente extends Usuario { //extends Persona
         //deberiamos hacer una clase sucursales?
     }
 
-
+    public void verDatosCredencial() {
+        credencial.toString();
+    }
 
     public void solicitarMedicamentos() {
     }
@@ -229,6 +231,7 @@ public class Paciente extends Usuario { //extends Persona
         }while (opcion!=2);
     }
 
+
     //FUNCIONES LOGIN Y REGISTER
 
     public static void agregarPaciente(Paciente paciente) {
@@ -321,8 +324,5 @@ public class Paciente extends Usuario { //extends Persona
         }
         return paciente;
     }
-
-
-
 
 }

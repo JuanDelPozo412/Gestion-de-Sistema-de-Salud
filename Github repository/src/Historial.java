@@ -1,9 +1,10 @@
-import java.time.LocalDateTime;
+import javax.swing.*;
+import java.util.LinkedList;
+
 public class Historial {
-    private int idHistorial;
-    private LocalDateTime fechaActualizacion;
     private Paciente paciente;
-    private Medico medico;
+    private LinkedList<Turno> turnosHistorial = new LinkedList<>();
+    private static Historial instancia;
 
     public Historial(Paciente paciente, LinkedList<Turno> turnosHistorial) {
         this.paciente = paciente;
@@ -34,16 +35,8 @@ public class Historial {
         return turnosHistorial;
     }
 
-    public void setIdHistorial(int idHistorial) {
-        this.idHistorial = idHistorial;
-    }
-
-    public LocalDateTime getFechaActualizacion() {
-        return fechaActualizacion;
-    }
-
-    public void setFechaActualizacion(LocalDateTime fechaActualizacion) {
-        this.fechaActualizacion = fechaActualizacion;
+    public void setPersonas(LinkedList<Turno> personas) {
+        this.turnosHistorial = personas;
     }
 
     public Paciente getPaciente() {
@@ -54,15 +47,19 @@ public class Historial {
         this.paciente = paciente;
     }
 
-    public Medico getMedico() {
-        return medico;
+    public LinkedList<Turno> getTurno() {
+        return turnosHistorial;
     }
 
-    public void setMedico(Medico medico) {
-        this.medico = medico;
+    public void setTurno(LinkedList<Turno> turno) {
+        this.turnosHistorial = turno;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Historial{" +
+                "paciente=" + paciente +
+                ", turno=" + turnosHistorial +
+                '}';
+    }
 }
