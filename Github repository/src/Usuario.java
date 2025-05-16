@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class Persona {
+public class Usuario {
     private String nombre;
     private String apellido;
     private String mail;
@@ -10,7 +10,11 @@ public class Persona {
     private String contrasenia;
     private Date fechaNacimiento;
 
+<<<<<<< HEAD:Github repository/src/Persona.java
     public Persona(String nombre, String apellido, String mail,int dni, String contrasenia, Date fechaNacimiento) {
+=======
+    public Usuario(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento) {
+>>>>>>> main:Github repository/src/Usuario.java
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;

@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.time.LocalDate;
 
-public class Administrador extends Persona {
+public class Administrador extends Usuario {
     private String cargo;
 
     public Administrador(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento, String cargo) {
@@ -31,6 +31,7 @@ public class Administrador extends Persona {
     }
 
     public void menuadministrador () {
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/admin.png"));
         String[] opciones = new String[]{"Ver pacientes", "Ver medicos", "Ver personal administrativo", "Ver administrador", "Salir"};
         int opcion;
         do {
@@ -39,7 +40,7 @@ public class Administrador extends Persona {
                     "Menu administradores",
                     0,
                     0,
-                    null,
+                    icon,
                     opciones,
                     opciones
             );

@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.time.LocalDate;
 
-public class PersonalAdministrativo extends Persona {
+public class PersonalAdministrativo extends Usuario {
    private String sector;
 
     public PersonalAdministrativo(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento, String sector) {
