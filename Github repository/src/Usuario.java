@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.time.LocalDate;
 import java.util.Date;
 
 public class Usuario {
@@ -10,7 +9,7 @@ public class Usuario {
     private String contrasenia;
     private Date fechaNacimiento;
 
-    public Usuario(String nombre, String apellido, String mail, int dni, String contrasenia, LocalDate fechaNacimiento) {
+    public Usuario(String nombre, String apellido, String mail, int dni, String contrasenia, Date fechaNacimiento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;
@@ -74,5 +73,5 @@ public class Usuario {
             JOptionPane.showMessageDialog(null, "No puede ingresar :( ");
         }
     }
-    
+
 }
