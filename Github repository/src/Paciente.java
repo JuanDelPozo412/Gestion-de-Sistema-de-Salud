@@ -236,5 +236,28 @@ public class Paciente extends Persona { //extends Persona
             }
         }while (opcion!=2);
     }
+    public static Paciente login(String nombre, String password) {
+        Paciente paciente = new Paciente();
+        try {
+            PreparedStatement stmt = con.prepareStatement(
+                    "SELECT * FROM paciente WHERE nombre = ? AND password = ?"
+            );
+            stmt.setString(1, nombre);
+            stmt.setString(2,paciente.encriptar(password));
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                String email = rs.getString("email");
+                String tipo = rs.getString("tipo");
+                paciente =  new Paciente(id, nombre, email, tipo, password);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return paciente;
+    }
+
 
 }
