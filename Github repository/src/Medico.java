@@ -82,7 +82,7 @@ public class Medico extends Usuario {
                     break;
                 case 3:
                     reprogramarTurno();
-                    JOptionPane.showMessageDialog(null,"Reprogramar turno:");
+                    JOptionPane.showMessageDialog(null,"Reprogramar turnoo:");
                     break;
                 case 4:
                     verEstudio();
