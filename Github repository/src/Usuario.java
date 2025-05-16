@@ -73,5 +73,5 @@ public class Usuario {
             JOptionPane.showMessageDialog(null, "No puede ingresar :( ");
         }
     }
-
+    
 }
