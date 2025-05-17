@@ -1,5 +1,9 @@
 import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
@@ -53,6 +57,26 @@ public class Paciente extends Usuario { //extends Persona
     public void setPlanId(int planId) {
         this.planId = planId;
     }
+    public static void reservarTurno(Turno turno) {
+        try {
+            PreparedStatement stmt = con.prepareStatement(
+                    "INSERT INTO turnos (paciente_id, medico_id, especialidad, fecha, estado) VALUES (?, ?, ?, ?, ?)"
+            );
+
+            stmt.setInt(1, turno.getPaciente().getIdUsuario());
+            stmt.setInt(2, turno.getMedico().getIdUsuario());
+            stmt.setString(3, turno.getMedico().getEspecialidad());
+            stmt.setDate(4, turno.getFecha());
+            stmt.setString(5, turno.getEstado());
+
+            stmt.executeUpdate();
+            System.out.println("Turno reservado con exito.");
+        } catch (Exception e) {
+            System.out.println("Error al reservar el turno: " + e.getMessage());
+        }
+    }
+
+
 
 //to String
 
