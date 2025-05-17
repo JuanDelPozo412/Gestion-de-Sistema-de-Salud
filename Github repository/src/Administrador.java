@@ -1,7 +1,9 @@
+import java.util.Date;
+
 public class Administrador extends Usuario {
     private String cargo;
 
-    public Administrador(int idUsuario, String nombre, String apellido, String mail, String dni) {
+    public Administrador(int idUsuario, String nombre, String apellido, String mail, String dni, String contrasenia, Date fechaNacimiento, String tipoUsuario, String cargo) {
         super(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario);
         this.cargo = cargo;
     }

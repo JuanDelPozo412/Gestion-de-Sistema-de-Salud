@@ -1,5 +1,6 @@
 import com.mysql.jdbc.Connection;
 
+import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
@@ -145,8 +146,11 @@ public class Usuario {
                 tipo = rs.getString("tipoUsuario");
                 usuario = new Usuario(id, email, tipo);
             }
+            System.out.println("Tipo de usuario recuperado: " + usuario.getTipoUsuario());
+
             switch (usuario.getTipoUsuario()) {
                 case "administradores":
+
                     stmt = con.prepareStatement(
                             "SELECT * FROM `administradores` WHERE  `usuario_id` = ?"
                     );
@@ -156,8 +160,8 @@ public class Usuario {
                     if (rs.next()) {
                         int cargo = rs.getInt("cargo");
                         Administrador usuarioadmin = new Administrador(nombre, email, tipo, password, cargo);
-
                     }
+
                     break;
 
                 case "medicos":
