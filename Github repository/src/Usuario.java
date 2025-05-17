@@ -1,4 +1,7 @@
 import com.mysql.jdbc.Connection;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Date;
 public class Usuario {
     private int idUsuario;
@@ -23,7 +26,13 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public Usuario(){
+    public Usuario(int idUsuario, String mail, String tipoUsuario) {
+        this.idUsuario = idUsuario;
+        this.mail = mail;
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public Usuario() {
 
     }
 
@@ -113,4 +122,85 @@ public class Usuario {
 //        }
 //    }
 //
+
+
+    public static Usuario login(String nombre, String password) {
+        Usuario usuario = new Usuario();
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(
+                    "SELECT * FROM usuarios WHERE nombre = ? AND contrasenia = ?"
+            );
+            stmt.setString(1, nombre);
+            stmt.setString(2, password);
+
+            ResultSet rs = stmt.executeQuery();
+            int id = 0;
+            String email = "";
+            String tipo = "";
+
+            if (rs.next()) {
+                id = rs.getInt("idUsuario");
+                email = rs.getString("mail");
+                tipo = rs.getString("tipoUsuario");
+                usuario = new Usuario(id, email, tipo);
+            }
+            switch (usuario.getTipoUsuario()) {
+                case "administradores":
+                    stmt = con.prepareStatement(
+                            "SELECT * FROM `administradores` WHERE  `usuario_id` = ?"
+                    );
+                    stmt.setInt(1, usuario.getIdUsuario());
+                    rs = stmt.executeQuery();
+
+                    if (rs.next()) {
+                        int cargo = rs.getInt("cargo");
+                        Administrador usuarioadmin = new Administrador(nombre, email, tipo, password, cargo);
+
+                    }
+                    break;
+
+                case "medicos":
+                    stmt = con.prepareStatement(
+                            "SELECT * FROM `medicos` WHERE  `usuario_id` = ?"
+                    );
+                    stmt.setInt(1, usuario.getIdUsuario());
+                    rs = stmt.executeQuery();
+
+                    if (rs.next()) {
+                        int especialidad = rs.getInt("especialidad");
+                        Administrador usuarioadmin = new Administrador(nombre, email, tipo, password, especialidad);
+
+                    }
+                    break;
+
+                case "pacientes":
+                    stmt = con.prepareStatement(
+                            "SELECT * FROM `pacientes` WHERE  `usuario_id` = ?"
+                    );
+                    stmt.setInt(1, usuario.getIdUsuario());
+                    rs = stmt.executeQuery();
+
+                    if (rs.next()) {
+                        int planId = rs.getInt("plan_id");
+                        Paciente usuarioPaciente = new Paciente(planId ,nombre, email, tipo, password);
+
+                    }
+                    break;
+
+                default:
+
+                    break;
+
+
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return usuario;
+    }
 }
+
+
+

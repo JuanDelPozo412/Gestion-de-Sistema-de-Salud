@@ -1,31 +1,33 @@
 import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.ConnectionImpl;
-import javax.swing.*;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Paciente extends Usuario { //extends Persona
     //Atributos
     private HistorialMedico historialMedico;
     private List<Turno> misTurnos;
-    private PlanSalud planSalud;
-
+    private int planId;
     private static Connection con = Conexion.getInstance().getConnection();
 
     //Constructor
 
-    public Paciente(int idUsuario, String nombre, String apellido, String mail, String dni, String contrasenia, Date fechaNacimiento, String tipoUsuario, HistorialMedico historialMedico, List<Turno> misTurnos, PlanSalud planSalud) {
+
+    public Paciente(int idUsuario, String nombre, String apellido, String mail, String dni, String contrasenia, Date fechaNacimiento, String tipoUsuario, HistorialMedico historialMedico, List<Turno> misTurnos, int planId) {
         super(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario);
         this.historialMedico = historialMedico;
         this.misTurnos = misTurnos;
-        this.planSalud = planSalud;
+        this.planId = planId;
     }
 
+    public Paciente(int idUsuario, String nombre, String apellido, String mail, String dni, String contrasenia, Date fechaNacimiento, String tipoUsuario, PlanSalud planSalud) {
+        super(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario);
+        this.planId = planId;
+    }
 
-
+    public Paciente(int planId, String nombre, String email, String tipo, String password) {
+        this.planId = planId;
+    };
     //Get y Set
 
     public HistorialMedico getHistorialMedico() {
@@ -44,23 +46,22 @@ public class Paciente extends Usuario { //extends Persona
         this.misTurnos = misTurnos;
     }
 
-    public PlanSalud getPlanSalud() {
-        return planSalud;
+    public int getPlanId() {
+        return planId;
     }
 
-    public void setPlanSalud(PlanSalud planSalud) {
-        this.planSalud = planSalud;
+    public void setPlanId(int planId) {
+        this.planId = planId;
     }
 
-
-    //to String
+//to String
 
     @Override
     public String toString() {
         return "Paciente{" +
                 "historialMedico=" + historialMedico +
                 ", misTurnos=" + misTurnos +
-                ", planSalud=" + planSalud +
+                ", planSalud=" + planId +
                 '}';
     }
 
@@ -243,99 +244,6 @@ public class Paciente extends Usuario { //extends Persona
 //        }while (opcion!=2);
 //    }
 
-
-    //FUNCIONES LOGIN Y REGISTER
-
-    public static void agregarPaciente(Paciente paciente) {
-        try {
-            PreparedStatement statement = con.prepareStatement(
-                    "INSERT INTO `paciente`( `nombre`, `tipo`, `email`, `password`) VALUES (?,?,?,?,?,?,?)"
-            );
-            statement.setString(1, paciente.getNombre());
-            statement.setString(2, paciente.getApellido());
-            statement.setString(2, paciente.getMail());
-            statement.setString(3, String.valueOf(paciente.getDni()));
-            statement.setString(3, paciente.getContrasenia());
-            statement.setString(3, String.valueOf(paciente.getFechaNacimiento()));
-            statement.setString(3, paciente.getSexo());
-
-//            aciente.add(new Paciente(nombre, apellido, email, dni, password, fechaNacimiento,sexo));
-
-
-            int filas = statement.executeUpdate();
-            if (filas > 0) {
-                System.out.println("Paciente agregado correctamente.");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public static Paciente login(String nombre, String password) {
-        Paciente paciente = new Paciente();
-        try {
-            PreparedStatement stmt = con.prepareStatement(
-                    "SELECT * FROM paciente WHERE nombre = ? AND password = ?"
-            );
-            stmt.setString(1, nombre);
-            stmt.setString(2,paciente.encriptar(password));
-
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                int id = rs.getInt("id");
-                String email = rs.getString("email");
-                String tipo = rs.getString("tipo");
-                paciente =  new Paciente(id, nombre, email, tipo, password);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return paciente;
-    }
-
-    public static void RegistrarPaciente(Paciente paciente) {
-
-        LinkedList<Paciente> existentes = mostrarPaciente();
-        boolean flag = true;
-        for (Paciente existente : existentes) {
-            if (existente.getEmail().equals(paciente.getEmail())) {
-                flag = false;
-                break;
-            }
-        }
-        if (flag) {
-            agregarPaciente(paciente);
-        }else {
-            JOptionPane.showMessageDialog(null, "paciente ya creado");
-        }
-
-
-    }
-
-    public static LinkedList<Paciente> mostrarPaciente() {
-        LinkedList<Paciente> paciente = new LinkedList<>();
-        try {
-            PreparedStatement stmt = con.prepareStatement("SELECT * FROM paciente");
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String nombre = rs.getString("nombre");
-                String apellido = rs.getString("apellido");
-                String email = rs.getString("mail");
-                int dni = rs.getInt("dni");
-                String password = rs.getString("password");
-                Date fechaNacimiento = rs.getDate("fechaNacimiento");
-                String sexo = rs.getString("sexo");
-
-                paciente.add(new Paciente(nombre, apellido, email, dni, password, fechaNacimiento ,sexo));
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return paciente;
-    }
 
 
 }
