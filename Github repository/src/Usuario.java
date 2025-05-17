@@ -162,28 +162,28 @@ public class Usuario {
 
                 case "medicos":
                     stmt = con.prepareStatement(
-                            "SELECT * FROM `administradores` WHERE  `usuario_id` = ?"
+                            "SELECT * FROM `medicos` WHERE  `usuario_id` = ?"
                     );
                     stmt.setInt(1, usuario.getIdUsuario());
                     rs = stmt.executeQuery();
 
                     if (rs.next()) {
-                        int cargo = rs.getInt("cargo");
-                        Administrador usuarioadmin = new Administrador(nombre, email, tipo, password, cargo);
+                        int especialidad = rs.getInt("especialidad");
+                        Administrador usuarioadmin = new Administrador(nombre, email, tipo, password, especialidad);
 
                     }
                     break;
-                    
+
                 case "pacientes":
                     stmt = con.prepareStatement(
-                            "SELECT * FROM `administradores` WHERE  `usuario_id` = ?"
+                            "SELECT * FROM `pacientes` WHERE  `usuario_id` = ?"
                     );
                     stmt.setInt(1, usuario.getIdUsuario());
                     rs = stmt.executeQuery();
 
                     if (rs.next()) {
-                        int cargo = rs.getInt("cargo");
-                        Administrador usuarioadmin = new Administrador(nombre, email, tipo, password, cargo);
+                        int planId = rs.getInt("plan_id");
+                        Paciente usuarioPaciente = new Paciente(planId ,nombre, email, tipo, password);
 
                     }
                     break;

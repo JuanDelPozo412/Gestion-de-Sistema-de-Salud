@@ -1,31 +1,33 @@
 import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.ConnectionImpl;
-import javax.swing.*;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Paciente extends Usuario { //extends Persona
     //Atributos
     private HistorialMedico historialMedico;
     private List<Turno> misTurnos;
-    private PlanSalud planSalud;
-
+    private int planId;
     private static Connection con = Conexion.getInstance().getConnection();
 
     //Constructor
 
-    public Paciente(int idUsuario, String nombre, String apellido, String mail, String dni, String contrasenia, Date fechaNacimiento, String tipoUsuario, HistorialMedico historialMedico, List<Turno> misTurnos, PlanSalud planSalud) {
+
+    public Paciente(int idUsuario, String nombre, String apellido, String mail, String dni, String contrasenia, Date fechaNacimiento, String tipoUsuario, HistorialMedico historialMedico, List<Turno> misTurnos, int planId) {
         super(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario);
         this.historialMedico = historialMedico;
         this.misTurnos = misTurnos;
-        this.planSalud = planSalud;
+        this.planId = planId;
     }
 
+    public Paciente(int idUsuario, String nombre, String apellido, String mail, String dni, String contrasenia, Date fechaNacimiento, String tipoUsuario, PlanSalud planSalud) {
+        super(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario);
+        this.planId = planId;
+    }
 
-
+    public Paciente(int planId, String nombre, String email, String tipo, String password) {
+        this.planId = planId;
+    };
     //Get y Set
 
     public HistorialMedico getHistorialMedico() {
@@ -44,23 +46,22 @@ public class Paciente extends Usuario { //extends Persona
         this.misTurnos = misTurnos;
     }
 
-    public PlanSalud getPlanSalud() {
-        return planSalud;
+    public int getPlanId() {
+        return planId;
     }
 
-    public void setPlanSalud(PlanSalud planSalud) {
-        this.planSalud = planSalud;
+    public void setPlanId(int planId) {
+        this.planId = planId;
     }
 
-
-    //to String
+//to String
 
     @Override
     public String toString() {
         return "Paciente{" +
                 "historialMedico=" + historialMedico +
                 ", misTurnos=" + misTurnos +
-                ", planSalud=" + planSalud +
+                ", planSalud=" + planId +
                 '}';
     }
 
