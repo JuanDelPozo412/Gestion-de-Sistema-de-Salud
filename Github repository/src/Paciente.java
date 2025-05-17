@@ -1,6 +1,4 @@
 import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -75,6 +73,30 @@ public class Paciente extends Usuario { //extends Persona
             System.out.println("Error al reservar el turno: " + e.getMessage());
         }
     }
+    public void verPlan(){
+        try{
+            PreparedStatement  stmt = con.prepareStatement(
+                    "SELECT nombrePlan, descripcion FROM planes_salud WHERE planId= ?"
+            );
+
+            stmt.setInt(1,this.planId);
+            ResultSet rs= stmt.executeQuery();
+
+            if (rs.next()){
+                String nombre = rs.getString("nombrePlan");
+                String descripcion = rs.getString("descripcion");
+                System.out.println("Plan de salud: " + nombre);
+                System.out.println("Descripcion:" + descripcion);
+            }else{
+                System.out.println("No se encontro un plan con ese ID" + this.planId);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al consultar el plan: " + e.getMessage());
+        }
+    }
+
+
+
 
 
 
