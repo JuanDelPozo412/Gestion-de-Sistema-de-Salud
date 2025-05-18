@@ -269,9 +269,13 @@ public static Usuario login(String nombre, String password) {
     } catch (Exception e) {
         System.out.println("Error en login: " + e.getMessage());
     }
-
     return null;
 }
+//    public static Usuario registrarUsuario(String nombre, String password) {
+//
+//    }
+//
+//    public
 }
 
 
