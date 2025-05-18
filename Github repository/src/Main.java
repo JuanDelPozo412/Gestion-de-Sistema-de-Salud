@@ -1,96 +1,82 @@
 import javax.swing.*;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
+        String opciones[] = {"Login", "Register", "Salir"};
+        boolean flag = true;
+        int opcion;
+        int opcionregister;
+        String opcionesRegister[] = {"administrador", "medico", "paciente"};
 
-//        String nombre = JOptionPane.showInputDialog(null,"Ingresa tu nombre de usuario");
-//        String contrasenia = JOptionPane.showInputDialog(null,"Ingresa tu contrasenia");
+        do {
+            opcion = JOptionPane.showOptionDialog(
+                    null,
+                    "Seleccione una opcion:",
+                    "Menu de Medico",
+                    0,
+                    0,
+                    null,
+                    opciones,
+                    opciones[0]
+            );
 
-//
-        Usuario u = Usuario.login("fer", "12345");
+            switch (opcion) {
+                case 0:
+                    // LOGIN
+                    String nombre = JOptionPane.showInputDialog(null, "Ingresa tu nombre de usuario");
+                    String contrasenia = JOptionPane.showInputDialog(null, "Ingresa tu contrasenia");
+                    Usuario u = Usuario.login(nombre, contrasenia);
 
-        if (u instanceof Paciente) {
-            ((Paciente) u).mostrarMenuPaciente();
-        } else if (u instanceof Medico) {
-//            ((Medico) u).mostrarMenuPaciente(); EJEMPLO DE COMO SE HACE FALTARIA LO MISMO PERO CON MENU MEDICO.
-        } else if (u instanceof Administrador) {
-            ((Administrador) u).menuadministrador();
-        } else {
-            System.out.println("usuario devuelvo nulo");
-        }
-        ;
+                    if (u instanceof Paciente) {
+                        ((Paciente) u).mostrarMenuPaciente();
+                    } else if (u instanceof Medico) {
+                        // ((Medico) u).mostrarMenuMedico(); //  AGREGAR ESTO.
+                    } else if (u instanceof Administrador) {
+                        ((Administrador) u).menuadministrador();
+                    } else {
+                        System.out.println("Usuario devuelto es nulo");
+                    }
+                    break;
 
+                case 1:
+//                    "INSERT INTO `usuarios`(`idUsuario`, `nombre`, `apellido`, `mail`, `dni`, `contrasenia`, `fechaNacimiento`, `tipoUsuario`) VALUES (?,?,?,?,?,?)"
+                    // REGISTRO
+                    String nuevoNombre = JOptionPane.showInputDialog("Ingrese nombre");
+                    String nuevoApellido = JOptionPane.showInputDialog("Ingrese apellido");
+                    String nuevoEmail = JOptionPane.showInputDialog("Ingrese email");
+                    String nuevoDni = JOptionPane.showInputDialog("Ingrese Dni");
+                    String nuevoContrasenia = JOptionPane.showInputDialog("Ingrese su contrasenia");
+                    String nuevoFechaNacimiento = JOptionPane.showInputDialog("Ingrese su fecha de nacimiento en el formato dd/mm/aaaa");
+                    opcionregister = JOptionPane.showOptionDialog(
+                            null,
+                            "Seleccione una opcion:",
+                            "Menu de Medico",
+                            0,
+                            0,
+                            null,
+                            opcionesRegister,
+                            opcionesRegister[0]
+                    );
+                    String nuevoTipoDeUsuario = Arrays.toString(opcionesRegister);
 
-//        }else-if(u instanceof Administrador){
-//            (Administrador) u).mostrarMenuPaciente();
-//        } else if (u instanceof Medico) {
-//            (Medico) u).mostra();
-//        }
+                     Usuario nuevoUsuario = new Usuario(0, nuevoNombre, nuevoEmail, nuevoTipo, nuevaPass);
+                    // Usuario.RegistrarUsuario(nuevoUsuario);
+                    break;
 
+                case 2:
+                    // SALIR
+                    JOptionPane.showMessageDialog(null,"Adios masterrr");
+                    flag = false;
+                    break;
 
-//        int idUsuario = 1;
-//        String nombre = "Flor";
-//        String apellido = "Bergman";
-//        String mail = "flor@gmail.com";
-//        String dni = "87654321";
-//        String contrasenia = "flor123";
-//        Date fechaNacimiento = Date.valueOf("1992-04-10");
-//        String tipoUsuario = "pacientes";
-//        int planId = 1;
-//
-//
-//        Paciente flor = new Paciente(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario, null, null, planId);
-//
-//        flor.mostrarMenuPaciente();
+                default:
+                    JOptionPane.showMessageDialog(null, "default");
+                    break;
+            }
 
-            //JOptionPane.showMessageDialog(null, "Hola Mundo");
-            //JOptionPane.showMessageDialog(null, "Hola Mundo 2");
-            //Paciente paciente1 = new Paciente("flor","bergman","@gmail.com",3435,"123",LocalDate.now(),"sexo");
-
-
-            //Administrador admin = new Administrador("agus","Panno","@gmail.com",123,"1234",LocalDate.of(2004,03,03),"admin");
-
-
-            //PersonalAdministrativo personal = new PersonalAdministrativo("Juan","Del pozo","@gmail.com",123,"1234",LocalDate.now(),"adminstrativo");
-
-            //Medico medico1 = new Medico("Fer", "Fernandez", "@gmail", 43335197, "1234", LocalDate.of(2004,03,03), Especialidades.CLINICO, 5335);
-
-//            String[] opciones = new String[]{"Menu paciente", "Menu medicos","Menu Administrador","Menu Personal Administrativo","Salir"};
-//            int opcion;
-//            do {
-//                opcion = JOptionPane.showOptionDialog(null,
-//                        "Seleccione una opcion:",
-//                        "Menu principal",
-//                        0,
-//                        0,
-//                        null,
-//                        opciones,
-//                        opciones);
-//                switch (opcion) {
-//                    case 0:
-//                        paciente1.menuPaciente();
-//                        break;
-//                    case 1:
-//                        medico1.menuMedico();
-//                        break;
-//                    case 2:
-//                        admin.menuadministrador();
-//                        break;
-//                    case 3:
-//                        personal.menuPersonalAdministrativo();
-//                        break;
-//                    case 4:
-//                        JOptionPane.showMessageDialog(null, "Saliendo...");
-//                        break;
-//
-//                }
-//            }while (opcion!=4);
-//
-//
-//
-
-
-        }
+        } while (flag);
     }
+}

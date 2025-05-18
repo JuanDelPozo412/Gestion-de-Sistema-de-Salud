@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
+import java.util.LinkedList;
+
 public class Usuario {
     private int idUsuario;
     private String nombre;
@@ -269,9 +271,79 @@ public static Usuario login(String nombre, String password) {
     } catch (Exception e) {
         System.out.println("Error en login: " + e.getMessage());
     }
-
     return null;
 }
+
+//    int id = rs.getInt("idUsuario");
+//    String apellido = rs.getString("apellido");
+//    String mail = rs.getString("mail");
+//    String dni = rs.getString("dni");
+//    Date fechaNacimiento = rs.getDate("fechaNacimiento");
+//    String tipo = rs.getString("tipoUsuario");
+
+    public static void agregarUsuario(Usuario usuario) {
+        try {
+            PreparedStatement statement = con.prepareStatement(
+                    "INSERT INTO `usuarios`(`idUsuario`, `nombre`, `apellido`, `mail`, `dni`, `contrasenia`, `fechaNacimiento`, `tipoUsuario`) VALUES (?,?,?,?,?,?)"
+            );
+            statement.setString(1, usuario.getNombre());
+            statement.setString(3, usuario.getApellido());
+            statement.setString(2, usuario.getMail());
+            statement.setString(3, usuario.getDni());
+            statement.setDate(3, (java.sql.Date) usuario.getFechaNacimiento());
+            statement.setString(3, usuario.getTipoUsuario());
+
+            int filas = statement.executeUpdate();
+            if (filas > 0) {
+                System.out.println("Usuario agregado correctamente.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void RegistrarUsuario(Usuario nuevo) {
+
+        LinkedList<Usuario> existentes = mostrarUsuarios();
+        boolean flag = true;
+        for (Usuario existente : existentes) {
+            if (existente.getMail().equals(nuevo.getMail())) {
+                flag = false;
+                break;
+            }
+        }
+        if (flag) {
+            agregarUsuario(nuevo);
+        }else {
+            JOptionPane.showMessageDialog(null, "Usuario ya creado");
+        }
+
+
+    }
+    public static LinkedList<Usuario> mostrarUsuarios() {
+        LinkedList<Usuario> usuarios = new LinkedList<>();
+        try {
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM usuario");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("idUsuario");
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                String mail = rs.getString("mail");
+                String dni = rs.getString("dni");
+                String contrasenia = rs.getString("contrasenia");
+                Date fechaNacimiento = rs.getDate("fechaNacimiento");
+                String tipo = rs.getString("tipoUsuario");
+
+                usuarios.add(new Usuario(id, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipo));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return usuarios;
+    }
+
+
 }
 
 
