@@ -124,86 +124,154 @@ public class Usuario {
 //    }
 //
 
+//
+//    public static Usuario login(String nombre, String password) {
+//        Usuario usuario = new Usuario();
+//
+//        try {
+//            PreparedStatement stmt = con.prepareStatement(
+//                    "SELECT * FROM usuarios WHERE nombre = ? AND contrasenia = ?"
+//            );
+//            stmt.setString(1, nombre);
+//            stmt.setString(2, password);
+//
+//            ResultSet rs = stmt.executeQuery();
+//            int id = 0;
+//            String email = "";
+//            String tipo = "";
+//
+//            if (rs.next()) {
+//                id = rs.getInt("idUsuario");
+//                email = rs.getString("mail");
+//                tipo = rs.getString("tipoUsuario");
+//                usuario = new Usuario(id, email, tipo);
+//            }
+//            System.out.println("Tipo de usuario recuperado: " + usuario.getTipoUsuario());
+//
+//            switch (usuario.getTipoUsuario()) {
+//                case "administradores":
+//
+//                    stmt = con.prepareStatement(
+//                            "SELECT * FROM `administradores` WHERE  `usuario_id` = ?"
+//                    );
+//                    stmt.setInt(1, usuario.getIdUsuario());
+//                    rs = stmt.executeQuery();
+//
+//
+//                    if (rs.next()) {
+//                        int cargo = rs.getInt("cargo");
+//                        usuario = new Administrador(nombre, email, tipo, password, cargo);
+//
+//                    }
+//
+//
+//                    break;
+//
+//                case "medicos":
+//                    stmt = con.prepareStatement(
+//                            "SELECT * FROM `medicos` WHERE  `usuario_id` = ?"
+//                    );
+//                    stmt.setInt(1, usuario.getIdUsuario());
+//                    rs = stmt.executeQuery();
+//
+//                    if (rs.next()) {
+//                        int especialidad = rs.getInt("especialidad");
+////                        Medico usuariomedico = new Medico(nombre, email, tipo, password, especialidad);
+//
+//                    }
+//                    break;
+//
+//                case "pacientes":
+//                    stmt = con.prepareStatement(
+//                            "SELECT * FROM `pacientes` WHERE  `usuario_id` = ?"
+//                    );
+//                    stmt.setInt(1, usuario.getIdUsuario());
+//                    rs = stmt.executeQuery();
+//
+//                    if (rs.next()) {
+//                        int planId = rs.getInt("plan_id");
+//                        Paciente usuarioPaciente = new Paciente(planId ,nombre, email, tipo, password);
+//
+//                    }
+//                    break;
+//
+//                default:
+//
+//                    break;
+//
+//
+//            }
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//        return usuario;
+//    }
+public static Usuario login(String nombre, String password) {
+    try {
+        PreparedStatement stmt = con.prepareStatement(
+                "SELECT * FROM usuarios WHERE nombre = ? AND contrasenia = ?"
+        );
+        stmt.setString(1, nombre);
+        stmt.setString(2, password);
 
-    public static Usuario login(String nombre, String password) {
-        Usuario usuario = new Usuario();
+        ResultSet rs = stmt.executeQuery();
 
-        try {
-            PreparedStatement stmt = con.prepareStatement(
-                    "SELECT * FROM usuarios WHERE nombre = ? AND contrasenia = ?"
-            );
-            stmt.setString(1, nombre);
-            stmt.setString(2, password);
+        if (rs.next()) {
+            int id = rs.getInt("idUsuario");
+            String apellido = rs.getString("apellido");
+            String mail = rs.getString("mail");
+            String dni = rs.getString("dni");
+            Date fechaNacimiento = rs.getDate("fechaNacimiento");
+            String tipo = rs.getString("tipoUsuario");
+            switch (tipo) {
+                case "paciente":
+                    PreparedStatement psPaciente = con.prepareStatement(
+                            "SELECT * FROM pacientes WHERE usuario_id = ?"
+                    );
+                    psPaciente.setInt(1, id);
+                    ResultSet rsPaciente = psPaciente.executeQuery();
 
-            ResultSet rs = stmt.executeQuery();
-            int id = 0;
-            String email = "";
-            String tipo = "";
+                    if (rsPaciente.next()) {
+                        int planId = rsPaciente.getInt("plan_id");
+                        return new Paciente(id, nombre, apellido, mail, dni, password, fechaNacimiento, tipo, null, null, planId);
+                    }
+                    break;
 
-            if (rs.next()) {
-                id = rs.getInt("idUsuario");
-                email = rs.getString("mail");
-                tipo = rs.getString("tipoUsuario");
-                usuario = new Usuario(id, email, tipo);
+                case "medico":
+                    PreparedStatement psMedico = con.prepareStatement(
+                            "SELECT * FROM medicos WHERE usuario_id = ?"
+                    );
+                    psMedico.setInt(1, id);
+                    ResultSet rsMedico = psMedico.executeQuery();
+
+                    if (rsMedico.next()) {
+                        String especialidad = rsMedico.getString("especialidad");
+                        return new Medico(id, nombre, apellido, mail, dni, password, fechaNacimiento, tipo, especialidad);
+                    }
+                    break;
+
+                case "administrador":
+                    PreparedStatement psAdmin = con.prepareStatement(
+                            "SELECT * FROM administradores WHERE usuario_id = ?"
+                    );
+                    psAdmin.setInt(1, id);
+                    ResultSet rsAdmin = psAdmin.executeQuery();
+
+                    if (rsAdmin.next()) {
+                        String cargo = rsAdmin.getString("cargo");
+                        return new Administrador(id, nombre, apellido, mail, dni, password, fechaNacimiento, tipo, cargo);
+                    }
+                    break;
             }
-            System.out.println("Tipo de usuario recuperado: " + usuario.getTipoUsuario());
-
-            switch (usuario.getTipoUsuario()) {
-                case "administradores":
-
-                    stmt = con.prepareStatement(
-                            "SELECT * FROM `administradores` WHERE  `usuario_id` = ?"
-                    );
-                    stmt.setInt(1, usuario.getIdUsuario());
-                    rs = stmt.executeQuery();
-
-                    if (rs.next()) {
-                        int cargo = rs.getInt("cargo");
-                        Administrador usuarioadmin = new Administrador(nombre, email, tipo, password, cargo);
-                    }
-
-                    break;
-
-                case "medicos":
-                    stmt = con.prepareStatement(
-                            "SELECT * FROM `medicos` WHERE  `usuario_id` = ?"
-                    );
-                    stmt.setInt(1, usuario.getIdUsuario());
-                    rs = stmt.executeQuery();
-
-                    if (rs.next()) {
-                        int especialidad = rs.getInt("especialidad");
-                        Administrador usuarioadmin = new Administrador(nombre, email, tipo, password, especialidad);
-
-                    }
-                    break;
-
-                case "pacientes":
-                    stmt = con.prepareStatement(
-                            "SELECT * FROM `pacientes` WHERE  `usuario_id` = ?"
-                    );
-                    stmt.setInt(1, usuario.getIdUsuario());
-                    rs = stmt.executeQuery();
-
-                    if (rs.next()) {
-                        int planId = rs.getInt("plan_id");
-                        Paciente usuarioPaciente = new Paciente(planId ,nombre, email, tipo, password);
-
-                    }
-                    break;
-
-                default:
-
-                    break;
-
-
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
 
-        return usuario;
+    } catch (Exception e) {
+        System.out.println("Error en login: " + e.getMessage());
     }
+
+    return null;
+}
 }
 
 
