@@ -9,6 +9,7 @@ public class Main {
         boolean flag = true;
         int opcion;
         int opcionregister;
+        int seleccion;
         String opcionesRegister[] = {"administrador", "medico", "paciente"};
 
         do {
@@ -42,15 +43,14 @@ public class Main {
                     break;
 
                 case 1:
-//                    "INSERT INTO `usuarios`(`idUsuario`, `nombre`, `apellido`, `mail`, `dni`, `contrasenia`, `fechaNacimiento`, `tipoUsuario`) VALUES (?,?,?,?,?,?)"
                     // REGISTRO
                     String nuevoNombre = JOptionPane.showInputDialog("Ingrese nombre");
                     String nuevoApellido = JOptionPane.showInputDialog("Ingrese apellido");
                     String nuevoEmail = JOptionPane.showInputDialog("Ingrese email");
                     String nuevoDni = JOptionPane.showInputDialog("Ingrese Dni");
                     String nuevoContrasenia = JOptionPane.showInputDialog("Ingrese su contrasenia");
-                    String nuevoFechaNacimiento = JOptionPane.showInputDialog("Ingrese su fecha de nacimiento en el formato dd/mm/aaaa");
-                    opcionregister = JOptionPane.showOptionDialog(
+                    Date nuevoFechaNacimiento = Date.valueOf(JOptionPane.showInputDialog("Ingrese su fecha de nacimiento en el formato dd/mm/aaaa"));
+                    seleccion = JOptionPane.showOptionDialog(
                             null,
                             "Seleccione una opcion:",
                             "Menu de Medico",
@@ -60,10 +60,10 @@ public class Main {
                             opcionesRegister,
                             opcionesRegister[0]
                     );
-                    String nuevoTipoDeUsuario = Arrays.toString(opcionesRegister);
+                    String nuevoTipoDeUsuario = opcionesRegister[seleccion];
 
-                     Usuario nuevoUsuario = new Usuario(0, nuevoNombre, nuevoEmail, nuevoTipo, nuevaPass);
-                    // Usuario.RegistrarUsuario(nuevoUsuario);
+                     Usuario nuevoUsuario = new Usuario(0, nuevoNombre,nuevoApellido, nuevoEmail,nuevoDni ,nuevoContrasenia, nuevoFechaNacimiento,nuevoTipoDeUsuario);
+                     Usuario.RegistrarUsuario(nuevoUsuario);
                     break;
 
                 case 2:

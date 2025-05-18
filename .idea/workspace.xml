@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="20644e24-cf16-4926-88a6-732a653840f6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Administrador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Administrador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Administrador.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Usuario.class" afterDir="false" />
     </list>
@@ -22,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -49,21 +48,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Juan",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Florh11/Documents/GitHub/Gestion-de-Sistema-de-Salud",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Juan&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Florh11/Documents/GitHub/Gestion-de-Sistema-de-Salud&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Florh11\Documents\GitHub\Gestion-de-Sistema-de-Salud\Github repository\src\img" />
