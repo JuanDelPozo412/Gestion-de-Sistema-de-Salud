@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="20644e24-cf16-4926-88a6-732a653840f6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Administrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Administrador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Administrador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Paciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Turno.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Turno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Paciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Paciente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Turno.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Turno.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,18 +28,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "JuanDelPozo412"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;JuanDelPozo412&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/JuanDelPozo412/Gestion-de-Sistema-de-Salud.git",
-    "accountId": "df1f8930-1d30-434c-8f80-313ba32ab2d4"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/JuanDelPozo412/Gestion-de-Sistema-de-Salud.git&quot;,
+    &quot;accountId&quot;: &quot;df1f8930-1d30-434c-8f80-313ba32ab2d4&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -54,7 +55,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Juan",
+    "git-widget-placeholder": "Florencia",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Florh11/Documents/GitHub/Gestion-de-Sistema-de-Salud",
     "project.structure.last.edited": "Modules",

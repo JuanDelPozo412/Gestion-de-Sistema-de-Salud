@@ -13,6 +13,9 @@ public class Turno {
         this.fecha = fecha;
         this.estado = estado;
     }
+    public Turno(){
+
+    }
 
     public int getIdTurno() {
         return idTurno;
