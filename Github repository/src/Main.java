@@ -5,36 +5,57 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
 
-        //String nombre = JOptionPane.showInputDialog(null,"Ingresa tu nombre de usuario");
-        //String contrasenia = JOptionPane.showInputDialog(null,"Ingresa tu contrasenia");
+//        String nombre = JOptionPane.showInputDialog(null,"Ingresa tu nombre de usuario");
+//        String contrasenia = JOptionPane.showInputDialog(null,"Ingresa tu contrasenia");
 
-        //Usuario.login(nombre,contrasenia);
-        int idUsuario = 1;
-        String nombre = "Flor";
-        String apellido = "Bergman";
-        String mail = "flor@gmail.com";
-        String dni = "87654321";
-        String contrasenia = "flor123";
-        Date fechaNacimiento = Date.valueOf("1992-04-10");
-        String tipoUsuario = "pacientes";
-        int planId = 1;
+//
+        Usuario u = Usuario.login("fer", "12345");
 
-
-        Paciente flor = new Paciente(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario, null, null, planId);
-
-        flor.mostrarMenuPaciente();
-
-        //JOptionPane.showMessageDialog(null, "Hola Mundo");
-        //JOptionPane.showMessageDialog(null, "Hola Mundo 2");
-        //Paciente paciente1 = new Paciente("flor","bergman","@gmail.com",3435,"123",LocalDate.now(),"sexo");
+        if (u instanceof Paciente) {
+            ((Paciente) u).mostrarMenuPaciente();
+        } else if (u instanceof Medico) {
+//            ((Medico) u).mostrarMenuPaciente(); EJEMPLO DE COMO SE HACE FALTARIA LO MISMO PERO CON MENU MEDICO.
+        } else if (u instanceof Administrador) {
+            ((Administrador) u).menuadministrador();
+        } else {
+            System.out.println("usuario devuelvo nulo");
+        }
+        ;
 
 
-       //Administrador admin = new Administrador("agus","Panno","@gmail.com",123,"1234",LocalDate.of(2004,03,03),"admin");
+//        }else-if(u instanceof Administrador){
+//            (Administrador) u).mostrarMenuPaciente();
+//        } else if (u instanceof Medico) {
+//            (Medico) u).mostra();
+//        }
 
 
-       //PersonalAdministrativo personal = new PersonalAdministrativo("Juan","Del pozo","@gmail.com",123,"1234",LocalDate.now(),"adminstrativo");
+//        int idUsuario = 1;
+//        String nombre = "Flor";
+//        String apellido = "Bergman";
+//        String mail = "flor@gmail.com";
+//        String dni = "87654321";
+//        String contrasenia = "flor123";
+//        Date fechaNacimiento = Date.valueOf("1992-04-10");
+//        String tipoUsuario = "pacientes";
+//        int planId = 1;
+//
+//
+//        Paciente flor = new Paciente(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario, null, null, planId);
+//
+//        flor.mostrarMenuPaciente();
 
-       //Medico medico1 = new Medico("Fer", "Fernandez", "@gmail", 43335197, "1234", LocalDate.of(2004,03,03), Especialidades.CLINICO, 5335);
+            //JOptionPane.showMessageDialog(null, "Hola Mundo");
+            //JOptionPane.showMessageDialog(null, "Hola Mundo 2");
+            //Paciente paciente1 = new Paciente("flor","bergman","@gmail.com",3435,"123",LocalDate.now(),"sexo");
+
+
+            //Administrador admin = new Administrador("agus","Panno","@gmail.com",123,"1234",LocalDate.of(2004,03,03),"admin");
+
+
+            //PersonalAdministrativo personal = new PersonalAdministrativo("Juan","Del pozo","@gmail.com",123,"1234",LocalDate.now(),"adminstrativo");
+
+            //Medico medico1 = new Medico("Fer", "Fernandez", "@gmail", 43335197, "1234", LocalDate.of(2004,03,03), Especialidades.CLINICO, 5335);
 
 //            String[] opciones = new String[]{"Menu paciente", "Menu medicos","Menu Administrador","Menu Personal Administrativo","Salir"};
 //            int opcion;
@@ -71,5 +92,5 @@ public class Main {
 //
 
 
+        }
     }
-}

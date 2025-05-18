@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.Date;
 
 public class Administrador extends Usuario {
@@ -7,6 +8,10 @@ public class Administrador extends Usuario {
         super(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario);
         this.cargo = cargo;
     }
+
+    public Administrador(){
+    };
+
 
     public Administrador(int idUsuario, String mail, String tipoUsuario, String cargo) {
         super(idUsuario, mail, tipoUsuario);
@@ -40,80 +45,80 @@ public class Administrador extends Usuario {
 //        menuadministrador();
 //    }
 
-//    public void menuadministrador () {
-//        ImageIcon icon = new ImageIcon(getClass().getResource("/img/admin.png"));
-//        String[] opciones = new String[]{"Ver pacientes", "Ver medicos", "Ver personal administrativo", "Ver administrador", "Salir"};
-//        int opcion;
-//        do {
-//            opcion = JOptionPane.showOptionDialog(null,
-//                    "Seleccione una opcion:",
-//                    "Menu administradores",
-//                    0,
-//                    0,
-//                    icon,
-//                    opciones,
-//                    opciones
-//            );
-//            switch (opcion) {
-//                case 0:
-//                    JOptionPane.showMessageDialog(null, "Lista de pacientes:");
-//                    crud();
+    public void menuadministrador () {
+        ImageIcon icon = new ImageIcon(getClass().getResource("/img/admin.png"));
+        String[] opciones = new String[]{"Ver pacientes", "Ver medicos", "Ver personal administrativo", "Ver administrador", "Salir"};
+        int opcion;
+        do {
+            opcion = JOptionPane.showOptionDialog(null,
+                    "Seleccione una opcion:",
+                    "Menu administradores",
+                    0,
+                    0,
+                    icon,
+                    opciones,
+                    opciones
+            );
+            switch (opcion) {
+                case 0:
+                    JOptionPane.showMessageDialog(null, "Lista de pacientes:");
+                    crud();
+
+                    break;
+                case 1:
+                    JOptionPane.showMessageDialog(null, "Lista de medicos:");
+                    crud();
+
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "Lista de personal administrativo:");
+                    crud();
+
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(null, "Lista de administrador:");
+                    crud();
+
+                    break;
+                case 4:
+                    JOptionPane.showMessageDialog(null, "Saliendo...");
+                    break;
+
+            }
+        } while (opcion != 4);
+    }
 //
-//                    break;
-//                case 1:
-//                    JOptionPane.showMessageDialog(null, "Lista de medicos:");
-//                    crud();
-//
-//                    break;
-//                case 2:
-//                    JOptionPane.showMessageDialog(null, "Lista de personal administrativo:");
-//                    crud();
-//
-//                    break;
-//                case 3:
-//                    JOptionPane.showMessageDialog(null, "Lista de administrador:");
-//                    crud();
-//
-//                    break;
-//                case 4:
-//                    JOptionPane.showMessageDialog(null, "Saliendo...");
-//                    break;
-//
-//            }
-//        } while (opcion != 4);
-//    }
-//
-//    public void crud () {
-//        String[] opciones = new String[]{"Agregar", "Modificar", "Eliminar", "Salir"};
-//        int opcion;
-//        do {
-//            opcion = JOptionPane.showOptionDialog(null,
-//                    "Seleccione una opcion:",
-//                    "Menu administradores",
-//                    0,
-//                    0,
-//                    null,
-//                    opciones,
-//                    opciones
-//            );
-//            switch (opcion) {
-//                case 0:
-//                    JOptionPane.showMessageDialog(null,"Agregar");
-//
-//                    break;
-//                case 1:
-//                    JOptionPane.showMessageDialog(null,"Modifciar");
-//
-//                    break;
-//                case 2:
-//                    JOptionPane.showMessageDialog(null,"Eliminar");
-//                    break;
-//                case 3:
-//                    JOptionPane.showMessageDialog(null, "Saliendo...");
-//                    break;
-//
-//
-//            }
-//        } while (opcion != 3);
-//    }
+    public void crud () {
+        String[] opciones = new String[]{"Agregar", "Modificar", "Eliminar", "Salir"};
+        int opcion;
+        do {
+            opcion = JOptionPane.showOptionDialog(null,
+                    "Seleccione una opcion:",
+                    "Menu administradores",
+                    0,
+                    0,
+                    null,
+                    opciones,
+                    opciones
+            );
+            switch (opcion) {
+                case 0:
+                    JOptionPane.showMessageDialog(null,"Agregar");
+
+                    break;
+                case 1:
+                    JOptionPane.showMessageDialog(null,"Modifciar");
+
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null,"Eliminar");
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(null, "Saliendo...");
+                    break;
+
+
+            }
+        } while (opcion != 3);
+    }
 }
