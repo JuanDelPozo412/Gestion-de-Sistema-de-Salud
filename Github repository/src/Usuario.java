@@ -284,14 +284,17 @@ public static Usuario login(String nombre, String password) {
     public static void agregarUsuario(Usuario usuario) {
         try {
             PreparedStatement statement = con.prepareStatement(
-                    "INSERT INTO `usuarios`(`idUsuario`, `nombre`, `apellido`, `mail`, `dni`, `contrasenia`, `fechaNacimiento`, `tipoUsuario`) VALUES (?,?,?,?,?,?)"
+                    "INSERT INTO `usuarios`(`idUsuario`, `nombre`, `apellido`, `mail`, `dni`, `contrasenia`, `fechaNacimiento`, `tipoUsuario`) VALUES (?,?,?,?,?,?,?,?)"
             );
-            statement.setString(1, usuario.getNombre());
+
+            statement.setInt(1, usuario.getIdUsuario()); // o 0 si es autoincrement
+            statement.setString(2, usuario.getNombre());
             statement.setString(3, usuario.getApellido());
-            statement.setString(2, usuario.getMail());
-            statement.setString(3, usuario.getDni());
-            statement.setDate(3, (java.sql.Date) usuario.getFechaNacimiento());
-            statement.setString(3, usuario.getTipoUsuario());
+            statement.setString(4, usuario.getMail());
+            statement.setString(5, usuario.getDni());
+            statement.setString(6, usuario.getContrasenia());
+            statement.setDate(7, (java.sql.Date) usuario.getFechaNacimiento()); // si es LocalDate
+            statement.setString(8, usuario.getTipoUsuario());
 
             int filas = statement.executeUpdate();
             if (filas > 0) {
@@ -322,7 +325,7 @@ public static Usuario login(String nombre, String password) {
     public static LinkedList<Usuario> mostrarUsuarios() {
         LinkedList<Usuario> usuarios = new LinkedList<>();
         try {
-            PreparedStatement stmt = con.prepareStatement("SELECT * FROM usuario");
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM usuarios");
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
