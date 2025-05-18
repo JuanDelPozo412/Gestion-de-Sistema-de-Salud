@@ -94,6 +94,28 @@ public class Paciente extends Usuario { //extends Persona
             System.out.println("Error al consultar el plan: " + e.getMessage());
         }
     }
+    public void verUltimoTurno() {
+        try {
+            PreparedStatement stmt = con.prepareStatement(
+                    "SELECT idTurno, especialidad, fecha, estado " + "FROM turnos " + "WHERE paciente_id = ? " + "ORDER BY fecha DESC " + "LIMIT 1" // esto es para que traiga solo el ultimo turno
+            );
+            stmt.setInt(1, this.getIdUsuario());
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                System.out.println("ultimo turno:");
+                System.out.println("Turno "   + rs.getInt("idTurno") + "Especialidad: " + rs.getString("especialidad") +
+                        ",Fecha: " + rs.getDate("fecha") + ",Estado: " + rs.getString("estado")
+                );
+            } else {
+                System.out.println("No tenes turnos antiguos");
+            }
+        } catch (Exception e) {
+            System.out.println("Error al consultar el ultimo turno: " + e.getMessage());
+        }
+    }
+
+
 
 
 
