@@ -1,13 +1,28 @@
 import javax.swing.*;
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
 
-        String nombre = JOptionPane.showInputDialog(null,"Ingresa tu nombre de usuario");
-        String contrasenia = JOptionPane.showInputDialog(null,"Ingresa tu contrasenia");
+        //String nombre = JOptionPane.showInputDialog(null,"Ingresa tu nombre de usuario");
+        //String contrasenia = JOptionPane.showInputDialog(null,"Ingresa tu contrasenia");
 
-        Usuario.login(nombre,contrasenia);
+        //Usuario.login(nombre,contrasenia);
+        int idUsuario = 1;
+        String nombre = "Flor";
+        String apellido = "Bergman";
+        String mail = "flor@gmail.com";
+        String dni = "87654321";
+        String contrasenia = "flor123";
+        Date fechaNacimiento = Date.valueOf("1992-04-10");
+        String tipoUsuario = "pacientes";
+        int planId = 1;
+
+
+        Paciente flor = new Paciente(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario, null, null, planId);
+
+        flor.mostrarMenuPaciente();
 
         //JOptionPane.showMessageDialog(null, "Hola Mundo");
         //JOptionPane.showMessageDialog(null, "Hola Mundo 2");
