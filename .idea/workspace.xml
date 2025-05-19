@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="20644e24-cf16-4926-88a6-732a653840f6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Administrador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Administrador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Administrador.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Usuario.class" afterDir="false" />
     </list>
@@ -55,7 +53,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Juan",
+    "git-widget-placeholder": "Florencia",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Florh11/Documents/GitHub/Gestion-de-Sistema-de-Salud",
     "project.structure.last.edited": "Modules",

@@ -9,7 +9,7 @@ public class Main {
 //        String contrasenia = JOptionPane.showInputDialog(null,"Ingresa tu contrasenia");
 
 //
-        Usuario u = Usuario.login("fer", "12345");
+        Usuario u = Usuario.login("Flor", "flor123");
 
         if (u instanceof Paciente) {
             ((Paciente) u).mostrarMenuPaciente();
