@@ -34,7 +34,7 @@ public class Main {
                     if (u instanceof Paciente) {
                         ((Paciente) u).mostrarMenuPaciente();
                     } else if (u instanceof Medico) {
-
+                        ((Medico) u).menuMedico();
                     } else if (u instanceof Administrador) {
                         ((Administrador) u).menuadministrador();
                     } else {
