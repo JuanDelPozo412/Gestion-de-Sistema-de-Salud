@@ -1,4 +1,5 @@
 import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
@@ -274,36 +275,144 @@ public static Usuario login(String nombre, String password) {
     return null;
 }
 
+
 //    int id = rs.getInt("idUsuario");
 //    String apellido = rs.getString("apellido");
 //    String mail = rs.getString("mail");
 //    String dni = rs.getString("dni");
 //    Date fechaNacimiento = rs.getDate("fechaNacimiento");
 //    String tipo = rs.getString("tipoUsuario");
+//
+//    public static void agregarUsuario(Usuario usuario) {
+//        try {
+//            PreparedStatement statement = con.prepareStatement(
+//                    "INSERT INTO `usuarios`(`idUsuario`, `nombre`, `apellido`, `mail`, `dni`, `contrasenia`, `fechaNacimiento`, `tipoUsuario`) VALUES (?,?,?,?,?,?,?,?)"
+//            );
+//
+//            statement.setInt(1, usuario.getIdUsuario());
+//            statement.setString(2, usuario.getNombre());
+//            statement.setString(3, usuario.getApellido());
+//            statement.setString(4, usuario.getMail());
+//            statement.setString(5, usuario.getDni());
+//            statement.setString(6, usuario.getContrasenia());
+//            statement.setDate(7, (java.sql.Date) usuario.getFechaNacimiento());
+//            statement.setString(8, usuario.getTipoUsuario());
+//
+//
+//            int filas = statement.executeUpdate();
+//            if (filas > 0) {
+//                System.out.println("Usuario agregado correctamente.");
+//            }
+//
+//            String tipo = usuario.getTipoUsuario();
+//
+//            PreparedStatement insertTablaTipoUsuario = null;
+//            switch (tipo) {
+//                case "paciente":
+//                    insertTablaTipoUsuario = con.prepareStatement("INSERT INTO `pacientes`(`idUsuario`) VALUES (?)" );
+//                    break;
+//                case "medico":
+//                    insertTablaTipoUsuario = con.prepareStatement("INSERT INTO `medicos`(`idUsuario`) VALUES (?)");
+//                    break;
+//                case "administrador":
+//                    insertTablaTipoUsuario = con.prepareStatement("INSERT INTO `administradores`(`idUsuario`) VALUES (?)");
+//                    break;
+//                default:
+//
+//                    System.out.println("default");
+//            }
+//
+//            if (insertTablaTipoUsuario != null) {
+//                insertTablaTipoUsuario.setInt(1, usuario.getIdUsuario());
+//                insertTablaTipoUsuario.executeUpdate();
+//                System.out.println("ID insertado en tabla secundaria: " + tipo);
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+public static void agregarUsuario(Usuario usuario) {
+    try {
 
-    public static void agregarUsuario(Usuario usuario) {
-        try {
-            PreparedStatement statement = con.prepareStatement(
-                    "INSERT INTO `usuarios`(`idUsuario`, `nombre`, `apellido`, `mail`, `dni`, `contrasenia`, `fechaNacimiento`, `tipoUsuario`) VALUES (?,?,?,?,?,?,?,?)"
-            );
+        String sqlInsertUsuario = "INSERT INTO usuarios (nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement statement = con.prepareStatement(sqlInsertUsuario, Statement.RETURN_GENERATED_KEYS);
 
-            statement.setInt(1, usuario.getIdUsuario()); // o 0 si es autoincrement
-            statement.setString(2, usuario.getNombre());
-            statement.setString(3, usuario.getApellido());
-            statement.setString(4, usuario.getMail());
-            statement.setString(5, usuario.getDni());
-            statement.setString(6, usuario.getContrasenia());
-            statement.setDate(7, (java.sql.Date) usuario.getFechaNacimiento()); // si es LocalDate
-            statement.setString(8, usuario.getTipoUsuario());
+        statement.setString(1, usuario.getNombre());
+        statement.setString(2, usuario.getApellido());
+        statement.setString(3, usuario.getMail());
+        statement.setString(4, usuario.getDni());
+        statement.setString(5, usuario.getContrasenia());
+        java.sql.Date sqlDate = new java.sql.Date(usuario.getFechaNacimiento().getTime());
+        statement.setDate(6, sqlDate);
 
-            int filas = statement.executeUpdate();
-            if (filas > 0) {
-                System.out.println("Usuario agregado correctamente.");
+        statement.setString(7, usuario.getTipoUsuario());
+
+        int filas = statement.executeUpdate();
+
+        if (filas > 0) {
+            ResultSet rs = statement.getGeneratedKeys();
+            if (rs.next()) {
+                int idGenerado = rs.getInt(1);
+                usuario.setIdUsuario(idGenerado);
+                System.out.println("Usuario agregado con ID: " + idGenerado);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } else {
+            System.out.println("No se pudo insertar el usuario.");
+            return;
         }
+
+
+        String tipo = usuario.getTipoUsuario();
+        PreparedStatement insertTabla = null;
+        switch (tipo) {
+            case "paciente":
+                if (usuario instanceof Paciente) {
+                    int planId = ((Paciente) usuario).getPlanId();
+                    insertTabla = con.prepareStatement("INSERT INTO pacientes (usuario_id, plan_id) VALUES (?, ?)");
+                    insertTabla.setInt(1, usuario.getIdUsuario());
+                    insertTabla.setInt(2, planId);
+                } else {
+                    System.out.println("el objeto no es una instancia de Paciente.");
+                    return;
+                }
+                break;
+
+            case "medico":
+                if (usuario instanceof Medico) {
+                    String especialidad = ((Medico) usuario).getEspecialidad();
+                    insertTabla = con.prepareStatement("INSERT INTO medicos (usuario_id, especialidad) VALUES (?, ?)");
+                    insertTabla.setInt(1, usuario.getIdUsuario());
+                    insertTabla.setString(2, especialidad);
+                } else {
+                    System.out.println("el objeto no es una instancia de Medico.");
+                    return;
+                }
+                break;
+
+            case "administrador":
+                if (usuario instanceof Administrador) {
+                    String cargo = ((Administrador) usuario).getCargo();
+                    insertTabla = con.prepareStatement("INSERT INTO administradores (usuario_id, cargo) VALUES (?, ?)");
+                    insertTabla.setInt(1, usuario.getIdUsuario());
+                    insertTabla.setString(2, cargo);
+                } else {
+                    System.out.println("el objeto no es una instancia de Administrador.");
+                    return;
+                }
+                break;
+        }
+
+        if (insertTabla != null) {
+            insertTabla.executeUpdate();
+            System.out.println("Insertado correctamente en tabla tipo " + tipo);
+        }
+
+    } catch (Exception e) {
+        System.out.println("error en agregarUsuario: " + e.getMessage());
     }
+}
+
     public static void RegistrarUsuario(Usuario nuevo) {
 
         LinkedList<Usuario> existentes = mostrarUsuarios();
@@ -317,7 +426,7 @@ public static Usuario login(String nombre, String password) {
         if (flag) {
             agregarUsuario(nuevo);
         }else {
-            JOptionPane.showMessageDialog(null, "Usuario ya creado");
+            JOptionPane.showMessageDialog(null, "usuario ya creado");
         }
 
 
