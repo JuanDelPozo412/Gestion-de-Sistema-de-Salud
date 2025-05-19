@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
+        JOptionPane.showMessageDialog(null,"Si no funciona me mato");
         String opciones[] = {"Login", "Register", "Salir"};
         boolean flag = true;
         int opcion;
