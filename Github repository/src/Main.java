@@ -36,7 +36,7 @@ public class Main {
                     } else if (u instanceof Medico) {
 
                     } else if (u instanceof Administrador) {
-                        ((Administrador) u).menuadministrador();
+                        //((Administrador) u).mostrarMenuAdmin();
                     } else {
                         System.out.println("Usuario devuelto es nulo");
                     }
