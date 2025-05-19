@@ -113,7 +113,89 @@ public class Medico extends Usuario {
 //    public void verTurnoIndividual() {
 //
 //    }
-    // public void atenderTurnoIndividual();
+public void atenderTurnoIndividual() {
+    try {
+        PreparedStatement stmt = con.prepareStatement(
+                "SELECT t.idTurno, t.fecha, t.especialidad, t.estado, t.paciente_id, u.nombre " +
+                        "FROM turnos t " +
+                        "JOIN pacientes p ON t.paciente_id = p.usuario_id " +
+                        "JOIN usuarios u ON p.usuario_id = u.idUsuario " +
+                        "WHERE t.medico_id = ? AND t.estado = 'pendiente'"
+        );
+        stmt.setInt(1, this.getIdUsuario());
+        ResultSet rs = stmt.executeQuery();
+
+        List<String> opcionesTurnos = new ArrayList<>();
+        List<Integer> idsTurno = new ArrayList<>();
+        List<Integer> idsPaciente = new ArrayList<>();
+
+        while (rs.next()) {
+            int idTurno = rs.getInt("idTurno");
+            int pacienteId = rs.getInt("paciente_id");
+            String nombrePaciente = rs.getString("nombre");
+            Date fecha = rs.getDate("fecha");
+            String especialidad = rs.getString("especialidad");
+
+            String linea = (opcionesTurnos.size() + 1) + ". Turno N° " + idTurno +
+                    " - Paciente: " + nombrePaciente + " - " + especialidad + " - " + fecha;
+
+            opcionesTurnos.add(linea);
+            idsTurno.add(idTurno);
+            idsPaciente.add(pacienteId);
+        }
+
+        if (opcionesTurnos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hay turnos pendientes para atender.");
+            return;
+        }
+
+        String menu = "Seleccione un turno para atender:\n";
+        for (String opcion : opcionesTurnos) {
+            menu += opcion + "\n";
+        }
+
+        String entrada = JOptionPane.showInputDialog(menu);
+        int seleccion = Integer.parseInt(entrada) - 1;
+
+        if (seleccion < 0 || seleccion >= idsTurno.size()) {
+            JOptionPane.showMessageDialog(null, "Selección inválida.");
+            return;
+        }
+
+        int turnoId = idsTurno.get(seleccion);
+        int pacienteId = idsPaciente.get(seleccion);
+
+
+        // actualiza el estado del turno a atendido en la base de datos
+        PreparedStatement updateTurno = con.prepareStatement(
+                "UPDATE turnos SET estado = 'atendido' WHERE idTurno = ?"
+        );
+        updateTurno.setInt(1, turnoId);
+        updateTurno.executeUpdate();
+
+        String tipoEntrada = JOptionPane.showInputDialog("Ingrese el tipo de consulta:");
+        String descripcion = JOptionPane.showInputDialog("Ingrese la descripción de la atención:");
+
+        //inserta la entrada en entrada_historial
+        PreparedStatement insertEntrada = con.prepareStatement(
+                "INSERT INTO entradas_historial (turno_asociado_id, paciente_id, medico_responsable_id,tipoEntrada, descripcionDetallada) VALUES (?, ?, ?, ?, ?)"
+        );
+        insertEntrada.setInt(1, turnoId);
+        insertEntrada.setInt(2, pacienteId);
+        insertEntrada.setInt(3, this.getIdUsuario());
+        insertEntrada.setString(4, tipoEntrada);
+        insertEntrada.setString(5, descripcion);
+        insertEntrada.executeUpdate();
+
+        JOptionPane.showMessageDialog(null, "Turno atendido y entrada registrada correctamente.");
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al atender el turno: " + e.getMessage());
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Debe ingresar un número válido.");
+    }
+}
+
 //    public void cancelarTurno() {
 //    }
 //    public void reprogramarTurno() {
@@ -138,8 +220,7 @@ public class Medico extends Usuario {
 
                     break;
                 case 1:
-                    //verTurnoIndividual();
-                    JOptionPane.showMessageDialog(null,"Ver turno Individual de tus pacientes: ");
+                    atenderTurnoIndividual();
                     break;
                 case 2:
                     //cancelarTurno();
