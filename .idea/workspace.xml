@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="20644e24-cf16-4926-88a6-732a653840f6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gestion-de-Sistema-de-Salud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gestion-de-Sistema-de-Salud.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Administrador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Github repository/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Paciente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/Usuario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Administrador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Administrador.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Medico.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Medico.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Paciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Paciente.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

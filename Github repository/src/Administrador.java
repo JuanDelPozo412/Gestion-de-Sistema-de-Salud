@@ -87,7 +87,7 @@ public class Administrador extends Usuario {
             }
         } while (opcion != 4);
     }
-//
+    //
     public void crud () {
         String[] opciones = new String[]{"Agregar", "Modificar", "Eliminar", "Salir"};
         int opcion;
