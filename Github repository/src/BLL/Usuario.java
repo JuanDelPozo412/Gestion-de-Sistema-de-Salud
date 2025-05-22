@@ -1,3 +1,5 @@
+package BLL;
+
 import DLL.Conexion;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
@@ -107,7 +109,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" +
+        return "BLL.Usuario{" +
                 "idUsuario=" + idUsuario +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
@@ -129,8 +131,8 @@ public class Usuario {
 //
 
 //
-//    public static Usuario login(String nombre, String password) {
-//        Usuario usuario = new Usuario();
+//    public static BLL.Usuario login(String nombre, String password) {
+//        BLL.Usuario usuario = new BLL.Usuario();
 //
 //        try {
 //            PreparedStatement stmt = con.prepareStatement(
@@ -148,7 +150,7 @@ public class Usuario {
 //                id = rs.getInt("idUsuario");
 //                email = rs.getString("mail");
 //                tipo = rs.getString("tipoUsuario");
-//                usuario = new Usuario(id, email, tipo);
+//                usuario = new BLL.Usuario(id, email, tipo);
 //            }
 //            System.out.println("Tipo de usuario recuperado: " + usuario.getTipoUsuario());
 //
@@ -284,7 +286,7 @@ public static Usuario login(String nombre, String password) {
 //    Date fechaNacimiento = rs.getDate("fechaNacimiento");
 //    String tipo = rs.getString("tipoUsuario");
 //
-//    public static void agregarUsuario(Usuario usuario) {
+//    public static void agregarUsuario(BLL.Usuario usuario) {
 //        try {
 //            PreparedStatement statement = con.prepareStatement(
 //                    "INSERT INTO `usuarios`(`idUsuario`, `nombre`, `apellido`, `mail`, `dni`, `contrasenia`, `fechaNacimiento`, `tipoUsuario`) VALUES (?,?,?,?,?,?,?,?)"
@@ -302,7 +304,7 @@ public static Usuario login(String nombre, String password) {
 //
 //            int filas = statement.executeUpdate();
 //            if (filas > 0) {
-//                System.out.println("Usuario agregado correctamente.");
+//                System.out.println("BLL.Usuario agregado correctamente.");
 //            }
 //
 //            String tipo = usuario.getTipoUsuario();
@@ -356,7 +358,7 @@ public static void agregarUsuario(Usuario usuario) {
             if (rs.next()) {
                 int idGenerado = rs.getInt(1);
                 usuario.setIdUsuario(idGenerado);
-                System.out.println("Usuario agregado con ID: " + idGenerado);
+                System.out.println("BLL.Usuario agregado con ID: " + idGenerado);
             }
         } else {
             System.out.println("No se pudo insertar el usuario.");

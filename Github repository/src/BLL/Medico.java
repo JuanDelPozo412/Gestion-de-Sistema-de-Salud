@@ -1,5 +1,8 @@
 package BLL;
 
+import DLL.Conexion;
+import GUI.MenuMedico;
+
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
