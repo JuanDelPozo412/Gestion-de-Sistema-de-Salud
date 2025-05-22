@@ -1,5 +1,11 @@
 package GUI;
 
+
+import BLL.Administrador;
+import BLL.Medico;
+import BLL.Paciente;
+import BLL.Usuario;
+
 import javax.swing.*;
 import java.sql.Date;
 
@@ -39,7 +45,7 @@ public class Main {
                     } else if (u instanceof Administrador) {
                         ((Administrador) u).mostrarMenuAdmin();
                     } else {
-                        System.out.println("Usuario devuelto es nulo");
+                        System.out.println("BLL.Usuario devuelto es nulo");
                     }
                     break;
 

@@ -1,5 +1,7 @@
 package BLL;
 
+import DLL.Conexion;
+
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -90,7 +92,7 @@ public class Administrador extends Usuario {
 
             String seleccion = (String) JOptionPane.showInputDialog(null,
                     "Seleccione usuario a modificar:",
-                    "Modificar Usuario",
+                    "Modificar BLL.Usuario",
                     0,
                     null,
                     descripciones.toArray(),
@@ -117,7 +119,7 @@ public class Administrador extends Usuario {
 
                 int filas = stmt.executeUpdate();
                 JOptionPane.showMessageDialog(null,
-                        filas > 0 ? "Usuario modificado correctamente." : "No se pudo modificar el usuario");
+                        filas > 0 ? "BLL.Usuario modificado correctamente." : "No se pudo modificar el usuario");
             }
 
         } catch (Exception e) {
@@ -140,7 +142,7 @@ public class Administrador extends Usuario {
 
             String seleccion = (String) JOptionPane.showInputDialog(null,
                     "Seleccione usuario a eliminar:",
-                    "Eliminar Usuario",
+                    "Eliminar BLL.Usuario",
                     0,
                     null,
                     descripciones.toArray(),
@@ -155,7 +157,7 @@ public class Administrador extends Usuario {
                 int filas = stmt.executeUpdate();
 
                 JOptionPane.showMessageDialog(null,
-                        filas > 0 ? "Usuario eliminado correctamente" : "No se pudo eliminar el usuario");
+                        filas > 0 ? "BLL.Usuario eliminado correctamente" : "No se pudo eliminar el usuario");
             }
 
         } catch (Exception e) {

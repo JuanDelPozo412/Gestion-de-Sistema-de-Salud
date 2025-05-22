@@ -5,11 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20644e24-cf16-4926-88a6-732a653840f6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/BLL/Administrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/Medico.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/BLL/Medico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/BLL/Paciente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/PlanSalud.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/BLL/PlanSalud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gestion-de-Sistema-de-Salud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gestion-de-Sistema-de-Salud.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/BLL/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/BLL/Administrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/BLL/Medico.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/BLL/Medico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/GUI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/GUI/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Administrador.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Conexion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Encriptador.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/EntradaHistorial.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/HistorialMedico.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Medico.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/MenuMedico.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/MenuPacienteEnu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Paciente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/PlanSalud.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Turno.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/Usuario.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/iValidaciones.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +39,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -54,7 +73,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Florencia",
+    "git-widget-placeholder": "Juan",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Agustin/Downloads/mysql-connector-java-5.1.13.jar",
     "node.js.detected.package.eslint": "true",
@@ -89,6 +108,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1744936833489</updated>
+      <workItem from="1747940319031" duration="303000" />
     </task>
     <servers />
   </component>

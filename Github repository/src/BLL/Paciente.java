@@ -1,5 +1,6 @@
 package BLL;
 
+import DLL.Conexion;
 import com.mysql.jdbc.Connection;
 
 import javax.swing.*;
