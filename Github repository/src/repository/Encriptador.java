@@ -1,3 +1,5 @@
+package repository;
+
 public interface Encriptador {
 
         default String encriptar(String texto) {

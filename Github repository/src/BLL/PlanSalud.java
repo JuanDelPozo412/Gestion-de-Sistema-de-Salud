@@ -1,3 +1,5 @@
+package BLL;
+
 public class PlanSalud {
     private int planId;
     private String nombrePlan;

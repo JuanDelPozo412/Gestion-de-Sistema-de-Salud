@@ -1,7 +1,7 @@
+package GUI;
+
 import javax.swing.*;
 import java.sql.Date;
-import java.time.LocalDate;
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,6 +29,7 @@ public class Main {
                 case 0:
                     String nombre = JOptionPane.showInputDialog(null, "Ingresa tu nombre de usuario");
                     String contrasenia = JOptionPane.showInputDialog(null, "Ingresa tu contrasenia");
+
                     Usuario u = Usuario.login(nombre, contrasenia);
 
                     if (u instanceof Paciente) {

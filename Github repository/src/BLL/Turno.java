@@ -1,3 +1,5 @@
+package BLL;
+
 import java.sql.Date;
 public class Turno {
     private int idTurno;

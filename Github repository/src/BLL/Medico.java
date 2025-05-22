@@ -1,3 +1,5 @@
+package BLL;
+
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -66,8 +68,8 @@ public class Medico extends Usuario {
             while (rs.next()) {
                 String nombrePaciente = rs.getString("nombre");
 
-                String resumen = (resumenTurnos.size() + 1) + ". Turno N° " + rs.getInt("idTurno") +
-                        " - Paciente: " + nombrePaciente +
+                String resumen = (resumenTurnos.size() + 1) + ". BLL.Turno N° " + rs.getInt("idTurno") +
+                        " - BLL.Paciente: " + nombrePaciente +
                         " - Especialidad: " + rs.getString("especialidad") +
                         " - Fecha: " + rs.getDate("fecha");
 
@@ -136,8 +138,8 @@ public void atenderTurnoIndividual() {
             Date fecha = rs.getDate("fecha");
             String especialidad = rs.getString("especialidad");
 
-            String linea = (opcionesTurnos.size() + 1) + ". Turno N° " + idTurno +
-                    " - Paciente: " + nombrePaciente + " - " + especialidad + " - " + fecha;
+            String linea = (opcionesTurnos.size() + 1) + ". BLL.Turno N° " + idTurno +
+                    " - BLL.Paciente: " + nombrePaciente + " - " + especialidad + " - " + fecha;
 
             opcionesTurnos.add(linea);
             idsTurno.add(idTurno);
@@ -187,7 +189,7 @@ public void atenderTurnoIndividual() {
         insertEntrada.setString(5, descripcion);
         insertEntrada.executeUpdate();
 
-        JOptionPane.showMessageDialog(null, "Turno atendido y entrada registrada correctamente.");
+        JOptionPane.showMessageDialog(null, "BLL.Turno atendido y entrada registrada correctamente.");
 
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "Error al atender el turno: " + e.getMessage());
@@ -224,7 +226,7 @@ public void atenderTurnoIndividual() {
                     break;
                 case 2:
                     //cancelarTurno();
-                    JOptionPane.showMessageDialog(null,"Cancelar Turno: ");
+                    JOptionPane.showMessageDialog(null,"Cancelar BLL.Turno: ");
                     break;
                 case 3:
                     //reprogramarTurno();

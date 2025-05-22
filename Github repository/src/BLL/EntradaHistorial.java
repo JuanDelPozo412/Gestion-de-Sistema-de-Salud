@@ -1,3 +1,5 @@
+package BLL;
+
 import java.sql.Date;
 public class EntradaHistorial {
     private int entradaId;
@@ -66,7 +68,7 @@ public class EntradaHistorial {
 
     @Override
     public String toString() {
-        return "EntradaHistorial{" +
+        return "BLL.EntradaHistorial{" +
                 "entradaId=" + entradaId +
                 ", fechaHoraEntrada=" + fechaHoraEntrada +
                 ", tipoEntrada='" + tipoEntrada + '\'' +
