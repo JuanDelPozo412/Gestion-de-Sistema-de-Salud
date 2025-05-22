@@ -1,3 +1,5 @@
+package repository;
+
 interface iValidaciones {
 
     public static boolean esMail(String mail) {

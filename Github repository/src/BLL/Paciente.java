@@ -1,3 +1,5 @@
+package BLL;
+
 import com.mysql.jdbc.Connection;
 
 import javax.swing.*;
@@ -161,7 +163,7 @@ public class Paciente extends Usuario {
                 System.out.println("Tipo: " + tipo);
                 System.out.println("Descripcion: " + descripcion);
                 System.out.println("Medico Responsable: " + nombreMedico);
-                System.out.println("ID Turno Asociado: " + turnoId);
+                System.out.println("ID BLL.Turno Asociado: " + turnoId);
             }
 
             if (historial.isEmpty()) {
@@ -267,7 +269,7 @@ public class Paciente extends Usuario {
             stmtInsert.setString(5, "Pendiente");
             stmtInsert.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Turno reservado con exito");
+            JOptionPane.showMessageDialog(null, "BLL.Turno reservado con exito");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al reservar turno: " + e.getMessage());
@@ -305,7 +307,7 @@ public class Paciente extends Usuario {
                 String fecha = rs.getString("fecha");
                 String estado = rs.getString("estado");
 
-                resultado += "Turno ID: " + idTurno + "\n";
+                resultado += "BLL.Turno ID: " + idTurno + "\n";
                 resultado += "Especialidad: " + especialidad + "\n";
                 resultado += "Fecha: " + fecha + "\n";
                 resultado += "Estado: " + estado + "\n";
@@ -324,7 +326,7 @@ public class Paciente extends Usuario {
     }
 
     public void mostrarMenuPaciente() {
-        String[] opciones = {"Info Personal", "Ver Plan de Salud", "Ver Todos los Turnos", "Ver Ultimo Turno", "Ver Historial", "Reservar Turno", "Salir"};
+        String[] opciones = {"Info Personal", "Ver Plan de Salud", "Ver Todos los Turnos", "Ver Ultimo BLL.Turno", "Ver Historial", "Reservar BLL.Turno", "Salir"};
         int opcion;
         do {
             opcion = JOptionPane.showOptionDialog(null,
@@ -465,8 +467,8 @@ public class Paciente extends Usuario {
 //                    0,
 //                    0,
 //                    icon,
-//                    MenuPacienteEnu.values(),
-//                    MenuPacienteEnu.values());
+//                    GUI.MenuPacienteEnu.values(),
+//                    GUI.MenuPacienteEnu.values());
 //            switch (opcion) {
 //                case 0:
 //                    verInformacionPersonal(); // menu con informacion personal
@@ -488,7 +490,7 @@ public class Paciente extends Usuario {
 //
 //    }
 //    public void menuTurnos(){
-//        String[] opciones = new String[]{"Ver turno reservado", "Pedir Turno","Reprogramar Turno","Cancelar Turno","Salir"};
+//        String[] opciones = new String[]{"Ver turno reservado", "Pedir BLL.Turno","Reprogramar BLL.Turno","Cancelar BLL.Turno","Salir"};
 //        int opcion;
 //        do {
 //            opcion = JOptionPane.showOptionDialog(null,
@@ -514,7 +516,7 @@ public class Paciente extends Usuario {
 //                    break;
 //                case 3:
 //                    cancelarTurno();
-//                    JOptionPane.showMessageDialog(null,"Cancelar Turno");
+//                    JOptionPane.showMessageDialog(null,"Cancelar BLL.Turno");
 //                    break;
 //                case 4:
 //                    JOptionPane.showMessageDialog(null, "Saliendo...");

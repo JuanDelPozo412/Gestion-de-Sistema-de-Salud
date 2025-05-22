@@ -1,3 +1,5 @@
+package BLL;
+
 import java.util.ArrayList;
 import java.util.List;
 public class HistorialMedico {
@@ -17,7 +19,7 @@ public class HistorialMedico {
 
     @Override
     public String toString() {
-        return "HistorialMedico{" +
+        return "BLL.HistorialMedico{" +
                 "entradas=" + entradas +
                 '}';
     }

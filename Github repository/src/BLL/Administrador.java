@@ -1,3 +1,5 @@
+package BLL;
+
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
