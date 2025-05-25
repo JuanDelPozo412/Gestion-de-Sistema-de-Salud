@@ -1,6 +1,6 @@
 package BLL;
-
 import DLL.Conexion;
+import DLL.ControllerUsuario;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -79,7 +79,7 @@ public class Administrador extends Usuario {
 
     private void modificarUsuario() {
         try {
-            LinkedList<Usuario> usuarios = Usuario.mostrarUsuarios();
+            LinkedList<Usuario> usuarios = ControllerUsuario.mostrarUsuarios();
             if (usuarios.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "No hay usuarios para modificar");
                 return;
@@ -129,7 +129,7 @@ public class Administrador extends Usuario {
 
     private void eliminarUsuario() {
         try {
-            LinkedList<Usuario> usuarios = Usuario.mostrarUsuarios();
+            LinkedList<Usuario> usuarios = ControllerUsuario.mostrarUsuarios();
             if (usuarios.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "No hay usuarios para eliminar");
                 return;
@@ -166,7 +166,7 @@ public class Administrador extends Usuario {
     }
 
     private void verUsuarios() {
-        LinkedList<Usuario> lista = Usuario.mostrarUsuarios();
+        LinkedList<Usuario> lista = ControllerUsuario.mostrarUsuarios();
         String salida = "";
         for (Usuario usuario : lista) {
             salida += usuario.getIdUsuario() + " - " + usuario.getNombre() + " " + usuario.getApellido() + " - " + usuario.getTipoUsuario() + "\n";

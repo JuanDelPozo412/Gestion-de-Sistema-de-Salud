@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20644e24-cf16-4926-88a6-732a653840f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Github repository/src/DLL/ControllerPaciente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/BLL/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/BLL/Paciente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/GUI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/GUI/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Paciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Paciente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Github repository/src/DLL/ControllerUsuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/BLL/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/BLL/Usuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +46,9 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2vsbfd9pwDHATnQ1G3BmkipTHt0" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -61,7 +60,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "340",
-    "git-widget-placeholder": "Florencia",
+    "git-widget-placeholder": "Juan",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Agustin/Downloads/mysql-connector-java-5.1.13.jar",
     "node.js.detected.package.eslint": "true",
