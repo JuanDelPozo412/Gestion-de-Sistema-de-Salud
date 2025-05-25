@@ -1,6 +1,4 @@
 package GUI;
-
-
 import BLL.Administrador;
 import BLL.Medico;
 import BLL.Paciente;
