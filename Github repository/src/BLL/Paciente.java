@@ -1,6 +1,7 @@
 package BLL;
 
 import DLL.Conexion;
+import DLL.ControllerPaciente;
 import com.mysql.jdbc.Connection;
 
 import javax.swing.*;
@@ -64,267 +65,24 @@ public class Paciente extends Usuario {
     }
 
     public void verPlan() {
-        try {
-            PreparedStatement stmt = con.prepareStatement(
-                    "SELECT nombrePlan, descripcion FROM planes_salud WHERE planId = ?"
-            );
-
-            stmt.setInt(1, this.planId);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                String nombre = rs.getString("nombrePlan");
-                String descripcion = rs.getString("descripcion");
-                String mensaje = "Plan de salud: " + nombre + "\nDescripcion: " + descripcion;
-                JOptionPane.showMessageDialog(null, mensaje);
-            } else {
-                JOptionPane.showMessageDialog(null, "No se encontro un plan asociado al paciente: " + this.getNombre());
-                System.out.println("Plan no encontrado con ID: " + this.planId);
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al consultar el plan");
-            System.out.println("Error al consultar el plan: " + e.getMessage());
-        }
+        ControllerPaciente.verPlan(this);
     }
+
     public void verUltimoTurno() {
-        try {
-            // esto es para ver el ultimo turno y que traiga solo 1
-            PreparedStatement stmt = con.prepareStatement(
-                    "SELECT idTurno, especialidad, fecha, estado FROM turnos WHERE paciente_id = ? ORDER BY fecha DESC LIMIT 1"
-            );
-            stmt.setInt(1, this.getIdUsuario());
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                int idTurno = rs.getInt("idTurno");
-                String especialidad = rs.getString("especialidad");
-                String fecha = rs.getString("fecha");
-                String estado = rs.getString("estado");
-
-                String mensaje = "Ultimo turno:\n"
-                        + "ID: " + idTurno + "\n"
-                        + "Especialidad: " + especialidad + "\n"
-                        + "Fecha: " + fecha + "\n"
-                        + "Estado: " + estado;
-
-                JOptionPane.showMessageDialog(null, mensaje);
-            } else {
-                JOptionPane.showMessageDialog(null, "No tenes turnos registrados");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al consultar el ultimo turno: " + e.getMessage());
-        }
+        ControllerPaciente.verUltimoTurno(this);
     }
-    private String obtenerNombreMedicoPorId(int medicoId) {
-        try {
-            PreparedStatement stmt = con.prepareStatement(
-                    "SELECT nombre FROM medicos WHERE usuario_id = ?"
-            );
-            stmt.setInt(1, medicoId);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                return rs.getString("nombre");
-            }
-
-        } catch (Exception e) {
-            System.out.println("Error al obtener nombre del medico: " + e.getMessage());
-        }
-        return "No hay medico";
-    }
-    public void verHistorialMedico(int pacienteId) {
-        try {
-            PreparedStatement stmt = con.prepareStatement(
-                    "SELECT * FROM entradas_historial WHERE paciente_id = ?"
-            );
-            stmt.setInt(1, pacienteId);
-            ResultSet rs = stmt.executeQuery();
-
-            String historial = "";
-            while (rs.next()) {
-                int entradaId = rs.getInt("entradaId");
-                Date fechaHora = rs.getDate("fechaHoraEntrada");
-                String tipo = rs.getString("tipoEntrada");
-                String descripcion = rs.getString("descripcionDetallada");
-                int medicoId = rs.getInt("medico_responsable_id");
-                int turnoId = rs.getInt("turno_asociado_id");
-
-                String nombreMedico = obtenerNombreMedicoPorId(medicoId);
-
-                historial += "Entrada ID: " + entradaId + "\n";
-                historial += "Fecha: " + fechaHora + "\n";
-                historial += "Tipo: " + tipo + "\n";
-                historial += "Descripcion: " + descripcion + "\n";
-                historial += "Medico responsable: " + nombreMedico + "\n";
-                historial += "ID turno asociado: " + turnoId + "\n\n";
-
-                // lo dejo despues veo si l osaco
-                System.out.println("Entrada ID: " + entradaId);
-                System.out.println("Fecha: " + fechaHora);
-                System.out.println("Tipo: " + tipo);
-                System.out.println("Descripcion: " + descripcion);
-                System.out.println("Medico Responsable: " + nombreMedico);
-                System.out.println("ID BLL.Turno Asociado: " + turnoId);
-            }
-
-            if (historial.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "No hay historial para mostrar");
-            } else {
-                JOptionPane.showMessageDialog(null, historial);
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al consultar historial");
-            System.out.println("Error al obtener historial: " + e.getMessage());
-        }
-    }
-
-
-    public void reservarTurno() {
-        try {
-            PreparedStatement stmtEspecialidad = con.prepareStatement(
-                    // esto lo use para que traiga solo 1 especialidad y no duplicadas
-                    "SELECT DISTINCT especialidad FROM medicos");
-
-            ResultSet rsEspecialidad = stmtEspecialidad.executeQuery();
-
-            // array para guardar las especialidades encontradas
-            ArrayList<String> especialidades = new ArrayList<>();
-            while (rsEspecialidad.next()) {
-                especialidades.add(rsEspecialidad.getString("especialidad"));
-            }
-
-            // uso un toArray para mostrar todas las especialidades
-            String[] opcionesEsp = especialidades.toArray(new String[0]);
-            String especialidadSeleccionada = (String) JOptionPane.showInputDialog(null,
-                    "Seleccione especialidad:",
-                    "Especialidad",
-                    0,
-                    null,
-                    opcionesEsp,
-                    opcionesEsp[0]);
-
-            // traigo todos los medicos que tienen esa especialidad
-            PreparedStatement stmtMedico = con.prepareStatement(
-                    "SELECT * FROM medicos WHERE especialidad = ?");
-            stmtMedico.setString(1, especialidadSeleccionada);
-            ResultSet rsMedico = stmtMedico.executeQuery();
-            ArrayList<String> medicos = new ArrayList<>();
-            ArrayList<Integer> ids = new ArrayList<>();
-            while (rsMedico.next()) {
-                int id = rsMedico.getInt("usuario_id");
-                String nombre = obtenerNombreUsuario(id); // aca obtengo el id del medico de la tabla USUARIOS no de la tabla medicos
-                medicos.add(nombre + " / ID: " + id);
-                ids.add(id);
-            }
-
-            String[] opcionesMed = medicos.toArray(new String[0]);
-            String seleccionado = (String) JOptionPane.showInputDialog(null,
-                    "Seleccione medico:",
-                    "Medico",
-                    0,
-                    null,
-                    opcionesMed,
-                    opcionesMed[0]);
-
-            // busco la posicion del medico
-            int posicionSeleccionada = medicos.indexOf(seleccionado);
-            // y aca obtengo el id
-            int idMedicoSeleccionado = ids.get(posicionSeleccionada);
-
-            // genero fechas automaticamente
-            ArrayList<String> fechasDisponibles = new ArrayList<>();
-            LocalDate hoy = LocalDate.now();
-            for (int i = 0; i < 5; i++) {
-                fechasDisponibles.add(hoy.plusDays(i).toString()); // formato YYYY-MM-DD
-            }
-            String[] fechas = fechasDisponibles.toArray(new String[0]);
-
-            String fechaElegida = (String) JOptionPane.showInputDialog(null,
-                    "Seleccione fecha:",
-                    "Fecha",
-                    0,
-                    null,
-                    fechas,
-                    fechas[0]);
-            String[] horarios = {"08:00:00", "10:00:00", "14:00:00"};
-            String horaSeleccionada = (String) JOptionPane.showInputDialog(null,
-                    "Seleccione horario:",
-                    "Horario",
-                    0,
-                    null,
-                    horarios,
-                    horarios[0]);
-
-            // uno fecha y hora y lo paso a Timestamp
-            String fechaHoraCompleta = fechaElegida + " " + horaSeleccionada;
-            java.sql.Timestamp fechaTimestamp = java.sql.Timestamp.valueOf(fechaHoraCompleta);
-
-            // hago el insert
-            PreparedStatement stmtInsert = con.prepareStatement(
-                    "INSERT INTO turnos (paciente_id, medico_id, especialidad, fecha, estado) VALUES (?, ?, ?, ?, ?)");
-            stmtInsert.setInt(1, this.getIdUsuario());
-            stmtInsert.setInt(2, idMedicoSeleccionado);
-            stmtInsert.setString(3, especialidadSeleccionada);
-            stmtInsert.setTimestamp(4, fechaTimestamp);
-            stmtInsert.setString(5, "Pendiente");
-            stmtInsert.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "BLL.Turno reservado con exito");
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al reservar turno: " + e.getMessage());
-        }
-    }
-
-
-
-    private String obtenerNombreUsuario(int id) {
-        try {
-            PreparedStatement stmt = con.prepareStatement("SELECT nombre FROM usuarios WHERE idUsuario = ?");
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                return rs.getString("nombre");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "Desconocido";
+    public void verHistorialMedico() {
+        ControllerPaciente.verHistorialMedico(this);
     }
     public void verTodosLosTurnos() {
-        try {
-            PreparedStatement stmt = con.prepareStatement(
-                    // esto es para traer todos los turnos del paciente, ordenados por fecha
-                    "SELECT idTurno, especialidad, fecha, estado FROM turnos WHERE paciente_id = ? ORDER BY fecha DESC"
-            );
-            stmt.setInt(1, this.getIdUsuario());
-            ResultSet rs = stmt.executeQuery();
-
-            String resultado = "";
-            while (rs.next()) {
-                int idTurno = rs.getInt("idTurno");
-                String especialidad = rs.getString("especialidad");
-                String fecha = rs.getString("fecha");
-                String estado = rs.getString("estado");
-
-                resultado += "BLL.Turno ID: " + idTurno + "\n";
-                resultado += "Especialidad: " + especialidad + "\n";
-                resultado += "Fecha: " + fecha + "\n";
-                resultado += "Estado: " + estado + "\n";
-                resultado += "--------------------------\n";
-            }
-
-            if (resultado.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "No tenes turnos registrados");
-            } else {
-                JOptionPane.showMessageDialog(null, resultado);
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al consultar turnos: " + e.getMessage());
-        }
+        ControllerPaciente.verTodosLosTurnos(this);
     }
+    public void reservarTurno() {
+        ControllerPaciente.reservarTurno(this);
+    }
+
+
+
 
     public void mostrarMenuPaciente() {
         String[] opciones = {"Info Personal", "Ver Plan de Salud", "Ver Todos los Turnos", "Ver Ultimo BLL.Turno", "Ver Historial", "Reservar BLL.Turno", "Salir"};
@@ -351,7 +109,7 @@ public class Paciente extends Usuario {
                     verUltimoTurno();
                     break;
                 case 4:
-                    verHistorialMedico(this.getIdUsuario());
+                    verHistorialMedico();
                     break;
                 case 5:
                     reservarTurno();
