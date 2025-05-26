@@ -80,12 +80,29 @@ public class Paciente extends Usuario {
     public void reservarTurno() {
         ControllerPaciente.reservarTurno(this);
     }
+    public void editarPerfil() {
+        String nuevoNombre = JOptionPane.showInputDialog(null, "Nombre actual: " + getNombre() + "\nNuevo nombre:", getNombre());
+        String nuevoApellido = JOptionPane.showInputDialog(null, "Apellido actual: " + getApellido() + "\nNuevo apellido:", getApellido());
+        String nuevoMail = JOptionPane.showInputDialog(null, "Email actual: " + getMail() + "\nNuevo email:", getMail());
+        String nuevaContrasenia = JOptionPane.showInputDialog(null, "Nueva contraseña:");
+
+        if (nuevoNombre != null && nuevoApellido != null && nuevoMail != null && nuevaContrasenia != null) {
+            this.setNombre(nuevoNombre);
+            this.setApellido(nuevoApellido);
+            this.setMail(nuevoMail);
+            this.setContrasenia(nuevaContrasenia);
+
+            ControllerPaciente.actualizarPerfil(this);
+        } else {
+            JOptionPane.showMessageDialog(null, "Cancelar");
+        }
+    }
 
 
 
 
     public void mostrarMenuPaciente() {
-        String[] opciones = {"Info Personal", "Ver Plan de Salud", "Ver Todos los Turnos", "Ver Ultimo BLL.Turno", "Ver Historial", "Reservar BLL.Turno", "Salir"};
+        String[] opciones = {"Info Personal", "Ver Plan de Salud", "Ver Todos los Turnos", "Ver Ultimo Turno", "Ver Historial", "Reservar Turno", "Editar Perfil", "Salir"};
         int opcion;
         do {
             opcion = JOptionPane.showOptionDialog(null,
@@ -115,12 +132,15 @@ public class Paciente extends Usuario {
                     reservarTurno();
                     break;
                 case 6:
+                    editarPerfil();
+                    break;
+                case 7:
                     JOptionPane.showMessageDialog(null, "¡Hasta lueguito, " + getNombre() + "!");
                     break;
             }
         } while (opcion != 6);
     }
-    
+
 //to String
 
     @Override
