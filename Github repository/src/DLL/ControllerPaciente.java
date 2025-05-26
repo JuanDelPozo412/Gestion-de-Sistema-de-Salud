@@ -243,6 +243,24 @@ public class ControllerPaciente {
         }
         return "Desconocido";
     }
+    public static void actualizarPerfil(Paciente paciente) {
+        try {
+            PreparedStatement stmt = con.prepareStatement(
+                    "UPDATE usuarios SET nombre = ?, apellido = ?, mail = ?, contrasenia = ? WHERE idUsuario = ?"
+            );
+            stmt.setString(1, paciente.getNombre());
+            stmt.setString(2, paciente.getApellido());
+            stmt.setString(3, paciente.getMail());
+            stmt.setString(4, paciente.getContrasenia());
+            stmt.setInt(5, paciente.getIdUsuario());
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Perfil actualizado correctamente");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar perfil: " + e.getMessage());
+        }
+    }
 
 
 
