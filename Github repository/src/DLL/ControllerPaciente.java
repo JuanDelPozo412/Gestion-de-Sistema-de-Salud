@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ControllerPaciente {
     private static Connection con = Conexion.getInstance().getConnection();
@@ -113,7 +114,10 @@ public class ControllerPaciente {
         }
         return "No hay medico";
     }
-    public static void verTodosLosTurnos(Paciente paciente) {
+
+    //cambie este metodo para probar el combobox
+    public static List<String> obtenerTurnos(Paciente paciente) {
+        List<String> lista = new ArrayList<>();
         try {
             PreparedStatement stmt = con.prepareStatement(
                     "SELECT idTurno, especialidad, fecha, estado FROM turnos WHERE paciente_id = ? ORDER BY fecha DESC"
@@ -121,30 +125,22 @@ public class ControllerPaciente {
             stmt.setInt(1, paciente.getIdUsuario());
             ResultSet rs = stmt.executeQuery();
 
-            String resultado = "";
             while (rs.next()) {
                 int idTurno = rs.getInt("idTurno");
                 String especialidad = rs.getString("especialidad");
                 String fecha = rs.getString("fecha");
                 String estado = rs.getString("estado");
 
-                resultado += "Turno ID: " + idTurno + "\n";
-                resultado += "Especialidad: " + especialidad + "\n";
-                resultado += "Fecha: " + fecha + "\n";
-                resultado += "Estado: " + estado + "\n";
-                resultado += "--------------------------\n";
+                String turnoStr = "ID: " + idTurno + " - " + especialidad + " - " + fecha + " - " + estado;
+                lista.add(turnoStr);
             }
-
-            if (resultado.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "No tenes turnos registrados");
-            } else {
-                JOptionPane.showMessageDialog(null, resultado);
-            }
-
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al consultar turnos: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al cargar turnos: " + e.getMessage());
         }
+
+        return lista;
     }
+    ///////////////
     public static void reservarTurno(Paciente paciente) {
         try {
             PreparedStatement stmtEspecialidad = con.prepareStatement("SELECT DISTINCT especialidad FROM medicos");

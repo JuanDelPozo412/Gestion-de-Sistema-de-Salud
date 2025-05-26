@@ -3,13 +3,7 @@ package BLL;
 import DLL.Conexion;
 import DLL.ControllerPaciente;
 import com.mysql.jdbc.Connection;
-
 import javax.swing.*;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +12,7 @@ public class Paciente extends Usuario {
     private HistorialMedico historialMedico;
     private List<Turno> misTurnos;
     private int planId;
-    private static Connection con = Conexion.getInstance().getConnection();
+
 
     //Constructor
 
@@ -74,8 +68,17 @@ public class Paciente extends Usuario {
     public void verHistorialMedico() {
         ControllerPaciente.verHistorialMedico(this);
     }
-    public void verTodosLosTurnos() {
-        ControllerPaciente.verTodosLosTurnos(this);
+    public void obtenerturnos() {
+        List<String> turnos = ControllerPaciente.obtenerTurnos(this);
+        if (turnos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No tenes turnos registrados");
+        } else {
+            String resultado = "";
+            for (String turno : turnos) {
+                resultado += turno + "\n--------------------------\n";
+            }
+            JOptionPane.showMessageDialog(null, resultado);
+        }
     }
     public void reservarTurno() {
         ControllerPaciente.reservarTurno(this);
@@ -120,7 +123,7 @@ public class Paciente extends Usuario {
                     verPlan();
                     break;
                 case 2:
-                    verTodosLosTurnos();
+                    obtenerturnos();
                     break;
                 case 3:
                     verUltimoTurno();
@@ -138,7 +141,7 @@ public class Paciente extends Usuario {
                     JOptionPane.showMessageDialog(null, "¡Hasta lueguito, " + getNombre() + "!");
                     break;
             }
-        } while (opcion != 6);
+        } while (opcion != 7);
     }
 
 //to String
