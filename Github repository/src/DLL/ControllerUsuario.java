@@ -33,6 +33,7 @@ public class ControllerUsuario {
                 String dni = rs.getString("dni");
                 Date fechaNacimiento = rs.getDate("fechaNacimiento");
                 String tipo = rs.getString("tipoUsuario");
+
                 switch (tipo) {
                     case "paciente":
                         PreparedStatement psPaciente = con.prepareStatement(
