@@ -217,9 +217,13 @@ public class ControllerPaciente {
             stmtInsert.setString(3, especialidadSeleccionada);
             stmtInsert.setTimestamp(4, timestamp);
             stmtInsert.setString(5, "Pendiente");
-            stmtInsert.executeUpdate();
+            int filasInsertadas = stmtInsert.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Turno reservado con exito");
+            if (filasInsertadas > 0) {
+                JOptionPane.showMessageDialog(null, "Turno reservado con exito");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo reservar el turno");
+            }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al reservar turno: " + e.getMessage());
@@ -250,9 +254,13 @@ public class ControllerPaciente {
             stmt.setString(4, paciente.getContrasenia());
             stmt.setInt(5, paciente.getIdUsuario());
 
-            stmt.executeUpdate();
+            int filasAfectadas = stmt.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Perfil actualizado correctamente");
+            if (filasAfectadas > 0) {
+                JOptionPane.showMessageDialog(null, "Perfil actualizado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontro el usuario para actualizar");
+            }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al actualizar perfil: " + e.getMessage());
         }
