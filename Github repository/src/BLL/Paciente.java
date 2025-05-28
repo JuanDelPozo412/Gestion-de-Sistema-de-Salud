@@ -61,43 +61,40 @@ public class Paciente extends Usuario {
     public void verPlan() {
         ControllerPaciente.verPlan(this);
     }
-
     public void verUltimoTurno() {
         ControllerPaciente.verUltimoTurno(this);
     }
     public void verHistorialMedico() {
         ControllerPaciente.verHistorialMedico(this);
     }
-    public void obtenerturnos() {
-        List<String> turnos = ControllerPaciente.obtenerTurnos(this);
+    public void obtenerTurnos() {
+        List<Turno> turnos = ControllerPaciente.obtenerTurnos(this);
+
         if (turnos.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No tenes turnos registrados");
         } else {
             String resultado = "";
-            for (String turno : turnos) {
-                resultado += turno + "\n--------------------------\n";
+            for (Turno t : turnos) {
+                resultado += "ID: " + t.getIdTurno() + "\n";
+                resultado += "Medico: " + t.getMedico().getNombre() + "\n";
+                resultado += "Especialidad: " + t.getMedico().getEspecialidad() + "\n";
+                resultado += "Fecha: " + t.getFecha() + "\n";
+                resultado += "Estado: " + t.getEstado() + "\n";
+                resultado += "---------------------------\n";
             }
+
             JOptionPane.showMessageDialog(null, resultado);
         }
     }
     public void reservarTurno() {
         ControllerPaciente.reservarTurno(this);
     }
-    public void editarPerfil() {
-        String nuevoNombre = JOptionPane.showInputDialog(null, "Nombre actual: " + getNombre() + "\nNuevo nombre:", getNombre());
-        String nuevoApellido = JOptionPane.showInputDialog(null, "Apellido actual: " + getApellido() + "\nNuevo apellido:", getApellido());
-        String nuevoMail = JOptionPane.showInputDialog(null, "Email actual: " + getMail() + "\nNuevo email:", getMail());
-        String nuevaContrasenia = JOptionPane.showInputDialog(null, "Nueva contraseña:");
 
-        if (nuevoNombre != null && nuevoApellido != null && nuevoMail != null && nuevaContrasenia != null) {
-            this.setNombre(nuevoNombre);
-            this.setApellido(nuevoApellido);
-            this.setMail(nuevoMail);
-            this.setContrasenia(nuevaContrasenia);
-
-            ControllerPaciente.actualizarPerfil(this);
+    public String editarPerfil() {
+        if (this.getNombre().isEmpty() || this.getMail().isEmpty() || this.getContrasenia().isEmpty()) {
+            return "No se pudo editar";
         } else {
-            JOptionPane.showMessageDialog(null, "Cancelar");
+            return ControllerPaciente.actualizarPerfil(this);
         }
     }
 
@@ -123,7 +120,7 @@ public class Paciente extends Usuario {
                     verPlan();
                     break;
                 case 2:
-                    obtenerturnos();
+                    obtenerTurnos();
                     break;
                 case 3:
                     verUltimoTurno();
