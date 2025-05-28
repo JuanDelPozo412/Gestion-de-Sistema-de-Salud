@@ -1,6 +1,10 @@
 package DLL;
+import BLL.Medico;
 import BLL.Paciente;
+import BLL.Turno;
 import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 import javax.swing.*;
 import java.sql.*;
 import java.time.LocalDate;
@@ -115,32 +119,58 @@ public class ControllerPaciente {
         return "No hay medico";
     }
 
-    //cambie este metodo para probar el combobox
-    public static List<String> obtenerTurnos(Paciente paciente) {
-        List<String> lista = new ArrayList<>();
+    public static List<Turno> obtenerTurnos(Paciente paciente) {
+        List<Turno> lista = new ArrayList<>();
         try {
             PreparedStatement stmt = con.prepareStatement(
-                    "SELECT idTurno, especialidad, fecha, estado FROM turnos WHERE paciente_id = ? ORDER BY fecha DESC"
+                    "SELECT idTurno, medico_id, fecha, estado FROM turnos WHERE paciente_id = ? ORDER BY fecha DESC"
             );
             stmt.setInt(1, paciente.getIdUsuario());
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 int idTurno = rs.getInt("idTurno");
-                String especialidad = rs.getString("especialidad");
-                String fecha = rs.getString("fecha");
+                int medicoId = rs.getInt("medico_id");
+                Date fecha = rs.getDate("fecha");
                 String estado = rs.getString("estado");
 
-                String turnoStr = "ID: " + idTurno + " - " + especialidad + " - " + fecha + " - " + estado;
-                lista.add(turnoStr);
+
+                PreparedStatement stmtEsp = con.prepareStatement(
+                        "SELECT especialidad FROM medicos WHERE usuario_id = ?"
+                );
+                stmtEsp.setInt(1, medicoId);
+                ResultSet rsEsp = stmtEsp.executeQuery();
+                String especialidad = "";
+                if (rsEsp.next()) {
+                    especialidad = rsEsp.getString("especialidad");
+                }
+
+                PreparedStatement stmtNom = con.prepareStatement(
+                        "SELECT nombre FROM usuarios WHERE idUsuario = ?"
+                );
+                stmtNom.setInt(1, medicoId);
+                ResultSet rsNom = stmtNom.executeQuery();
+                String nombre = "";
+                if (rsNom.next()) {
+                    nombre = rsNom.getString("nombre");
+                }
+
+
+                Medico medico = new Medico();
+                medico.setIdUsuario(medicoId);
+                medico.setNombre(nombre);
+                medico.setEspecialidad(especialidad);
+
+                Turno turno = new Turno(idTurno, paciente, medico, fecha, estado);
+                lista.add(turno);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al cargar turnos: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al obtener turnos: " + e.getMessage());
         }
 
         return lista;
     }
-    ///////////////
+
     public static void reservarTurno(Paciente paciente) {
         try {
             PreparedStatement stmtEspecialidad = con.prepareStatement("SELECT DISTINCT especialidad FROM medicos");
@@ -243,27 +273,35 @@ public class ControllerPaciente {
         }
         return "Desconocido";
     }
-    public static void actualizarPerfil(Paciente paciente) {
+    public static String actualizarPerfil(Paciente paciente) {
         try {
-            PreparedStatement stmt = con.prepareStatement(
+            PreparedStatement stmtUsuario = con.prepareStatement(
                     "UPDATE usuarios SET nombre = ?, apellido = ?, mail = ?, contrasenia = ? WHERE idUsuario = ?"
             );
-            stmt.setString(1, paciente.getNombre());
-            stmt.setString(2, paciente.getApellido());
-            stmt.setString(3, paciente.getMail());
-            stmt.setString(4, paciente.getContrasenia());
-            stmt.setInt(5, paciente.getIdUsuario());
+            stmtUsuario.setString(1, paciente.getNombre());
+            stmtUsuario.setString(2, paciente.getApellido());
+            stmtUsuario.setString(3, paciente.getMail());
+            stmtUsuario.setString(4, paciente.getContrasenia());
+            stmtUsuario.setInt(5, paciente.getIdUsuario());
+            stmtUsuario.executeUpdate();
 
-            int filasAfectadas = stmt.executeUpdate();
+            PreparedStatement stmtPaciente = con.prepareStatement(
+                    "UPDATE pacientes SET plan_id = ? WHERE usuario_id = ?"
+            );
+            stmtPaciente.setInt(1, paciente.getPlanId());
+            stmtPaciente.setInt(2, paciente.getIdUsuario());
 
-            if (filasAfectadas > 0) {
-                JOptionPane.showMessageDialog(null, "Perfil actualizado correctamente");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se encontro el usuario para actualizar");
+            int filas = stmtPaciente.executeUpdate();
+            if (filas > 0) {
+                return "Perfil actualizado correctamente";
             }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al actualizar perfil: " + e.getMessage());
+
+        } catch (MySQLIntegrityConstraintViolationException e) {
+            return "Error: el mail ya existe";
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return "Error al actualizar perfil";
     }
 
 
