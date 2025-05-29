@@ -15,20 +15,20 @@ public class PlanSalud {
         return planId;
     }
 
-    public void setPlanId(int planId) {
-        this.planId = planId;
-    }
-
     public String getNombrePlan() {
         return nombrePlan;
     }
 
-    public void setNombrePlan(String nombrePlan) {
-        this.nombrePlan = nombrePlan;
-    }
-
     public String getDescripcion() {
         return descripcion;
+    }
+
+    public void setPlanId(int planId) {
+        this.planId = planId;
+    }
+
+    public void setNombrePlan(String nombrePlan) {
+        this.nombrePlan = nombrePlan;
     }
 
     public void setDescripcion(String descripcion) {
@@ -37,10 +37,10 @@ public class PlanSalud {
 
     @Override
     public String toString() {
-        return "PlanSalud{" +
-                "planId=" + planId +
-                ", nombrePlan='" + nombrePlan + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                '}';
+        return nombrePlan;
+    }
+
+    public String mostrarDatos() {
+        return "ID: " + planId + "\nNombre: " + nombrePlan + "\nDescripcion: " + descripcion;
     }
 }
