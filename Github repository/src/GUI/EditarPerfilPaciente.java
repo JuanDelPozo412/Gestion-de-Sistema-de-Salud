@@ -3,6 +3,7 @@ package GUI;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import BLL.Paciente;
+import BLL.PlanSalud;
 import DLL.ControllerPaciente;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -57,40 +58,38 @@ public class EditarPerfilPaciente extends JFrame {
         lblPlan.setBounds(45, 290, 96, 14);
         contentPane.add(lblPlan);
 
-        JComboBox<String> comboPlanes = new JComboBox<>();
+        JComboBox comboPlanes = new JComboBox();
         comboPlanes.setBounds(45, 325, 184, 22);
-        contentPane.add(comboPlanes);
-        comboPlanes.addItem("1 - Basico");
-        comboPlanes.addItem("2 - Premium");
-        comboPlanes.addItem("3 - Avanzado");
+        comboPlanes.addItem(new PlanSalud(1, "Básico", "Cobertura mínima"));
+        comboPlanes.addItem(new PlanSalud(2, "Familiar", "Cobertura para grupo familiar"));
+        comboPlanes.addItem(new PlanSalud(3, "Premium", "Cobertura completa"));
         comboPlanes.setSelectedIndex(paciente.getPlanId() - 1);
+        contentPane.add(comboPlanes);
 
         JLabel lblMensaje = new JLabel("");
-        lblMensaje.setBounds(55, 360, 277, 14);
+        lblMensaje.setBounds(45, 360, 277, 14);
         contentPane.add(lblMensaje);
 
         JButton btnEditar = new JButton("Editar");
-        btnEditar.setBounds(31, 371, 89, 23);
+        btnEditar.setBounds(31, 390, 89, 23);
         contentPane.add(btnEditar);
 
         btnEditar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Paciente editar = paciente;
-                editar.setNombre(inpNombre.getText());
-                editar.setMail(inpMail.getText());
-                editar.setContrasenia(inpContrasenia.getText());
+                paciente.setNombre(inpNombre.getText());
+                paciente.setMail(inpMail.getText());
+                paciente.setContrasenia(inpContrasenia.getText());
 
-                String seleccionado = (String) comboPlanes.getSelectedItem();
-                int planId = Integer.parseInt(seleccionado.split(" ")[0]);
-                editar.setPlanId(planId);
+                PlanSalud seleccionado = (PlanSalud) comboPlanes.getSelectedItem();
+                paciente.setPlanId(seleccionado.getPlanId());
 
-                String mensaje = editar.editarPerfil();
+                String mensaje = paciente.editarPerfil();
                 lblMensaje.setText(mensaje);
             }
         });
 
         JButton btnVolver = new JButton("Volver");
-        btnVolver.setBounds(157, 371, 89, 23);
+        btnVolver.setBounds(157, 390, 89, 23);
         contentPane.add(btnVolver);
 
         btnVolver.addActionListener(new ActionListener() {
@@ -102,3 +101,4 @@ public class EditarPerfilPaciente extends JFrame {
         });
     }
 }
+
