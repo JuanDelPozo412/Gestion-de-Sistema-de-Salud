@@ -1,9 +1,15 @@
 package GUI;
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import BLL.Administrador;
+import BLL.Medico;
+import BLL.Paciente;
 import BLL.Usuario;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.Font;
@@ -15,7 +21,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 
 
 public class PantallaLogin extends JFrame {
@@ -90,9 +95,21 @@ public class PantallaLogin extends JFrame {
         BotonLogueo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Usuario logueado = Usuario.login(InputEmail.getText(), InputContraseña.getText());
-                if(logueado == null) {
+                if (logueado == null) {
                     JOptionPane.showMessageDialog(BotonLogueo, "No se encontro el usuario");
-                }else JOptionPane.showMessageDialog(BotonLogueo, "Usuario logueado");
+                } else {
+                    if (logueado instanceof Paciente) {
+                        PantallaPaciente vista = new PantallaPaciente((Paciente) logueado);
+                        vista.setVisible(true);
+                        dispose();
+                    } else if (logueado instanceof Medico) {
+                        //ACA VA EL PANTALLA MEDICO
+                    } else if (logueado instanceof Administrador) {
+                        // ACA VA PANTALLA ADMINISTRADOR
+                    }
+                    ;
+                }
+                ;
 
 
             }
