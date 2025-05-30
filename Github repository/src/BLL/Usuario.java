@@ -36,6 +36,15 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
         this.tipoUsuario = tipoUsuario;
     }
+    public Usuario(String nombre, String apellido, String mail, String dni, String contrasenia, Date fechaNacimiento, String tipoUsuario) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.dni = dni;
+        this.contrasenia = contrasenia;
+        this.fechaNacimiento = fechaNacimiento;
+        this.tipoUsuario = tipoUsuario;
+    }
 
     public Usuario(int idUsuario, String mail, String tipoUsuario) {
         this.idUsuario = idUsuario;
