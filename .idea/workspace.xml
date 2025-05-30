@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20644e24-cf16-4926-88a6-732a653840f6" name="Changes" comment="" />
+    <list default="true" id="20644e24-cf16-4926-88a6-732a653840f6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gestion-de-Sistema-de-Salud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gestion-de-Sistema-de-Salud.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/BLL/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/BLL/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/GUI/PantallaLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/GUI/PantallaLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/GUI/PantallaRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/GUI/PantallaRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaLogin.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +66,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "340",
-    "git-widget-placeholder": "Juan",
+    "git-widget-placeholder": "Reverting in Juan",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "E:/apps/Repositorio/Gestion-de-Sistema-de-Salud/Github repository/src/img",
     "node.js.detected.package.eslint": "true",
