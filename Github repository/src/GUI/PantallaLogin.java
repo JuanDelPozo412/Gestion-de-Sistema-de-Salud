@@ -63,7 +63,7 @@ public class PantallaLogin extends JFrame {
         JLabel LabelImagenLogin = new JLabel("");
         LabelImagenLogin.setBackground(Color.WHITE);
         LabelImagenLogin.setHorizontalAlignment(SwingConstants.CENTER);
-        LabelImagenLogin.setIcon(new ImageIcon(PantallaLogin.class.getResource("/img/Resize iamge.png")));
+        LabelImagenLogin.setIcon(new ImageIcon(PantallaLogin.class.getResource("/img/imagenLoginRegister.png")));
         LabelImagenLogin.setBounds(396, 0, 371, 539);
         contentPane.add(LabelImagenLogin);
 

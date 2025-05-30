@@ -62,7 +62,7 @@ public class PantallaRegister extends JFrame {
         inputNombre.setColumns(10);
 
         JLabel lblNewLabel = new JLabel("");
-        lblNewLabel.setIcon(new ImageIcon(PantallaRegister.class.getResource("/img/Resize iamge.png")));
+        lblNewLabel.setIcon(new ImageIcon(PantallaRegister.class.getResource("/img/Resize image.png")));
         lblNewLabel.setBounds(352, 0, 414, 539);
         contentPane.add(lblNewLabel);
 
