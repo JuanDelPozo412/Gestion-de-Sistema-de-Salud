@@ -6,10 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="4878bd33-ffbe-4fd1-b43c-87a6c282f5bb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/GUI/PantallaLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/GUI/PantallaLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/GUI/PantallaRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/GUI/PantallaRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaLogin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaRegister.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/BLL/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/BLL/Paciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/DLL/ControllerPaciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/DLL/ControllerPaciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/GUI/EditarPerfilPaciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/GUI/EditarPerfilPaciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/GUI/PantallaPaciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/GUI/PantallaPaciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Paciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Paciente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/DLL/ControllerPaciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/DLL/ControllerPaciente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/EditarPerfilPaciente$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/EditarPerfilPaciente$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/EditarPerfilPaciente$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/EditarPerfilPaciente$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/EditarPerfilPaciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/EditarPerfilPaciente.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +50,7 @@
     &quot;Application.PantallaRegister.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Juancito&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Florencia&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/apps/Repositorio/Gestion-de-Sistema-de-Salud/Github repository/src/img&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -85,6 +90,8 @@
       <workItem from="1748557540111" duration="646000" />
       <workItem from="1748628196638" duration="530000" />
       <workItem from="1748635404741" duration="1291000" />
+      <workItem from="1748637481039" duration="820000" />
+      <workItem from="1748675184532" duration="3070000" />
     </task>
     <servers />
   </component>
