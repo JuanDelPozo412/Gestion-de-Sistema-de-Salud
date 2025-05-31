@@ -1,6 +1,7 @@
 package DLL;
 import BLL.Medico;
 import BLL.Paciente;
+import BLL.PlanSalud;
 import BLL.Turno;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
@@ -303,6 +304,25 @@ public class ControllerPaciente {
         }
         return "Error al actualizar perfil";
     }
+    public static List<PlanSalud> obtenerPlanes() {
+        List<PlanSalud> lista = new ArrayList<>();
+        try {
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM planes_salud");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("planId");
+                String nombre = rs.getString("nombrePlan");
+                String descripcion = rs.getString("descripcion");
+                PlanSalud plan = new PlanSalud(id, nombre, descripcion);
+                lista.add(plan);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }
+
 
 
 

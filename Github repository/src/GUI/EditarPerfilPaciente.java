@@ -7,6 +7,7 @@ import BLL.PlanSalud;
 import DLL.ControllerPaciente;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class EditarPerfilPaciente extends JFrame {
 
@@ -60,10 +61,21 @@ public class EditarPerfilPaciente extends JFrame {
 
         JComboBox comboPlanes = new JComboBox();
         comboPlanes.setBounds(45, 325, 184, 22);
-        comboPlanes.addItem(new PlanSalud(1, "Básico", "Cobertura mínima"));
-        comboPlanes.addItem(new PlanSalud(2, "Familiar", "Cobertura para grupo familiar"));
-        comboPlanes.addItem(new PlanSalud(3, "Premium", "Cobertura completa"));
-        comboPlanes.setSelectedIndex(paciente.getPlanId() - 1);
+
+
+        List<PlanSalud> planes = ControllerPaciente.obtenerPlanes();
+        for (PlanSalud plan : planes) {
+            comboPlanes.addItem(plan);
+        }
+
+
+        for (int i = 0; i < planes.size(); i++) {
+            if (planes.get(i).getPlanId() == paciente.getPlanId()) {
+                comboPlanes.setSelectedIndex(i);
+                break;
+            }
+        }
+
         contentPane.add(comboPlanes);
 
         JLabel lblMensaje = new JLabel("");

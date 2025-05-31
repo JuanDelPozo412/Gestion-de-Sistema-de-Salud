@@ -97,6 +97,9 @@ public class Paciente extends Usuario {
             return ControllerPaciente.actualizarPerfil(this);
         }
     }
+    public List<PlanSalud> obtenerPlanes() {
+        return ControllerPaciente.obtenerPlanes();
+    }
 
 
 
