@@ -322,6 +322,23 @@ public class ControllerPaciente {
         }
         return lista;
     }
+    public static void cancelarTurno(int idTurno) {
+        try {
+            PreparedStatement stmt = con.prepareStatement(
+                    "UPDATE turnos SET estado = 'Cancelado' WHERE idTurno = ?"
+            );
+            stmt.setInt(1, idTurno);
+            int filas = stmt.executeUpdate();
+
+            if (filas > 0) {
+                JOptionPane.showMessageDialog(null, "Turno cancelado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo cancelar el turno");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cancelar turno: " + e.getMessage());
+        }
+    }
 
 
 
