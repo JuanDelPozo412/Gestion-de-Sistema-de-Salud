@@ -3,6 +3,7 @@ package BLL;
 import DLL.Conexion;
 import DLL.ControllerPaciente;
 import com.mysql.jdbc.Connection;
+
 import javax.swing.*;
 import java.util.Date;
 import java.util.List;
@@ -31,7 +32,9 @@ public class Paciente extends Usuario {
 
     public Paciente(int planId, String nombre, String email, String tipo, String password) {
         this.planId = planId;
-    };
+    }
+
+    ;
     //Get y Set
 
     public HistorialMedico getHistorialMedico() {
@@ -61,12 +64,15 @@ public class Paciente extends Usuario {
     public void verPlan() {
         ControllerPaciente.verPlan(this);
     }
+
     public void verUltimoTurno() {
         ControllerPaciente.verUltimoTurno(this);
     }
+
     public void verHistorialMedico() {
         ControllerPaciente.verHistorialMedico(this);
     }
+
     public void obtenerTurnos() {
         List<Turno> turnos = ControllerPaciente.obtenerTurnos(this);
 
@@ -86,6 +92,7 @@ public class Paciente extends Usuario {
             JOptionPane.showMessageDialog(null, resultado);
         }
     }
+
     public void reservarTurno() {
         ControllerPaciente.reservarTurno(this);
     }
@@ -97,11 +104,14 @@ public class Paciente extends Usuario {
             return ControllerPaciente.actualizarPerfil(this);
         }
     }
+
     public List<PlanSalud> obtenerPlanes() {
         return ControllerPaciente.obtenerPlanes();
     }
 
-
+    public void cancelarTurno(int idTurno) {
+        ControllerPaciente.cancelarTurno(idTurno);
+    }
 
 
     public void mostrarMenuPaciente() {
@@ -154,9 +164,6 @@ public class Paciente extends Usuario {
                 ", planSalud=" + planId +
                 '}';
     }
-
-
-
 
 
 }
