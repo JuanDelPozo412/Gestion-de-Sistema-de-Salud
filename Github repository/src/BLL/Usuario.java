@@ -15,7 +15,7 @@ import static DLL.ControllerUsuario.mostrarUsuarios;
 
 
 public class Usuario {
-    private static int idUsuario;
+    private int idUsuario;
     private String nombre;
     private String apellido;
     private String mail;
@@ -56,7 +56,10 @@ public class Usuario {
 
     }
 
-    public static int getIdUsuario() {
+    //public static int getIdUsuario() {
+        //return idUsuario;
+    //}
+    public int getIdUsuario() {
         return idUsuario;
     }
 
