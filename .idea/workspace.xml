@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4878bd33-ffbe-4fd1-b43c-87a6c282f5bb" name="Changes" comment="" />
+    <list default="true" id="4878bd33-ffbe-4fd1-b43c-87a6c282f5bb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/BLL/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/BLL/Administrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/BLL/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/BLL/Paciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/DLL/ControllerAdministrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/DLL/ControllerAdministrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Paciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Paciente.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,26 +56,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PantallaLogin.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PantallaPaciente.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PantallaRegister.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Juancito&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/apps/Repositorio/Gestion-de-Sistema-de-Salud/Github repository/src/img&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.PantallaLogin.executor": "Run",
+    "Application.PantallaPaciente.executor": "Run",
+    "Application.PantallaRegister.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Agustin",
+    "last_opened_file_path": "E:/apps/Repositorio/Gestion-de-Sistema-de-Salud/Github repository/src/img",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\apps\Repositorio\Gestion-de-Sistema-de-Salud\Github repository\src\img" />
@@ -107,5 +113,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

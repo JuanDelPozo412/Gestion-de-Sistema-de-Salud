@@ -34,6 +34,15 @@ public class Paciente extends Usuario {
         this.planId = planId;
     }
 
+    public Paciente(int idUsuario, String nombre, String apellido, String mail,
+                    String dni, String contrasenia, Date fechaNacimiento,
+                    String tipoUsuario, int planId) {
+        super(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario);
+        this.planId = planId;
+        this.historialMedico = null;
+        this.misTurnos = null;
+    }
+
     ;
     //Get y Set
 
@@ -164,6 +173,5 @@ public class Paciente extends Usuario {
                 ", planSalud=" + planId +
                 '}';
     }
-
 
 }
