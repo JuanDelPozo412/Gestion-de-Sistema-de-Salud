@@ -29,9 +29,22 @@ public class Paciente extends Usuario {
         super(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario);
         this.planId = planId;
     }
+    public Paciente(String nombre, String apellido, String mail, String dni, String contrasenia, Date fechaNacimiento, String tipoUsuario, PlanSalud planSalud) {
+        super( nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario);
+        this.planId = planId;
+    }
 
     public Paciente(int planId, String nombre, String email, String tipo, String password) {
         this.planId = planId;
+    }
+
+    public Paciente(int idUsuario, String nombre, String apellido, String mail,
+                    String dni, String contrasenia, Date fechaNacimiento,
+                    String tipoUsuario, int planId) {
+        super(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario);
+        this.planId = planId;
+        this.historialMedico = null;
+        this.misTurnos = null;
     }
 
     ;
@@ -164,6 +177,5 @@ public class Paciente extends Usuario {
                 ", planSalud=" + planId +
                 '}';
     }
-
 
 }

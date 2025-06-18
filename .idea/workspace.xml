@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4878bd33-ffbe-4fd1-b43c-87a6c282f5bb" name="Changes" comment="" />
+    <list default="true" id="4878bd33-ffbe-4fd1-b43c-87a6c282f5bb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gestion-de-Sistema-de-Salud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gestion-de-Sistema-de-Salud.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/BLL/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/BLL/Paciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/GUI/PantallaLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/GUI/PantallaLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Administrador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Administrador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Paciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Paciente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/DLL/ControllerAdministrador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/DLL/ControllerAdministrador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaLogin$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaLogin$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaLogin$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaLogin$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaRegister$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaRegister$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaRegister.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,14 +73,14 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Juancito&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/apps/Repositorio/Gestion-de-Sistema-de-Salud/Github repository/src/img&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/juand/OneDrive/Documentos/GitHub/Gestion-de-Sistema-de-Salud&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -75,11 +89,39 @@
       <recent name="E:\apps\Repositorio\Gestion-de-Sistema-de-Salud\Github repository\src\img" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="PantallaLogin" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.PantallaLogin" />
+      <module name="Gestion-de-Sistema-de-Salud" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PantallaRegister" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.PantallaRegister" />
+      <module name="Gestion-de-Sistema-de-Salud" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
+        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121" />
       </set>
     </attachedChunks>
   </component>
@@ -102,10 +144,22 @@
       <workItem from="1748675184532" duration="3070000" />
       <workItem from="1749145631209" duration="573000" />
       <workItem from="1749146226211" duration="451000" />
+      <workItem from="1749584652227" duration="1862000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
