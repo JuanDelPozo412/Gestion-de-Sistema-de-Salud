@@ -1,6 +1,9 @@
 package DLL;
 
 import BLL.Medico;
+import BLL.Paciente;
+import BLL.Turno;
+
 import com.mysql.jdbc.Connection;
 
 import javax.swing.*;
@@ -34,8 +37,8 @@ public class ControllerMedico {
             while (rs.next()) {
                 String nombrePaciente = rs.getString("nombre");
 
-                String resumen = (resumenTurnos.size() + 1) + ". BLL.Turno N° " + rs.getInt("idTurno") +
-                        " - BLL.Paciente: " + nombrePaciente +
+                String resumen = (resumenTurnos.size() + 1) + ".Turno N° " + rs.getInt("idTurno") +
+                        " - Paciente: " + nombrePaciente +
                         " - Especialidad: " + rs.getString("especialidad") +
                         " - Fecha: " + rs.getDate("fecha");
 
@@ -99,8 +102,8 @@ public class ControllerMedico {
                 Date fecha = rs.getDate("fecha");
                 String especialidad = rs.getString("especialidad");
 
-                String linea = (opcionesTurnos.size() + 1) + ". BLL.Turno N° " + idTurno +
-                        " - BLL.Paciente: " + nombrePaciente + " - " + especialidad + " - " + fecha;
+                String linea = (opcionesTurnos.size() + 1) + ". Turno N° " + idTurno +
+                        " - Paciente: " + nombrePaciente + " - " + especialidad + " - " + fecha;
 
                 opcionesTurnos.add(linea);
                 idsTurno.add(idTurno);
@@ -129,7 +132,6 @@ public class ControllerMedico {
             int pacienteId = idsPaciente.get(seleccion);
 
 
-            // actualiza el estado del turno a atendido en la base de datos
             PreparedStatement updateTurno = con.prepareStatement(
                     "UPDATE turnos SET estado = 'atendido' WHERE idTurno = ?"
             );
@@ -139,7 +141,6 @@ public class ControllerMedico {
             String tipoEntrada = JOptionPane.showInputDialog("Ingrese el tipo de consulta:");
             String descripcion = JOptionPane.showInputDialog("Ingrese la descripción de la atención:");
 
-            //inserta la entrada en entrada_historial
             PreparedStatement insertEntrada = con.prepareStatement(
                     "INSERT INTO entradas_historial (turno_asociado_id, paciente_id, medico_responsable_id,tipoEntrada, descripcionDetallada) VALUES (?, ?, ?, ?, ?)"
             );
@@ -158,6 +159,54 @@ public class ControllerMedico {
             JOptionPane.showMessageDialog(null, "Debe ingresar un número válido.");
         }
     }
+    public static List<Turno> obtenerTodosLosTurnosDeMedico(int medicoId) {
+        List<Turno> turnos = new ArrayList<>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            String sql = "SELECT " +
+                    "t.idTurno, t.fecha, t.estado, t.especialidad AS turno_especialidad, " +
+                    "p.usuario_id AS paciente_id, u_paciente.nombre AS paciente_nombre, " +
+                    "m.usuario_id AS medico_id, u_medico.nombre AS medico_nombre, m.especialidad AS medico_especialidad " +
+                    "FROM turnos t " +
+                    "JOIN pacientes p ON t.paciente_id = p.usuario_id " +
+                    "JOIN usuarios u_paciente ON p.usuario_id = u_paciente.idUsuario " +
+                    "JOIN medicos m ON t.medico_id = m.usuario_id " +
+                    "JOIN usuarios u_medico ON m.usuario_id = u_medico.idUsuario " +
+                    "WHERE t.medico_id = ? " +
+                    "ORDER BY t.fecha DESC";
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, medicoId);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Paciente paciente = new Paciente();
+                paciente.setIdUsuario(rs.getInt("paciente_id"));
+                paciente.setNombre(rs.getString("paciente_nombre"));
+
+
+                Medico medicoTurno = new Medico();
+                medicoTurno.setIdUsuario(rs.getInt("medico_id"));
+                medicoTurno.setNombre(rs.getString("medico_nombre"));
+                medicoTurno.setEspecialidad(rs.getString("medico_especialidad"));
+
+                Turno turno = new Turno();
+                turno.setIdTurno(rs.getInt("idTurno"));
+                turno.setFecha(rs.getTimestamp("fecha"));
+                turno.setEstado(rs.getString("estado"));
+                turno.setEspecialidad(rs.getString("turno_especialidad"));
+                turno.setPaciente(paciente);
+                turno.setMedico(medicoTurno);
+                turnos.add(turno);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al obtener turnos para la tabla del médico: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+        return turnos;
+    }
+
 
 
 
