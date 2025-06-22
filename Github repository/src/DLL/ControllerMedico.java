@@ -153,7 +153,7 @@ public class ControllerMedico {
             JOptionPane.showMessageDialog(null, "BLL.Turno atendido y entrada registrada correctamente.");
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al atender el turno: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Errorr al atender el turno: " + e.getMessage());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Debe ingresar un número válido.");
         }

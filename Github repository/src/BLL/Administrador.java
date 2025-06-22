@@ -2,11 +2,13 @@
 package BLL;
 
 import DLL.ControllerAdministrador;
+import DLL.ControllerPaciente;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Administrador extends Usuario {
 
@@ -61,15 +63,68 @@ public class Administrador extends Usuario {
             String dni      = JOptionPane.showInputDialog("DNI:");
             String pass     = JOptionPane.showInputDialog("Contraseña:");
             String fecha    = JOptionPane.showInputDialog("Fecha de nacimiento (yyyy-mm-dd):");
-            String tipo     = JOptionPane.showInputDialog("Tipo de usuario (admin, paciente, etc.):");
+            String tipo     = JOptionPane.showInputDialog("Tipo de usuario (administrador, medico, paciente):");
 
             if (nombre == null || apellido == null || mail == null ||
                     dni == null || pass == null || fecha == null || tipo == null) return;
 
-            Usuario nuevo = new Usuario(
-                    0, nombre, apellido, mail, dni, pass,
-                    java.sql.Date.valueOf(fecha), tipo
-            );
+            Usuario nuevo;
+
+            switch (tipo.toLowerCase()) {
+                case "administrador" -> {
+                    String cargo = JOptionPane.showInputDialog("Ingrese el cargo:");
+                    nuevo = new Administrador(0, nombre, apellido, mail, dni, pass,
+                            java.sql.Date.valueOf(fecha), tipo, cargo);
+                }
+                case "medico" -> {
+                    String especialidad = JOptionPane.showInputDialog("Ingrese la especialidad:");
+                    nuevo = new Medico(0, nombre, apellido, mail, dni, pass,
+                            java.sql.Date.valueOf(fecha), tipo, especialidad);
+                }
+                case "paciente" -> {
+                    List<PlanSalud> planes = ControllerPaciente.obtenerPlanes();
+
+                    if (planes.isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "No hay planes disponibles.");
+                        return;
+                    }
+
+                    String[] nombresPlanes = planes.stream()
+                            .map(PlanSalud::getNombrePlan)
+                            .toArray(String[]::new);
+
+                    String planElegido = (String) JOptionPane.showInputDialog(
+                            null,
+                            "Seleccione un plan de salud:",
+                            "Planes disponibles",
+                            JOptionPane.PLAIN_MESSAGE,
+                            null,
+                            nombresPlanes,
+                            nombresPlanes[0]
+                    );
+
+                    if (planElegido == null) return;
+
+                    int planId = planes.stream()
+                            .filter(p -> p.getNombrePlan().equals(planElegido))
+                            .findFirst()
+                            .map(PlanSalud::getPlanId)
+                            .orElse(-1);
+
+
+                    if (planId == -1) {
+                        JOptionPane.showMessageDialog(null, "Plan no encontrado.");
+                        return;
+                    }
+
+                    nuevo = new Paciente(0, nombre, apellido, mail, dni, pass,
+                            java.sql.Date.valueOf(fecha), tipo, null, null, planId);
+                }
+                default -> {
+                    JOptionPane.showMessageDialog(null, "Tipo de usuario no reconocido.");
+                    return;
+                }
+            }
 
             String mensaje = ControllerAdministrador.agregarUsuario(nuevo);
             JOptionPane.showMessageDialog(null, mensaje);
@@ -78,6 +133,7 @@ public class Administrador extends Usuario {
             JOptionPane.showMessageDialog(null, "Error al agregar: " + e.getMessage());
         }
     }
+
 
 
 
