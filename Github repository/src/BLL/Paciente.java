@@ -70,8 +70,8 @@ public class Paciente extends Usuario {
         ControllerPaciente.verUltimoTurno(this);
     }
 
-    public void verHistorialMedico() {
-        ControllerPaciente.verHistorialMedico(this);
+    public String verHistorialMedico() {
+        return ControllerPaciente.obtenerHistorial(this);
     }
 
     public void obtenerTurnos() {

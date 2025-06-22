@@ -41,28 +41,6 @@ public class PantallaPaciente extends JFrame {
         lblTitulo.setBounds(125, 11, 270, 30);
         contentPane.add(lblTitulo);
 
-        JLabel lblFiltro = new JLabel("Filtrar por estado:");
-        lblFiltro.setBounds(420, 85, 120, 14);
-        contentPane.add(lblFiltro);
-
-        JComboBox comboEstado = new JComboBox();
-        comboEstado.setBounds(540, 81, 160, 25);
-        contentPane.add(comboEstado);
-        comboEstado.addItem("Todos");
-        comboEstado.addItem("Pendiente");
-        comboEstado.addItem("Atendido");
-        comboEstado.addItem("Cancelado");
-
-        model = new DefaultTableModel(new String[]{"ID", "Médico", "Especialidad", "Fecha", "Estado"}, 0);
-        table = new JTable(model);
-        JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(20, 117, 680, 180);
-        contentPane.add(scrollPane);
-
-        JLabel lblSeleccionado = new JLabel("Turno seleccionado:");
-        lblSeleccionado.setBounds(20, 344, 680, 20);
-        contentPane.add(lblSeleccionado);
-
         JButton btnEditarPerfil = new JButton("Editar Perfil");
         btnEditarPerfil.setBounds(101, 52, 130, 23);
         contentPane.add(btnEditarPerfil);
@@ -71,30 +49,99 @@ public class PantallaPaciente extends JFrame {
         btnVerPlan.setBounds(241, 52, 130, 23);
         contentPane.add(btnVerPlan);
 
-        JButton btnFiltrar = new JButton("Filtrar");
-        btnFiltrar.setBounds(610, 308, 90, 25);
-        contentPane.add(btnFiltrar);
-
-        JButton btnReservar = new JButton("Reservar Turno");
-        btnReservar.setBounds(20, 375, 160, 25);
-        contentPane.add(btnReservar);
-
-        JButton btnHistorial = new JButton("Ver Historial");
-        btnHistorial.setBounds(190, 375, 160, 25);
-        contentPane.add(btnHistorial);
-
-        JButton btnCancelar = new JButton("Cancelar Turno");
-        btnCancelar.setBounds(360, 375, 160, 25);
-        contentPane.add(btnCancelar);
-
         JTextArea areaPlan = new JTextArea();
         areaPlan.setEditable(false);
         areaPlan.setLineWrap(true);
         areaPlan.setWrapStyleWord(true);
         areaPlan.setFont(new Font("Tahoma", Font.PLAIN, 14));
         areaPlan.setBorder(BorderFactory.createTitledBorder("Detalle de Plan de Salud"));
-        areaPlan.setBounds(20, 420, 680, 100);
+        areaPlan.setBounds(20, 430, 330, 100);
         contentPane.add(areaPlan);
+
+        btnVerPlan.addActionListener(e -> {
+            areaPlan.setText(paciente.obtenerPlan());
+        });
+
+        JTabbedPane tabs = new JTabbedPane(JTabbedPane.TOP);
+        tabs.setBounds(20, 110, 690, 310);
+        contentPane.add(tabs);
+
+        JPanel panelTurnos = new JPanel();
+        panelTurnos.setLayout(null);
+        tabs.addTab("Turnos", null, panelTurnos, null);
+
+        JLabel lblFiltro = new JLabel("Filtrar por estado:");
+        lblFiltro.setBounds(10, 10, 120, 14);
+        panelTurnos.add(lblFiltro);
+
+        JComboBox comboEstado = new JComboBox();
+        comboEstado.setBounds(130, 6, 160, 25);
+        comboEstado.addItem("Todos");
+        comboEstado.addItem("Pendiente");
+        comboEstado.addItem("Atendido");
+        comboEstado.addItem("Cancelado");
+        panelTurnos.add(comboEstado);
+
+        JButton btnFiltrar = new JButton("Filtrar");
+        btnFiltrar.setBounds(300, 6, 90, 25);
+        panelTurnos.add(btnFiltrar);
+
+        model = new DefaultTableModel(new String[]{"ID", "Médico", "Especialidad", "Fecha", "Estado"}, 0);
+        table = new JTable(model);
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setBounds(10, 40, 660, 150);
+        panelTurnos.add(scrollPane);
+
+        JLabel lblSeleccionado = new JLabel("Turno seleccionado:");
+        lblSeleccionado.setBounds(10, 200, 660, 20);
+        panelTurnos.add(lblSeleccionado);
+
+        JButton btnReservar = new JButton("Reservar Turno");
+        btnReservar.setBounds(10, 230, 160, 25);
+        panelTurnos.add(btnReservar);
+
+        JButton btnCancelar = new JButton("Cancelar Turno");
+        btnCancelar.setBounds(180, 230, 160, 25);
+        panelTurnos.add(btnCancelar);
+
+        JPanel panelHistorial = new JPanel();
+        panelHistorial.setLayout(null);
+        tabs.addTab("Historial Médico", null, panelHistorial, null);
+
+        JTextArea areaHistorial = new JTextArea();
+        areaHistorial.setEditable(false);
+        areaHistorial.setLineWrap(true);
+        areaHistorial.setWrapStyleWord(true);
+        areaHistorial.setFont(new Font("Tahoma", Font.PLAIN, 14));
+
+        JScrollPane scrollHistorial = new JScrollPane(areaHistorial);
+        scrollHistorial.setBorder(BorderFactory.createTitledBorder("Historial Medico"));
+        scrollHistorial.setBounds(20, 20, 630, 230);
+        panelHistorial.add(scrollHistorial);
+
+        JButton btnCargarHistorial = new JButton("Cargar Historial");
+        btnCargarHistorial.setBounds(20, 260, 150, 25);
+        panelHistorial.add(btnCargarHistorial);
+
+
+
+        cargarTablaFiltrada("Todos");
+
+        btnFiltrar.addActionListener(e -> {
+            String estado = (String) comboEstado.getSelectedItem();
+            cargarTablaFiltrada(estado);
+        });
+
+        btnReservar.addActionListener(e -> {
+            PantallaReserva reserva = new PantallaReserva(paciente);
+            reserva.setVisible(true);
+        });
+
+        btnEditarPerfil.addActionListener(e -> {
+            EditarPerfilPaciente editar = new EditarPerfilPaciente(paciente);
+            editar.setVisible(true);
+            dispose();
+        });
 
         table.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
@@ -118,29 +165,6 @@ public class PantallaPaciente extends JFrame {
             }
         });
 
-        btnEditarPerfil.addActionListener(e -> {
-            EditarPerfilPaciente editar = new EditarPerfilPaciente(paciente);
-            editar.setVisible(true);
-            dispose();
-        });
-
-        btnVerPlan.addActionListener(e -> {
-            String textoPlan = paciente.obtenerPlan();
-            areaPlan.setText(textoPlan);
-        });
-
-        btnFiltrar.addActionListener(e -> {
-            String estado = (String) comboEstado.getSelectedItem();
-            cargarTablaFiltrada(estado);
-        });
-
-        btnReservar.addActionListener(e -> {
-            PantallaReserva reserva = new PantallaReserva(paciente);
-            reserva.setVisible(true);
-        });
-
-        btnHistorial.addActionListener(e -> paciente.verHistorialMedico());
-
         btnCancelar.addActionListener(e -> {
             if (turnoSeleccionado != null) {
                 List<Turno> turnos = ControllerPaciente.obtenerTurnos(paciente);
@@ -151,13 +175,13 @@ public class PantallaPaciente extends JFrame {
                     }
                 }
                 if (turnoSeleccionado.getEstado().equalsIgnoreCase("Cancelado")) {
-                    JOptionPane.showMessageDialog(null, "Este turno ya esta cancelado");
+                    JOptionPane.showMessageDialog(null, "Este turno ya está cancelado");
                     return;
                 }
                 int confirm = JOptionPane.showConfirmDialog(
                         null,
-                        "Seguro que desea cancelar el turno ID: " + turnoSeleccionado.getIdTurno() + "?",
-                        "Confirmar cancelación",
+                        "¿Seguro que desea cancelar el turno ID: " + turnoSeleccionado.getIdTurno() + "?",
+                        "Confirmar cancelacion",
                         JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
                     paciente.cancelarTurno(turnoSeleccionado.getIdTurno());
@@ -168,7 +192,9 @@ public class PantallaPaciente extends JFrame {
             }
         });
 
-        cargarTablaFiltrada("Todos");
+        btnCargarHistorial.addActionListener(e -> {
+            areaHistorial.setText(paciente.verHistorialMedico());
+        });
     }
 
     private void cargarTablaFiltrada(String filtro) {
@@ -183,8 +209,6 @@ public class PantallaPaciente extends JFrame {
         }
     }
 }
-
-
 
 
 
