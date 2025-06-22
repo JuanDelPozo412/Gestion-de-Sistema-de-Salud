@@ -94,9 +94,7 @@ public class Paciente extends Usuario {
         }
     }
 
-    public void reservarTurno() {
-        ControllerPaciente.reservarTurno(this);
-    }
+
 
     public String editarPerfil() {
         if (this.getNombre().isEmpty() || this.getMail().isEmpty() || this.getContrasenia().isEmpty()) {
@@ -111,7 +109,7 @@ public class Paciente extends Usuario {
     }
 
     public void cancelarTurno(int idTurno) {
-        ControllerPaciente.cancelarTurno(idTurno);
+        ControllerPaciente.cancelarTurno(idTurno, this.getIdUsuario());
     }
 
 
@@ -143,7 +141,7 @@ public class Paciente extends Usuario {
                     verHistorialMedico();
                     break;
                 case 5:
-                    reservarTurno();
+                    //reservarTurno();
                     break;
                 case 6:
                     editarPerfil();

@@ -16,13 +16,14 @@ public class PantallaReserva extends JFrame {
     private JComboBox<String> comboHora;
     private JDateChooser calendario;
     private JButton btnReservar;
+    private JLabel lblMensaje;
     private Paciente paciente;
 
     public PantallaReserva(Paciente paciente) {
         this.paciente = paciente;
 
         setTitle("Reservar Turno");
-        setSize(400, 400);
+        setSize(400, 350);
         setLayout(null);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -35,7 +36,7 @@ public class PantallaReserva extends JFrame {
         comboEspecialidad.setBounds(150, 30, 200, 25);
         add(comboEspecialidad);
 
-        JLabel lblMedico = new JLabel("Medico:");
+        JLabel lblMedico = new JLabel("Médico:");
         lblMedico.setBounds(30, 70, 100, 20);
         add(lblMedico);
 
@@ -68,12 +69,15 @@ public class PantallaReserva extends JFrame {
         btnReservar.setBounds(100, 200, 180, 30);
         add(btnReservar);
 
+        lblMensaje = new JLabel("");
+        lblMensaje.setBounds(30, 240, 340, 30);
+        add(lblMensaje);
+
 
         ArrayList<String> especialidades = ControllerPaciente.obtenerEspecialidades();
         for (String esp : especialidades) {
             comboEspecialidad.addItem(esp);
         }
-
 
         comboEspecialidad.addActionListener(e -> {
             comboMedico.removeAllItems();
@@ -88,10 +92,10 @@ public class PantallaReserva extends JFrame {
             Date fechaSeleccionada = calendario.getDate();
             String horaSeleccionada = (String) comboHora.getSelectedItem();
             String especialidad = (String) comboEspecialidad.getSelectedItem();
-            String medicoTexto = (String) comboMedico.getSelectedItem();
+            String medicoSeleccionado = (String) comboMedico.getSelectedItem();
 
-            if (fechaSeleccionada == null || horaSeleccionada == null || medicoTexto == null) {
-                JOptionPane.showMessageDialog(null, "Complete todos los campos");
+            if (fechaSeleccionada == null || horaSeleccionada == null || medicoSeleccionado == null) {
+                lblMensaje.setText("Complete todos los campos");
                 return;
             }
 
@@ -101,17 +105,27 @@ public class PantallaReserva extends JFrame {
             LocalDate fechaTurno = LocalDate.parse(fechaFormateada);
 
             if (fechaTurno.isBefore(hoy)) {
-                JOptionPane.showMessageDialog(null, "No se puede reservar en fechas pasadas");
+                lblMensaje.setText("No se puede reservar en fechas pasadas");
                 return;
             }
 
+            if (ControllerPaciente.existeTurno(
+                    paciente.getIdUsuario(),
+                    medicoSeleccionado,
+                    fechaFormateada + " " + horaSeleccionada)) {
 
-            if (ControllerPaciente.existeTurno(paciente.getIdUsuario(), medicoTexto, fechaFormateada + " " + horaSeleccionada)) {
-                JOptionPane.showMessageDialog(null, "Ya tienes un turno con ese medico en esa fecha y hora");
+                lblMensaje.setText("Ya tienes un turno con ese medico en esa fecha y hora");
                 return;
             }
 
-            ControllerPaciente.reservarTurnoDesdePantalla(paciente, especialidad, medicoTexto, fechaFormateada, horaSeleccionada);
+            String resultado = ControllerPaciente.reservarTurnoDesdePantalla(
+                    paciente,
+                    especialidad,
+                    medicoSeleccionado,
+                    fechaFormateada,
+                    horaSeleccionada
+            );
+            lblMensaje.setText(resultado);
         });
 
         setVisible(true);
