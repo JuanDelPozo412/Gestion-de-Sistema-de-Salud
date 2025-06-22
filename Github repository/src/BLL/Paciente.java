@@ -1,10 +1,8 @@
 package BLL;
 
-import DLL.Conexion;
 import DLL.ControllerPaciente;
-import com.mysql.jdbc.Connection;
-
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -94,8 +92,6 @@ public class Paciente extends Usuario {
         }
     }
 
-
-
     public String editarPerfil() {
         if (this.getNombre().isEmpty() || this.getMail().isEmpty() || this.getContrasenia().isEmpty()) {
             return "No se pudo editar";
@@ -110,6 +106,35 @@ public class Paciente extends Usuario {
 
     public void cancelarTurno(int idTurno) {
         ControllerPaciente.cancelarTurno(idTurno, this.getIdUsuario());
+    }
+    public String reservarTurno(String especialidad, String medicoSeleccionado, String fecha, String hora) {
+        return ControllerPaciente.reservarTurnoDesdePantalla(this, especialidad, medicoSeleccionado, fecha, hora);
+    }
+
+
+    public boolean tieneTurno(String medicoSeleccionado, String fechaHora) {
+        return ControllerPaciente.existeTurno(this.getIdUsuario(), medicoSeleccionado, fechaHora);
+    }
+    public List<Turno> obtenerTurnosFiltrados(String filtro) {
+        List<Turno> turnos = ControllerPaciente.obtenerTurnos(this);
+        List<Turno> filtrados = new ArrayList<>();
+
+        for (Turno t : turnos) {
+            if (filtro.equals("Todos") || t.getEstado().equalsIgnoreCase(filtro)) {
+                filtrados.add(t);
+            }
+        }
+        return filtrados;
+    }
+    public List<Turno> obtenerTodosMisTurnos() {
+        return ControllerPaciente.obtenerTurnos(this);
+    }
+    public ArrayList<String> obtenerEspecialidades() {
+        return ControllerPaciente.obtenerEspecialidades();
+    }
+
+    public ArrayList<String> obtenerMedicosPorEspecialidad(String especialidad) {
+        return ControllerPaciente.obtenerMedicosPorEspecialidad(especialidad);
     }
 
 
