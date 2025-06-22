@@ -23,7 +23,7 @@ public class PantallaPaciente extends JFrame {
         this.paciente = paciente;
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 750, 450);
+        setBounds(100, 100, 750, 570);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
         setContentPane(contentPane);
@@ -87,6 +87,14 @@ public class PantallaPaciente extends JFrame {
         btnCancelar.setBounds(360, 375, 160, 25);
         contentPane.add(btnCancelar);
 
+        JTextArea areaPlan = new JTextArea();
+        areaPlan.setEditable(false);
+        areaPlan.setLineWrap(true);
+        areaPlan.setWrapStyleWord(true);
+        areaPlan.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        areaPlan.setBorder(BorderFactory.createTitledBorder("Detalle de Plan de Salud"));
+        areaPlan.setBounds(20, 420, 680, 100);
+        contentPane.add(areaPlan);
 
         table.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
@@ -116,7 +124,10 @@ public class PantallaPaciente extends JFrame {
             dispose();
         });
 
-        btnVerPlan.addActionListener(e -> paciente.verPlan());
+        btnVerPlan.addActionListener(e -> {
+            String textoPlan = paciente.obtenerPlan();
+            areaPlan.setText(textoPlan);
+        });
 
         btnFiltrar.addActionListener(e -> {
             String estado = (String) comboEstado.getSelectedItem();
@@ -132,12 +143,22 @@ public class PantallaPaciente extends JFrame {
 
         btnCancelar.addActionListener(e -> {
             if (turnoSeleccionado != null) {
+                List<Turno> turnos = ControllerPaciente.obtenerTurnos(paciente);
+                for (Turno t : turnos) {
+                    if (t.getIdTurno() == turnoSeleccionado.getIdTurno()) {
+                        turnoSeleccionado = t;
+                        break;
+                    }
+                }
+                if (turnoSeleccionado.getEstado().equalsIgnoreCase("Cancelado")) {
+                    JOptionPane.showMessageDialog(null, "Este turno ya esta cancelado");
+                    return;
+                }
                 int confirm = JOptionPane.showConfirmDialog(
                         null,
                         "Seguro que desea cancelar el turno ID: " + turnoSeleccionado.getIdTurno() + "?",
-                        "Confirmar cancelacion",
+                        "Confirmar cancelación",
                         JOptionPane.YES_NO_OPTION);
-
                 if (confirm == JOptionPane.YES_OPTION) {
                     paciente.cancelarTurno(turnoSeleccionado.getIdTurno());
                     cargarTablaFiltrada("Todos");

@@ -15,27 +15,7 @@ import java.util.List;
 public class ControllerPaciente {
     private static Connection con = Conexion.getInstance().getConnection();
 
-    public static void verPlan(Paciente paciente) {
-        try {
-            PreparedStatement stmt = con.prepareStatement(
-                    "SELECT nombrePlan, descripcion FROM planes_salud WHERE planId = ?"
-            );
 
-            stmt.setInt(1, paciente.getPlanId());
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                String nombre = rs.getString("nombrePlan");
-                String descripcion = rs.getString("descripcion");
-                String mensaje = "Plan de salud: " + nombre + "\nDescripcion: " + descripcion;
-                JOptionPane.showMessageDialog(null, mensaje);
-            } else {
-                JOptionPane.showMessageDialog(null, "No se encontro un plan asociado al paciente: " + paciente.getNombre());
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al consultar el plan");
-        }
-    }
     public static void verUltimoTurno(Paciente paciente) {
         try {
             PreparedStatement stmt = con.prepareStatement(
@@ -415,6 +395,25 @@ public class ControllerPaciente {
             e.printStackTrace();
         }
         return false;
+    }
+    public static String obtenerPlan(Paciente paciente) {
+        try {
+            PreparedStatement stmt = con.prepareStatement(
+                    "SELECT nombrePlan, descripcion FROM planes_salud WHERE planId = ?"
+            );
+            stmt.setInt(1, paciente.getPlanId());
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                String nombre = rs.getString("nombrePlan");
+                String descripcion = rs.getString("descripcion");
+                return "Plan de salud: " + nombre + "\nDescripcion: " + descripcion;
+            } else {
+                return "No se encontro un plan asociado al paciente";
+            }
+        } catch (Exception e) {
+            return "Error al consultar el plan";
+        }
     }
 
 
