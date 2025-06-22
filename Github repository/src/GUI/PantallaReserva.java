@@ -1,7 +1,6 @@
 package GUI;
 
 import BLL.Paciente;
-import DLL.ControllerPaciente;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
@@ -74,7 +73,7 @@ public class PantallaReserva extends JFrame {
         add(lblMensaje);
 
 
-        ArrayList<String> especialidades = ControllerPaciente.obtenerEspecialidades();
+        ArrayList<String> especialidades = paciente.obtenerEspecialidades();
         for (String esp : especialidades) {
             comboEspecialidad.addItem(esp);
         }
@@ -82,7 +81,7 @@ public class PantallaReserva extends JFrame {
         comboEspecialidad.addActionListener(e -> {
             comboMedico.removeAllItems();
             String especialidad = (String) comboEspecialidad.getSelectedItem();
-            ArrayList<String> medicos = ControllerPaciente.obtenerMedicosPorEspecialidad(especialidad);
+            ArrayList<String> medicos = paciente.obtenerMedicosPorEspecialidad(especialidad);
             for (String med : medicos) {
                 comboMedico.addItem(med);
             }
@@ -109,17 +108,12 @@ public class PantallaReserva extends JFrame {
                 return;
             }
 
-            if (ControllerPaciente.existeTurno(
-                    paciente.getIdUsuario(),
-                    medicoSeleccionado,
-                    fechaFormateada + " " + horaSeleccionada)) {
-
+            if (paciente.tieneTurno(medicoSeleccionado, fechaFormateada + " " + horaSeleccionada)) {
                 lblMensaje.setText("Ya tienes un turno con ese medico en esa fecha y hora");
                 return;
             }
 
-            String resultado = ControllerPaciente.reservarTurnoDesdePantalla(
-                    paciente,
+            String resultado = paciente.reservarTurno(
                     especialidad,
                     medicoSeleccionado,
                     fechaFormateada,

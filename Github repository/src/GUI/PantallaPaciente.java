@@ -8,7 +8,6 @@ import java.util.List;
 
 import BLL.Paciente;
 import BLL.Turno;
-import DLL.ControllerPaciente;
 
 public class PantallaPaciente extends JFrame {
 
@@ -123,8 +122,6 @@ public class PantallaPaciente extends JFrame {
         btnCargarHistorial.setBounds(20, 260, 150, 25);
         panelHistorial.add(btnCargarHistorial);
 
-
-
         cargarTablaFiltrada("Todos");
 
         btnFiltrar.addActionListener(e -> {
@@ -148,7 +145,7 @@ public class PantallaPaciente extends JFrame {
                 int row = table.getSelectedRow();
                 if (row != -1) {
                     int idTurno = (int) model.getValueAt(row, 0);
-                    List<Turno> turnos = ControllerPaciente.obtenerTurnos(paciente);
+                    List<Turno> turnos = paciente.obtenerTodosMisTurnos();
                     for (Turno t : turnos) {
                         if (t.getIdTurno() == idTurno) {
                             turnoSeleccionado = t;
@@ -167,7 +164,7 @@ public class PantallaPaciente extends JFrame {
 
         btnCancelar.addActionListener(e -> {
             if (turnoSeleccionado != null) {
-                List<Turno> turnos = ControllerPaciente.obtenerTurnos(paciente);
+                List<Turno> turnos = paciente.obtenerTodosMisTurnos();
                 for (Turno t : turnos) {
                     if (t.getIdTurno() == turnoSeleccionado.getIdTurno()) {
                         turnoSeleccionado = t;
@@ -181,7 +178,7 @@ public class PantallaPaciente extends JFrame {
                 int confirm = JOptionPane.showConfirmDialog(
                         null,
                         "¿Seguro que desea cancelar el turno ID: " + turnoSeleccionado.getIdTurno() + "?",
-                        "Confirmar cancelacion",
+                        "Confirmar cancelación",
                         JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
                     paciente.cancelarTurno(turnoSeleccionado.getIdTurno());
@@ -199,16 +196,15 @@ public class PantallaPaciente extends JFrame {
 
     private void cargarTablaFiltrada(String filtro) {
         model.setRowCount(0);
-        List<Turno> turnos = ControllerPaciente.obtenerTurnos(paciente);
+        List<Turno> turnos = paciente.obtenerTurnosFiltrados(filtro);
         for (Turno t : turnos) {
-            if (filtro.equals("Todos") || t.getEstado().equalsIgnoreCase(filtro)) {
-                model.addRow(new Object[]{
-                        t.getIdTurno(), t.getMedico().getNombre(), t.getMedico().getEspecialidad(), t.getFecha(), t.getEstado()
-                });
-            }
+            model.addRow(new Object[]{
+                    t.getIdTurno(), t.getMedico().getNombre(), t.getMedico().getEspecialidad(), t.getFecha(), t.getEstado()
+            });
         }
     }
 }
+
 
 
 
