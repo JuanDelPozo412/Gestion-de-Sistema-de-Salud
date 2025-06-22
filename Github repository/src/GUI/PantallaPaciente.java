@@ -123,7 +123,10 @@ public class PantallaPaciente extends JFrame {
             cargarTablaFiltrada(estado);
         });
 
-        btnReservar.addActionListener(e -> paciente.reservarTurno());
+        btnReservar.addActionListener(e -> {
+            PantallaReserva reserva = new PantallaReserva(paciente);
+            reserva.setVisible(true);
+        });
 
         btnHistorial.addActionListener(e -> paciente.verHistorialMedico());
 

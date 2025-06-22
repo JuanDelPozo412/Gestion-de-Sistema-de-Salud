@@ -5,9 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4878bd33-ffbe-4fd1-b43c-87a6c282f5bb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Github repository/src/GUI/PantallaReserva.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gestion-de-Sistema-de-Salud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gestion-de-Sistema-de-Salud.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/BLL/Turno.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/BLL/Turno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/DLL/ControllerPaciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/DLL/ControllerPaciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/GUI/PantallaPaciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/GUI/PantallaPaciente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Administrador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Administrador.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Medico.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Medico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Paciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Paciente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Turno.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Turno.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/BLL/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/DLL/ControllerMedico.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/DLL/ControllerMedico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/DLL/ControllerPaciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/DLL/ControllerPaciente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/DLL/ControllerUsuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/DLL/ControllerUsuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaPaciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaPaciente.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +73,7 @@
     "Application.PantallaRegister.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Juancito",
+    "git-widget-placeholder": "Florencia",
     "last_opened_file_path": "E:/apps/Repositorio/Gestion-de-Sistema-de-Salud/Github repository/src/img",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",

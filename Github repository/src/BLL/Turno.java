@@ -1,14 +1,14 @@
 package BLL;
+import java.sql.Timestamp;
 
-import java.sql.Date;
 public class Turno {
     private int idTurno;
     private Paciente Paciente;
     private Medico medico;
-    private Date fecha;
+    private Timestamp fecha;
     private String estado;
 
-    public Turno(int idTurno, Paciente paciente, Medico medico, Date fecha, String estado) {
+    public Turno(int idTurno, Paciente paciente, Medico medico, Timestamp fecha, String estado) {
         this.idTurno = idTurno;
         Paciente = paciente;
         this.medico = medico;
@@ -44,12 +44,11 @@ public class Turno {
     }
 
 
-
-    public Date getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
 

@@ -132,30 +132,22 @@ public class ControllerPaciente {
             while (rs.next()) {
                 int idTurno = rs.getInt("idTurno");
                 int medicoId = rs.getInt("medico_id");
-                Date fecha = rs.getDate("fecha");
+                Timestamp fecha = rs.getTimestamp("fecha"); //hicimos el cambio a timestamp
                 String estado = rs.getString("estado");
-
 
                 PreparedStatement stmtEsp = con.prepareStatement(
                         "SELECT especialidad FROM medicos WHERE usuario_id = ?"
                 );
                 stmtEsp.setInt(1, medicoId);
                 ResultSet rsEsp = stmtEsp.executeQuery();
-                String especialidad = "";
-                if (rsEsp.next()) {
-                    especialidad = rsEsp.getString("especialidad");
-                }
+                String especialidad = rsEsp.next() ? rsEsp.getString("especialidad") : "";
 
                 PreparedStatement stmtNom = con.prepareStatement(
                         "SELECT nombre FROM usuarios WHERE idUsuario = ?"
                 );
                 stmtNom.setInt(1, medicoId);
                 ResultSet rsNom = stmtNom.executeQuery();
-                String nombre = "";
-                if (rsNom.next()) {
-                    nombre = rsNom.getString("nombre");
-                }
-
+                String nombre = rsNom.next() ? rsNom.getString("nombre") : "";
 
                 Medico medico = new Medico();
                 medico.setIdUsuario(medicoId);
@@ -171,6 +163,8 @@ public class ControllerPaciente {
 
         return lista;
     }
+
+
 
     public static void reservarTurno(Paciente paciente) {
         try {
@@ -339,6 +333,91 @@ public class ControllerPaciente {
             JOptionPane.showMessageDialog(null, "Error al cancelar turno: " + e.getMessage());
         }
     }
+    public static ArrayList<String> obtenerEspecialidades() {
+        ArrayList<String> lista = new ArrayList<>();
+        try {
+            PreparedStatement stmt = con.prepareStatement("SELECT DISTINCT especialidad FROM medicos");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                lista.add(rs.getString("especialidad"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }
+
+    public static ArrayList<String> obtenerMedicosPorEspecialidad(String especialidad) {
+        ArrayList<String> lista = new ArrayList<>();
+        try {
+            PreparedStatement stmt = con.prepareStatement("SELECT usuario_id FROM medicos WHERE especialidad = ?");
+            stmt.setString(1, especialidad);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("usuario_id");
+                lista.add(obtenerNombreUsuario(id) + " / ID: " + id);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }
+
+    public static ArrayList<String> obtenerFechasDisponibles() {
+        ArrayList<String> fechas = new ArrayList<>();
+        LocalDate hoy = LocalDate.now();
+        for (int i = 0; i < 5; i++) {
+            fechas.add(hoy.plusDays(i).toString());
+        }
+        return fechas;
+    }
+
+    public static void reservarTurnoDesdePantalla(Paciente paciente, String especialidad, String medicoTexto, String fecha, String hora) {
+        try {
+            int idMedico = Integer.parseInt(medicoTexto.split("ID: ")[1]);
+            Timestamp timestamp = Timestamp.valueOf(fecha + " " + hora);
+
+            PreparedStatement stmtInsert = con.prepareStatement(
+                    "INSERT INTO turnos (paciente_id, medico_id, especialidad, fecha, estado) VALUES (?, ?, ?, ?, ?)"
+            );
+            stmtInsert.setInt(1, paciente.getIdUsuario());
+            stmtInsert.setInt(2, idMedico);
+            stmtInsert.setString(3, especialidad);
+            stmtInsert.setTimestamp(4, timestamp);
+            stmtInsert.setString(5, "Pendiente");
+
+            int filas = stmtInsert.executeUpdate();
+            JOptionPane.showMessageDialog(null,
+                    filas > 0 ? "Turno reservado con exito" : "No se pudo reservar el turno");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al reservar turno: " + e.getMessage());
+        }
+    }
+    public static boolean existeTurno(int pacienteId, String medicoTexto, String fechaHora) {
+        try {
+            int idMedico = Integer.parseInt(medicoTexto.split("ID: ")[1]);
+            Timestamp timestamp = Timestamp.valueOf(fechaHora);
+
+            PreparedStatement stmt = con.prepareStatement(
+                    //si devuelve mas de uno es porque ya esta el turno entonces no deja reservar otro igual
+                    "SELECT COUNT(*) FROM turnos WHERE paciente_id = ? AND medico_id = ? AND fecha = ?"
+            );
+            stmt.setInt(1, pacienteId);
+            stmt.setInt(2, idMedico);
+            stmt.setTimestamp(3, timestamp);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
 
 
 
