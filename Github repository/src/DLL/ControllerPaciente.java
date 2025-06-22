@@ -45,7 +45,7 @@ public class ControllerPaciente {
             JOptionPane.showMessageDialog(null, "Error al consultar el ultimo turno: " + e.getMessage());
         }
     }
-    public static void verHistorialMedico(Paciente paciente) {
+    public static String obtenerHistorial(Paciente paciente) {
         try {
             PreparedStatement stmt = con.prepareStatement(
                     "SELECT * FROM entradas_historial WHERE paciente_id = ?"
@@ -73,13 +73,13 @@ public class ControllerPaciente {
             }
 
             if (historial.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "No hay historial para mostrar");
+                return "No hay historial para mostrar";
             } else {
-                JOptionPane.showMessageDialog(null, historial);
+                return historial;
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al consultar historial");
+            return "Error al consultar historial";
         }
     }
 
