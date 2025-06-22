@@ -61,8 +61,9 @@ public class Paciente extends Usuario {
         this.planId = planId;
     }
 
-    public void verPlan() {
-        ControllerPaciente.verPlan(this);
+
+    public String obtenerPlan() {
+        return ControllerPaciente.obtenerPlan(this);
     }
 
     public void verUltimoTurno() {
@@ -130,7 +131,7 @@ public class Paciente extends Usuario {
                     JOptionPane.showMessageDialog(null, "Nombre: " + getNombre() + "\nApellido: " + getApellido() + "\nDNI: " + getDni() + "\nNacimiento: " + getFechaNacimiento());
                     break;
                 case 1:
-                    verPlan();
+                    //verPlan();
                     break;
                 case 2:
                     obtenerTurnos();
