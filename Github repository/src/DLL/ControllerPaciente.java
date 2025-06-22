@@ -8,7 +8,6 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExceptio
 
 import javax.swing.*;
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -146,94 +145,6 @@ public class ControllerPaciente {
 
 
 
-    public static void reservarTurno(Paciente paciente) {
-        try {
-            PreparedStatement stmtEspecialidad = con.prepareStatement("SELECT DISTINCT especialidad FROM medicos");
-            ResultSet rsEspecialidad = stmtEspecialidad.executeQuery();
-            ArrayList<String> especialidades = new ArrayList<>();
-            while (rsEspecialidad.next()) {
-                especialidades.add(rsEspecialidad.getString("especialidad"));
-            }
-
-            String[] opcionesEsp = especialidades.toArray(new String[0]);
-            String especialidadSeleccionada = (String) JOptionPane.showInputDialog(null,
-                    "Seleccione especialidad:",
-                    "Especialidad",
-                    0,
-                    null,
-                    opcionesEsp,
-                    opcionesEsp[0]);
-            PreparedStatement stmtMedico = con.prepareStatement("SELECT * FROM medicos WHERE especialidad = ?");
-            stmtMedico.setString(1, especialidadSeleccionada);
-            ResultSet rsMedico = stmtMedico.executeQuery();
-            ArrayList<String> medicos = new ArrayList<>();
-            ArrayList<Integer> ids = new ArrayList<>();
-            while (rsMedico.next()) {
-                int id = rsMedico.getInt("usuario_id");
-                String nombre = obtenerNombreUsuario(id);
-                medicos.add(nombre + " / ID: " + id);
-                ids.add(id);
-            }
-
-            String[] opcionesMed = medicos.toArray(new String[0]);
-            String seleccionado = (String) JOptionPane.showInputDialog(null,
-                    "Seleccione medico:",
-                    "Médico",
-                    0,
-                    null,
-                    opcionesMed,
-                    opcionesMed[0]);
-
-            int posicion = medicos.indexOf(seleccionado);
-            int idMedicoSeleccionado = ids.get(posicion);
-
-
-            ArrayList<String> fechasDisponibles = new ArrayList<>();
-            LocalDate hoy = LocalDate.now();
-            for (int i = 0; i < 5; i++) {
-                fechasDisponibles.add(hoy.plusDays(i).toString());
-            }
-            String[] fechas = fechasDisponibles.toArray(new String[0]);
-
-            String fechaElegida = (String) JOptionPane.showInputDialog(null,
-                    "Seleccione fecha:",
-                    "Fecha",
-                    0,
-                    null,
-                    fechas,
-                    fechas[0]);
-
-            String[] horarios = {"08:00:00", "10:00:00", "14:00:00"};
-            String horaSeleccionada = (String) JOptionPane.showInputDialog(null,
-                    "Seleccione horario:",
-                    "Horario",
-                    0,
-                    null,
-                    horarios,
-                    horarios[0]);
-            String fechaHora = fechaElegida + " " + horaSeleccionada;
-            Timestamp timestamp = Timestamp.valueOf(fechaHora);
-
-            PreparedStatement stmtInsert = con.prepareStatement(
-                    "INSERT INTO turnos (paciente_id, medico_id, especialidad, fecha, estado) VALUES (?, ?, ?, ?, ?)"
-            );
-            stmtInsert.setInt(1, paciente.getIdUsuario());
-            stmtInsert.setInt(2, idMedicoSeleccionado);
-            stmtInsert.setString(3, especialidadSeleccionada);
-            stmtInsert.setTimestamp(4, timestamp);
-            stmtInsert.setString(5, "Pendiente");
-            int filasInsertadas = stmtInsert.executeUpdate();
-
-            if (filasInsertadas > 0) {
-                JOptionPane.showMessageDialog(null, "Turno reservado con exito");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo reservar el turno");
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al reservar turno: " + e.getMessage());
-        }
-    }
 
     private static String obtenerNombreUsuario(int id) {
         try {
@@ -296,18 +207,19 @@ public class ControllerPaciente {
         }
         return lista;
     }
-    public static void cancelarTurno(int idTurno) {
+    public static void cancelarTurno(int idTurno, int idPaciente) {
         try {
             PreparedStatement stmt = con.prepareStatement(
-                    "UPDATE turnos SET estado = 'Cancelado' WHERE idTurno = ?"
+                    "UPDATE turnos SET estado = 'Cancelado' WHERE idTurno = ? AND paciente_id = ?"
             );
             stmt.setInt(1, idTurno);
+            stmt.setInt(2, idPaciente);
             int filas = stmt.executeUpdate();
 
             if (filas > 0) {
                 JOptionPane.showMessageDialog(null, "Turno cancelado correctamente");
             } else {
-                JOptionPane.showMessageDialog(null, "No se pudo cancelar el turno");
+                JOptionPane.showMessageDialog(null, "No se pudo cancelar el turno ");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al cancelar turno: " + e.getMessage());
@@ -343,19 +255,24 @@ public class ControllerPaciente {
         return lista;
     }
 
-    public static ArrayList<String> obtenerFechasDisponibles() {
-        ArrayList<String> fechas = new ArrayList<>();
-        LocalDate hoy = LocalDate.now();
-        for (int i = 0; i < 5; i++) {
-            fechas.add(hoy.plusDays(i).toString());
-        }
-        return fechas;
-    }
 
-    public static void reservarTurnoDesdePantalla(Paciente paciente, String especialidad, String medicoTexto, String fecha, String hora) {
+
+
+    public static String reservarTurnoDesdePantalla(Paciente paciente, String especialidad, String medicoSeleccionado, String fecha, String hora) {
         try {
-            int idMedico = Integer.parseInt(medicoTexto.split("ID: ")[1]);
+            int idMedico = Integer.parseInt(medicoSeleccionado.split("ID: ")[1]);
             Timestamp timestamp = Timestamp.valueOf(fecha + " " + hora);
+
+            PreparedStatement check = con.prepareStatement(
+                    "SELECT COUNT(*) FROM turnos WHERE medico_id = ? AND fecha = ? AND estado != 'Cancelado'"
+            );
+            check.setInt(1, idMedico);
+            check.setTimestamp(2, timestamp);
+            ResultSet rs = check.executeQuery();
+
+            if (rs.next() && rs.getInt(1) > 0) {
+                return "Ese turno ya esta ocupado por otro paciente";
+            }
 
             PreparedStatement stmtInsert = con.prepareStatement(
                     "INSERT INTO turnos (paciente_id, medico_id, especialidad, fecha, estado) VALUES (?, ?, ?, ?, ?)"
@@ -367,16 +284,16 @@ public class ControllerPaciente {
             stmtInsert.setString(5, "Pendiente");
 
             int filas = stmtInsert.executeUpdate();
-            JOptionPane.showMessageDialog(null,
-                    filas > 0 ? "Turno reservado con exito" : "No se pudo reservar el turno");
+            return filas > 0 ? "Turno reservado con exito" : "No se pudo reservar el turno";
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al reservar turno: " + e.getMessage());
+            return "Error al reservar turno: " + e.getMessage();
         }
     }
-    public static boolean existeTurno(int pacienteId, String medicoTexto, String fechaHora) {
+
+    public static boolean existeTurno(int pacienteId, String medicoSeleccionado, String fechaHora) {
         try {
-            int idMedico = Integer.parseInt(medicoTexto.split("ID: ")[1]);
+            int idMedico = Integer.parseInt(medicoSeleccionado.split("ID: ")[1]);
             Timestamp timestamp = Timestamp.valueOf(fechaHora);
 
             PreparedStatement stmt = con.prepareStatement(
@@ -415,13 +332,6 @@ public class ControllerPaciente {
             return "Error al consultar el plan";
         }
     }
-
-
-
-
-
-
-
 
 }
 
