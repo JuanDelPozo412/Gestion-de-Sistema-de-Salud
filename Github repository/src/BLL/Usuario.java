@@ -1,17 +1,12 @@
 package BLL;
 
-import DLL.Conexion;
+
 import DLL.ControllerUsuario;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
 import javax.swing.*;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Date;
 import java.util.LinkedList;
 
-import static DLL.ControllerUsuario.agregarUsuario;
-import static DLL.ControllerUsuario.mostrarUsuarios;
+import static DLL.ControllerUsuario.*;
 
 
 public class Usuario {
@@ -23,8 +18,9 @@ public class Usuario {
     private String contrasenia;
     private Date fechaNacimiento;
     private String tipoUsuario;
+    private byte[] fotoPerfil;
 
-    private static Connection con = Conexion.getInstance().getConnection();
+
 
     public Usuario(int idUsuario, String nombre, String apellido, String mail, String dni, String contrasenia, Date fechaNacimiento, String tipoUsuario) {
         this.idUsuario = idUsuario;
@@ -55,10 +51,18 @@ public class Usuario {
     public Usuario() {
 
     }
+    public Usuario(int idUsuario, String nombre, String apellido, String mail, String dni, String contrasenia, Date fechaNacimiento, String tipoUsuario, byte[] fotoPerfil) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.dni = dni;
+        this.contrasenia = contrasenia;
+        this.fechaNacimiento = fechaNacimiento;
+        this.tipoUsuario = tipoUsuario;
+        this.fotoPerfil = fotoPerfil;
+    }
 
-    //public static int getIdUsuario() {
-        //return idUsuario;
-    //}
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -122,6 +126,13 @@ public class Usuario {
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
+    public byte[] getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(byte[] fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
+    }
 
     @Override
     public String toString() {
@@ -163,8 +174,8 @@ public class Usuario {
             JOptionPane.showMessageDialog(null, "usuario ya creado");
         }
 
-
     }
+
 
 
 }

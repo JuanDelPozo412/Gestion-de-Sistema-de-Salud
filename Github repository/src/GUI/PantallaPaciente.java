@@ -30,8 +30,16 @@ public class PantallaPaciente extends JFrame {
 
         JLabel lblIcono = new JLabel("");
         lblIcono.setHorizontalAlignment(SwingConstants.CENTER);
-        lblIcono.setIcon(new ImageIcon("F:\\Facu 3\\Programacion Avanzada\\Gestion-de-Sistema-de-Salud-copia\\Gestion-de-Sistema-de-Salud-main\\Github repository\\src\\img\\paciente.png"));
         lblIcono.setBounds(10, 11, 81, 83);
+
+        if (paciente.getFotoPerfil() != null) {
+            ImageIcon icon = new ImageIcon(paciente.getFotoPerfil());
+            Image img = icon.getImage().getScaledInstance(81, 83, Image.SCALE_SMOOTH);
+            lblIcono.setIcon(new ImageIcon(img));
+        } else {
+            lblIcono.setIcon(new ImageIcon("F:\\Facu 3\\Programacion Avanzada\\Gestion-de-Sistema-de-Salud-copia\\Gestion-de-Sistema-de-Salud-main\\Github repository\\src\\img\\paciente.png"));
+        }
+
         contentPane.add(lblIcono);
 
         JLabel lblTitulo = new JLabel("Bienvenido/a: " + paciente.getNombre());
@@ -204,6 +212,7 @@ public class PantallaPaciente extends JFrame {
         }
     }
 }
+
 
 
 

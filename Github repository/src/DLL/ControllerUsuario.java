@@ -5,8 +5,6 @@ import BLL.Paciente;
 import BLL.Usuario;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
-
-import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
@@ -33,6 +31,7 @@ public class ControllerUsuario {
                 String dni = rs.getString("dni");
                 Date fechaNacimiento = rs.getDate("fechaNacimiento");
                 String tipo = rs.getString("tipoUsuario");
+                byte[] fotoPerfil = rs.getBytes("foto_perfil");
 
                 switch (tipo) {
                     case "paciente":
@@ -44,7 +43,7 @@ public class ControllerUsuario {
 
                         if (rsPaciente.next()) {
                             int planId = rsPaciente.getInt("plan_id");
-                            return new Paciente(id, nombre, apellido, mail, dni, password, fechaNacimiento, tipo, null, null, planId);
+                            return new Paciente(id, nombre, apellido, mail, dni, password, fechaNacimiento, tipo, fotoPerfil, planId);
                         }
                         break;
 
@@ -185,6 +184,18 @@ public class ControllerUsuario {
             e.printStackTrace();
         }
         return usuarios;
+    }
+
+
+    public static void actualizarFotoPerfil(int id, byte[] nuevaFoto) {
+        try {
+            PreparedStatement stmt = con.prepareStatement("UPDATE usuarios SET foto_perfil = ? WHERE idUsuario = ?");
+            stmt.setBytes(1, nuevaFoto);
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

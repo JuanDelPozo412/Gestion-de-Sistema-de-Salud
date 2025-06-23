@@ -1,6 +1,8 @@
 package BLL;
 
 import DLL.ControllerPaciente;
+import DLL.ControllerUsuario;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,6 +31,16 @@ public class Paciente extends Usuario {
     }
 
     public Paciente(int planId, String nombre, String email, String tipo, String password) {
+        this.planId = planId;
+    }
+    public Paciente(int idUsuario, String nombre, String apellido, String mail, String dni, String contrasenia, Date fechaNacimiento, String tipoUsuario, HistorialMedico historialMedico, List<Turno> misTurnos, int planId, byte[] fotoPerfil) {
+        super(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario, fotoPerfil);
+        this.historialMedico = historialMedico;
+        this.misTurnos = misTurnos;
+        this.planId = planId;
+    }
+    public Paciente(int idUsuario, String nombre, String apellido, String mail, String dni, String contrasenia, Date fechaNacimiento, String tipoUsuario, byte[] fotoPerfil, int planId) {
+        super(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario, fotoPerfil);
         this.planId = planId;
     }
 
@@ -136,6 +148,11 @@ public class Paciente extends Usuario {
     public ArrayList<String> obtenerMedicosPorEspecialidad(String especialidad) {
         return ControllerPaciente.obtenerMedicosPorEspecialidad(especialidad);
     }
+    public void actualizarFotoPerfil(byte[] nuevaFoto) {
+        this.setFotoPerfil(nuevaFoto);
+        ControllerUsuario.actualizarFotoPerfil(this.getIdUsuario(), nuevaFoto);
+    }
+
 
 
     public void mostrarMenuPaciente() {
