@@ -43,9 +43,18 @@ public class Paciente extends Usuario {
         super(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario, fotoPerfil);
         this.planId = planId;
     }
+    public Paciente(int idUsuario, String nombre, String apellido, String mail,
+                    String dni, String contrasenia, Date fechaNacimiento,
+                    String tipoUsuario, int planId) {
+        super(idUsuario, nombre, apellido, mail, dni, contrasenia, fechaNacimiento, tipoUsuario);
+        this.planId = planId;
+    }
 
     public Paciente() {
 
+    }
+
+    public Paciente(int idUsuario, String nombre, String apellido, String mail, String dni, String contrasenia, java.sql.Date fechaNacimiento, String tipoUsuario, int planid) {
     }
 
     ;
