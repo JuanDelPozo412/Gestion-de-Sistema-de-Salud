@@ -103,7 +103,9 @@ public class PantallaLogin extends JFrame {
                         vista.setVisible(true);
                         dispose();
                     } else if (logueado instanceof Medico) {
-                        //ACA VA EL PANTALLA MEDICO
+                        PantallaMedico vista = new PantallaMedico((Medico) logueado);
+                        vista.setVisible(true);
+                        dispose();
                     } else if (logueado instanceof Administrador) {
                         // ACA VA PANTALLA ADMINISTRADOR
                     }

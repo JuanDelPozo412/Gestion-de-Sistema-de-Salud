@@ -44,6 +44,10 @@ public class Paciente extends Usuario {
         this.planId = planId;
     }
 
+    public Paciente() {
+
+    }
+
     ;
     //Get y Set
 
