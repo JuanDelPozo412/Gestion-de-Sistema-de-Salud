@@ -1,22 +1,16 @@
+package GUI;
 import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import BLL.Administrador;
 import BLL.Medico;
 import BLL.Paciente;
 import BLL.Usuario;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.ImageIcon;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
 import java.awt.Color;
 
 public class PantallaRegister extends JFrame {
@@ -45,7 +39,7 @@ public class PantallaRegister extends JFrame {
 
     public PantallaRegister() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 782, 578);
+        setBounds(100, 100, 832, 628);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -58,7 +52,7 @@ public class PantallaRegister extends JFrame {
 
         JLabel lblNewLabel = new JLabel("");
         lblNewLabel.setIcon(new ImageIcon(PantallaRegister.class.getResource("/img/imagenLoginRegister.png")));
-        lblNewLabel.setBounds(352, 0, 414, 539);
+        lblNewLabel.setBounds(352, -20, 464, 628);
         contentPane.add(lblNewLabel);
 
         JLabel LabelTituloRegister = new JLabel("Sistema Gestion Salud");
@@ -84,7 +78,7 @@ public class PantallaRegister extends JFrame {
         contentPane.add(labelDni);
 
         JLabel lblNewLabel_1_4 = new JLabel("Contrasenia");
-        lblNewLabel_1_4.setBounds(38, 351, 65, 14);
+        lblNewLabel_1_4.setBounds(38, 351, 120, 14);
         contentPane.add(lblNewLabel_1_4);
 
         inputApellido = new JTextField();
@@ -113,12 +107,12 @@ public class PantallaRegister extends JFrame {
         contentPane.add(selectTipo);
 
         JLabel labelTipoUsuario = new JLabel("Tipo de usuario");
-        labelTipoUsuario.setBounds(38, 416, 84, 14);
+        labelTipoUsuario.setBounds(38, 416, 120, 14);
         contentPane.add(labelTipoUsuario);
 
         //agregue esto
         inputDatoExtra = new JTextField();
-        inputDatoExtra.setBounds(250, 441, 193, 22);
+        inputDatoExtra.setBounds(38, 474, 193, 22);
         inputDatoExtra.setVisible(false);
         contentPane.add(inputDatoExtra);
 
@@ -180,10 +174,14 @@ public class PantallaRegister extends JFrame {
 
                 if (registrar != null) {
                     Usuario.RegistrarUsuario(registrar);
+                    JOptionPane.showMessageDialog(null, "Registro exitoso, Inicie sesion");
+                    dispose();
+                    PantallaLogin login = new PantallaLogin();
+                    login.setVisible(true);
                 }
             }
         });
-        botonRegistro.setBounds(85, 482, 89, 23);
+        botonRegistro.setBounds(85, 520, 120, 23);
         contentPane.add(botonRegistro);
     }
 }
