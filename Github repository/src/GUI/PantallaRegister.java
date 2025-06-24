@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.awt.Color;
 
+
 public class PantallaRegister extends JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -119,7 +120,6 @@ public class PantallaRegister extends JFrame {
         //agregue esto
         selectTipo.addActionListener(e -> {
             String tipo = (String) selectTipo.getSelectedItem();
-
             if (tipo.equalsIgnoreCase("Paciente")) {
                 inputDatoExtra.setVisible(false); //agregue esto
             } else {
@@ -137,6 +137,7 @@ public class PantallaRegister extends JFrame {
         JButton botonRegistro = new JButton("Registrarse");
         botonRegistro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+
                 String nombre = inputNombre.getText();
                 String apellido = inputApellido.getText();
                 String mail = inputMail.getText();
@@ -146,39 +147,100 @@ public class PantallaRegister extends JFrame {
                 String tipo = (String) selectTipo.getSelectedItem();
                 String datoExtra = inputDatoExtra.getText();
 
-                Usuario registrar = null;
 
-                switch (tipo.toLowerCase()) {
-                    case "paciente":
-                        registrar = new Paciente(
-                                0, nombre, apellido, mail, dni, contrasenia,
-                                fechaNacimiento, tipo.toLowerCase(),
-                                null, null, 1 // plan por defecto
-                        );
-                        break;
+                boolean isValid = true;
+                StringBuilder errorMessage = new StringBuilder();
 
-                    case "medico":
-                        registrar = new Medico(
-                                0, nombre, apellido, mail, dni, contrasenia,
-                                fechaNacimiento, tipo.toLowerCase(), datoExtra
-                        );
-                        break;
 
-                    case "administrador":
-                        registrar = new Administrador(
-                                0, nombre, apellido, mail, dni, contrasenia,
-                                fechaNacimiento, tipo.toLowerCase(), datoExtra
-                        );
-                        break;
+                if (inputNombre.getText().trim().isEmpty()) {
+                    isValid = false;
+                    errorMessage.append("El campo Nombre no puede estar vacío.\n");
+                    inputNombre.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                }
+                if (inputApellido.getText().isEmpty()) {
+                    isValid = false;
+                    errorMessage.append("El campo apellido no puede estar vacio.\n");
+                    inputApellido.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 }
 
+<<<<<<< Updated upstream
                 if (registrar != null) {
                     Usuario.RegistrarUsuario(registrar);
                     JOptionPane.showMessageDialog(null, "Registro exitoso, Inicie sesion");
                     dispose();
                     PantallaLogin login = new PantallaLogin();
                     login.setVisible(true);
+=======
+                if (inputDni.getText().trim().isEmpty()) {
+                    isValid = false;
+                    errorMessage.append("El campo DNI no puede estar vacío.\n");
+                    inputDni.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                } else if (!dni.matches("\\d+")) {
+                    isValid = false;
+                    errorMessage.append("El campo DNI debe contener solo números.\n");
+                    inputDni.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+>>>>>>> Stashed changes
                 }
+
+                if (inputMail.getText().isEmpty()) {
+                    isValid = false;
+                    errorMessage.append("El campo Mail no puede estar vacío.\n");
+                    inputMail.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                } else if (!mail.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")) {
+
+                    isValid = false;
+                    errorMessage.append("El formato del Mail es inválido.\n");
+                    inputMail.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                }
+
+                if (inputContrasenia.getText().isEmpty()) {
+                    isValid = false;
+                    errorMessage.append("El campo Contraseña no puede estar vacío.\n");
+                    inputContrasenia.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                } else if (contrasenia.length() < 6) {
+                    isValid = false;
+                    errorMessage.append("La Contraseña debe tener al menos 6 caracteres.\n");
+                    inputContrasenia.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                }
+
+                if (isValid) {
+
+                    JOptionPane.showMessageDialog(null, "Formulario validado procediendo al registro", "Usuario Registrado correctamente", JOptionPane.INFORMATION_MESSAGE);
+                    Usuario registrar = null;
+
+                    switch (tipo.toLowerCase()) {
+                        case "paciente":
+                            registrar = new Paciente(
+                                    0, nombre, apellido, mail, dni, contrasenia,
+                                    fechaNacimiento, tipo.toLowerCase(),
+                                    null, null, 1
+                            );
+                            break;
+
+                        case "medico":
+                            registrar = new Medico(
+                                    0, nombre, apellido, mail, dni, contrasenia,
+                                    fechaNacimiento, tipo.toLowerCase(), datoExtra
+                            );
+                            break;
+
+                        case "administrador":
+                            registrar = new Administrador(
+                                    0, nombre, apellido, mail, dni, contrasenia,
+                                    fechaNacimiento, tipo.toLowerCase(), datoExtra
+                            );
+                            break;
+                    }
+
+                    if (registrar != null) {
+                        Usuario.RegistrarUsuario(registrar);
+                    }
+
+                } else {
+
+                    JOptionPane.showMessageDialog(null, errorMessage.toString(), "Errores de Validación", JOptionPane.WARNING_MESSAGE);
+                }
+
             }
         });
         botonRegistro.setBounds(85, 520, 120, 23);
