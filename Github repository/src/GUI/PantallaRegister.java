@@ -6,7 +6,6 @@ import BLL.Administrador;
 import BLL.Medico;
 import BLL.Paciente;
 import BLL.Usuario;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -137,7 +136,8 @@ public class PantallaRegister extends JFrame {
         JButton botonRegistro = new JButton("Registrarse");
         botonRegistro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                boolean isValid = true;
+                StringBuilder errorMessage = new StringBuilder();
                 String nombre = inputNombre.getText();
                 String apellido = inputApellido.getText();
                 String mail = inputMail.getText();
@@ -148,8 +148,6 @@ public class PantallaRegister extends JFrame {
                 String datoExtra = inputDatoExtra.getText();
 
 
-                boolean isValid = true;
-                StringBuilder errorMessage = new StringBuilder();
 
 
                 if (inputNombre.getText().trim().isEmpty()) {
@@ -162,15 +160,6 @@ public class PantallaRegister extends JFrame {
                     errorMessage.append("El campo apellido no puede estar vacio.\n");
                     inputApellido.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 }
-
-<<<<<<< Updated upstream
-                if (registrar != null) {
-                    Usuario.RegistrarUsuario(registrar);
-                    JOptionPane.showMessageDialog(null, "Registro exitoso, Inicie sesion");
-                    dispose();
-                    PantallaLogin login = new PantallaLogin();
-                    login.setVisible(true);
-=======
                 if (inputDni.getText().trim().isEmpty()) {
                     isValid = false;
                     errorMessage.append("El campo DNI no puede estar vacío.\n");
@@ -179,9 +168,8 @@ public class PantallaRegister extends JFrame {
                     isValid = false;
                     errorMessage.append("El campo DNI debe contener solo números.\n");
                     inputDni.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
->>>>>>> Stashed changes
-                }
 
+                }
                 if (inputMail.getText().isEmpty()) {
                     isValid = false;
                     errorMessage.append("El campo Mail no puede estar vacío.\n");
@@ -202,12 +190,10 @@ public class PantallaRegister extends JFrame {
                     errorMessage.append("La Contraseña debe tener al menos 6 caracteres.\n");
                     inputContrasenia.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 }
-
                 if (isValid) {
 
                     JOptionPane.showMessageDialog(null, "Formulario validado procediendo al registro", "Usuario Registrado correctamente", JOptionPane.INFORMATION_MESSAGE);
                     Usuario registrar = null;
-
                     switch (tipo.toLowerCase()) {
                         case "paciente":
                             registrar = new Paciente(
@@ -232,18 +218,20 @@ public class PantallaRegister extends JFrame {
                             break;
                     }
 
-                    if (registrar != null) {
-                        Usuario.RegistrarUsuario(registrar);
+
+                        if (registrar != null) {
+                            Usuario.RegistrarUsuario(registrar);
+                        }
+
+                    } else {
+
+                        JOptionPane.showMessageDialog(null, errorMessage.toString(), "Errores de Validación", JOptionPane.WARNING_MESSAGE);
                     }
 
-                } else {
-
-                    JOptionPane.showMessageDialog(null, errorMessage.toString(), "Errores de Validación", JOptionPane.WARNING_MESSAGE);
-                }
 
             }
-        });
-        botonRegistro.setBounds(85, 520, 120, 23);
+       }
+);      botonRegistro.setBounds(85, 520, 120, 23);
         contentPane.add(botonRegistro);
     }
 }
