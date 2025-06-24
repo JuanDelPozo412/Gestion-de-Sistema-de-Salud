@@ -171,7 +171,7 @@ public class Usuario {
         if (flag) {
             agregarUsuario(nuevo);
         } else {
-            JOptionPane.showMessageDialog(null, "usuario ya creado");
+            JOptionPane.showMessageDialog(null, "usuario ya creadoo");
         }
 
     }
