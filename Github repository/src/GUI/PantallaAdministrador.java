@@ -24,7 +24,7 @@ public class PantallaAdministrador extends JFrame {
         this.administrador = administrador;
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 726, 433);
+        setBounds(100, 100, 750, 520);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -57,29 +57,28 @@ public class PantallaAdministrador extends JFrame {
 
         table = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(20, 90, 680, 200);
+        scrollPane.setBounds(20, 90, 700, 280);
         contentPane.add(scrollPane);
 
         JButton btnAgregarUsuario = new JButton("Agregar Usuario");
-        btnAgregarUsuario.setBounds(20, 340, 120, 25);
+        btnAgregarUsuario.setBounds(20, 400, 140, 30);
         contentPane.add(btnAgregarUsuario);
 
         JButton btnModificarUsuario = new JButton("Modificar Usuario");
-        btnModificarUsuario.setBounds(150, 340, 130, 25);
+        btnModificarUsuario.setBounds(180, 400, 150, 30);
         contentPane.add(btnModificarUsuario);
 
         JButton btnEliminarUsuario = new JButton("Eliminar Usuario");
-        btnEliminarUsuario.setBounds(290, 340, 120, 25);
+        btnEliminarUsuario.setBounds(340, 400, 140, 30);
         contentPane.add(btnEliminarUsuario);
 
         JButton btnVerUsuarios = new JButton("Ver Usuarios");
-        btnVerUsuarios.setBounds(420, 340, 120, 25);
+        btnVerUsuarios.setBounds(500, 400, 140, 30);
         contentPane.add(btnVerUsuarios);
 
         JButton btnFiltrar = new JButton("Filtrar");
-        btnFiltrar.setBounds(600, 300, 100, 25);
+        btnFiltrar.setBounds(600, 370, 100, 25);
         contentPane.add(btnFiltrar);
-
 
         btnAgregarUsuario.addActionListener(e -> {
             PantallaAgregarUsuario ventana = new PantallaAgregarUsuario(administrador);
