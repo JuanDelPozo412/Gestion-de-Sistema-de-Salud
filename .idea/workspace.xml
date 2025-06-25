@@ -4,82 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4878bd33-ffbe-4fd1-b43c-87a6c282f5bb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Github repository/src/GUI/PantallaAdministrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/GUI/PantallaAdministrador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <excluded-from-favorite>
-      <branch-storage>
-        <map>
-          <entry type="LOCAL">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="main" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </excluded-from-favorite>
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
-}</component>
-  <component name="ProjectId" id="2xbkV5ypUGQDhzPVl7jcRxWrHjX" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2yyIzPJQxWRqEwSobHqyG04FoqT" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PantallaHome.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PantallaLogin.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PantallaPaciente.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PantallaRegister.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Agustin&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Florh11/Documents/GitHub/Gestion-de-Sistema-de-Salud/Github repository/src/img&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Florh11\Documents\GitHub\Gestion-de-Sistema-de-Salud\Github repository\src\img" />
-      <recent name="E:\apps\Repositorio\Gestion-de-Sistema-de-Salud\Github repository\src\img" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Florh11\Documents\GitHub\Gestion-de-Sistema-de-Salud\Github repository\src\img" />
-    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -91,24 +32,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4878bd33-ffbe-4fd1-b43c-87a6c282f5bb" name="Changes" comment="" />
-      <created>1748214182571</created>
+      <changelist id="b9994a70-c161-446a-9ce7-58056a222032" name="Changes" comment="" />
+      <created>1750800649339</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1748214182571</updated>
-      <workItem from="1748214185588" duration="231000" />
-      <workItem from="1748293636201" duration="7523000" />
-      <workItem from="1748349258908" duration="3111000" />
-      <workItem from="1748372943027" duration="13800000" />
-      <workItem from="1748435384749" duration="2147000" />
-      <workItem from="1748557540111" duration="646000" />
-      <workItem from="1748628196638" duration="530000" />
-      <workItem from="1748635404741" duration="1291000" />
-      <workItem from="1748637481039" duration="820000" />
-      <workItem from="1748675184532" duration="3070000" />
-      <workItem from="1750581674011" duration="2583000" />
-      <workItem from="1750624020179" duration="1000000" />
-      <workItem from="1750766522727" duration="3737000" />
+      <updated>1750800649339</updated>
+      <workItem from="1750800651557" duration="1208000" />
     </task>
     <servers />
   </component>
