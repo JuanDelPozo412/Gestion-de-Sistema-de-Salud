@@ -107,7 +107,9 @@ public class PantallaLogin extends JFrame {
                         vista.setVisible(true);
                         dispose();
                     } else if (logueado instanceof Administrador) {
-                        // ACA VA PANTALLA ADMINISTRADOR
+                        PantallaAdministrador vista = new PantallaAdministrador((Administrador) logueado);
+                        vista.setVisible(true);
+                        dispose();
                     }
                     ;
                 }

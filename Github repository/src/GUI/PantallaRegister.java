@@ -15,7 +15,6 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.awt.Color;
 
-
 public class PantallaRegister extends JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -25,7 +24,7 @@ public class PantallaRegister extends JFrame {
     private JTextField inputDni;
     private JTextField inputMail;
     private JTextField inputContrasenia;
-    private JTextField inputDatoExtra; //agregue esto
+    private JTextField inputDatoExtra;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -113,17 +112,15 @@ public class PantallaRegister extends JFrame {
         labelTipoUsuario.setBounds(38, 416, 120, 14);
         contentPane.add(labelTipoUsuario);
 
-        //agregue esto
         inputDatoExtra = new JTextField();
         inputDatoExtra.setBounds(38, 474, 193, 22);
         inputDatoExtra.setVisible(false);
         contentPane.add(inputDatoExtra);
 
-        //agregue esto
         selectTipo.addActionListener(e -> {
             String tipo = (String) selectTipo.getSelectedItem();
             if (tipo.equalsIgnoreCase("Paciente")) {
-                inputDatoExtra.setVisible(false); //agregue esto
+                inputDatoExtra.setVisible(false);
             } else {
                 inputDatoExtra.setVisible(true);
                 if (tipo.equalsIgnoreCase("Medico")) {
@@ -138,6 +135,7 @@ public class PantallaRegister extends JFrame {
 
         JButton botonRegistro = new JButton("Registrarse");
         botonRegistro.addActionListener(new ActionListener() {
+          
                                             public void actionPerformed(ActionEvent e) {
                                                 boolean isValid = true;
                                                 StringBuilder errorMessage = new StringBuilder();
@@ -233,6 +231,7 @@ public class PantallaRegister extends JFrame {
                                             }
                                         }
         );
+
         botonRegistro.setBounds(85, 520, 120, 23);
         contentPane.add(botonRegistro);
     }
