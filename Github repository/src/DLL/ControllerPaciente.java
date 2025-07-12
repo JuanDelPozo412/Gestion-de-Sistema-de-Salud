@@ -1,4 +1,5 @@
 package DLL;
+
 import BLL.Medico;
 import BLL.Paciente;
 import BLL.PlanSalud;
@@ -13,12 +14,42 @@ import java.util.List;
 
 public class ControllerPaciente {
     private static Connection con = Conexion.getInstance().getConnection();
+    private static final double PRECIO_BASE_TURNO = 15520.0;
 
+
+    public static PlanSalud obtenerPlanPorId(int planId) {
+        try {
+      
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM planes_salud WHERE planId = ?");
+            stmt.setInt(1, planId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return new PlanSalud(
+                        rs.getInt("planId"),
+                        rs.getString("nombrePlan"),
+                        rs.getString("descripcion"),
+                        rs.getDouble("descuento_porcentaje")
+                );
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return new PlanSalud(0, "Sin Plan", "N/A", 0);
+    }
+
+
+    public static double calcularPrecioFinal(Paciente paciente) {
+        PlanSalud plan = obtenerPlanPorId(paciente.getPlanId());
+        double descuento = plan.getDescuentoPorcentaje();
+        double precioFinal = PRECIO_BASE_TURNO * (1 - (descuento / 100.0));
+        return precioFinal;
+    }
 
     public static void verUltimoTurno(Paciente paciente) {
         try {
             PreparedStatement stmt = con.prepareStatement(
-                    // esto es para ver el ultimo turno y que traiga solo 1
                     "SELECT idTurno, especialidad, fecha, estado FROM turnos WHERE paciente_id = ? ORDER BY fecha DESC LIMIT 1"
             );
             stmt.setInt(1, paciente.getIdUsuario());
@@ -44,6 +75,7 @@ public class ControllerPaciente {
             JOptionPane.showMessageDialog(null, "Error al consultar el ultimo turno: " + e.getMessage());
         }
     }
+
     public static String obtenerHistorial(Paciente paciente) {
         try {
             PreparedStatement stmt = con.prepareStatement(
@@ -102,8 +134,9 @@ public class ControllerPaciente {
     public static List<Turno> obtenerTurnos(Paciente paciente) {
         List<Turno> lista = new ArrayList<>();
         try {
+
             PreparedStatement stmt = con.prepareStatement(
-                    "SELECT idTurno, medico_id, fecha, estado FROM turnos WHERE paciente_id = ? ORDER BY fecha DESC"
+                    "SELECT idTurno, medico_id, fecha, estado, precio FROM turnos WHERE paciente_id = ? ORDER BY fecha DESC"
             );
             stmt.setInt(1, paciente.getIdUsuario());
             ResultSet rs = stmt.executeQuery();
@@ -111,8 +144,9 @@ public class ControllerPaciente {
             while (rs.next()) {
                 int idTurno = rs.getInt("idTurno");
                 int medicoId = rs.getInt("medico_id");
-                Timestamp fecha = rs.getTimestamp("fecha"); //hicimos el cambio a timestamp
+                Timestamp fecha = rs.getTimestamp("fecha");
                 String estado = rs.getString("estado");
+                double precio = rs.getDouble("precio"); // Lee el precio
 
                 PreparedStatement stmtEsp = con.prepareStatement(
                         "SELECT especialidad FROM medicos WHERE usuario_id = ?"
@@ -133,7 +167,7 @@ public class ControllerPaciente {
                 medico.setNombre(nombre);
                 medico.setEspecialidad(especialidad);
 
-                Turno turno = new Turno(idTurno, paciente, medico, fecha, estado);
+                Turno turno = new Turno(idTurno, paciente, medico, fecha, estado, precio);
                 lista.add(turno);
             }
         } catch (Exception e) {
@@ -142,9 +176,6 @@ public class ControllerPaciente {
 
         return lista;
     }
-
-
-
 
     private static String obtenerNombreUsuario(int id) {
         try {
@@ -159,6 +190,7 @@ public class ControllerPaciente {
         }
         return "Desconocido";
     }
+
     public static String actualizarPerfil(Paciente paciente) {
         try {
             PreparedStatement stmtUsuario = con.prepareStatement(
@@ -189,9 +221,11 @@ public class ControllerPaciente {
         }
         return "Error al actualizar perfil";
     }
+
     public static List<PlanSalud> obtenerPlanes() {
         List<PlanSalud> lista = new ArrayList<>();
         try {
+
             PreparedStatement stmt = con.prepareStatement("SELECT * FROM planes_salud");
             ResultSet rs = stmt.executeQuery();
 
@@ -199,7 +233,8 @@ public class ControllerPaciente {
                 int id = rs.getInt("planId");
                 String nombre = rs.getString("nombrePlan");
                 String descripcion = rs.getString("descripcion");
-                PlanSalud plan = new PlanSalud(id, nombre, descripcion);
+                double descuento = rs.getDouble("descuento_porcentaje"); // Lee el descuento
+                PlanSalud plan = new PlanSalud(id, nombre, descripcion, descuento); // Pásalo al constructor
                 lista.add(plan);
             }
         } catch (Exception e) {
@@ -207,6 +242,7 @@ public class ControllerPaciente {
         }
         return lista;
     }
+
     public static void cancelarTurno(int idTurno, int idPaciente) {
         try {
             PreparedStatement stmt = con.prepareStatement(
@@ -225,6 +261,7 @@ public class ControllerPaciente {
             JOptionPane.showMessageDialog(null, "Error al cancelar turno: " + e.getMessage());
         }
     }
+
     public static ArrayList<String> obtenerEspecialidades() {
         ArrayList<String> lista = new ArrayList<>();
         try {
@@ -255,9 +292,6 @@ public class ControllerPaciente {
         return lista;
     }
 
-
-
-
     public static String reservarTurnoDesdePantalla(Paciente paciente, String especialidad, String medicoSeleccionado, String fecha, String hora) {
         try {
             int idMedico = Integer.parseInt(medicoSeleccionado.split("ID: ")[1]);
@@ -274,14 +308,18 @@ public class ControllerPaciente {
                 return "Ese turno ya esta ocupado por otro paciente";
             }
 
+
+            double precioFinal = calcularPrecioFinal(paciente);
+
             PreparedStatement stmtInsert = con.prepareStatement(
-                    "INSERT INTO turnos (paciente_id, medico_id, especialidad, fecha, estado) VALUES (?, ?, ?, ?, ?)"
+                    "INSERT INTO turnos (paciente_id, medico_id, especialidad, fecha, estado, precio) VALUES (?, ?, ?, ?, ?, ?)"
             );
             stmtInsert.setInt(1, paciente.getIdUsuario());
             stmtInsert.setInt(2, idMedico);
             stmtInsert.setString(3, especialidad);
             stmtInsert.setTimestamp(4, timestamp);
             stmtInsert.setString(5, "Pendiente");
+            stmtInsert.setDouble(6, precioFinal); // <-- Se guarda el precio con descuento
 
             int filas = stmtInsert.executeUpdate();
             return filas > 0 ? "Turno reservado con exito" : "No se pudo reservar el turno";
@@ -297,7 +335,6 @@ public class ControllerPaciente {
             Timestamp timestamp = Timestamp.valueOf(fechaHora);
 
             PreparedStatement stmt = con.prepareStatement(
-                    //si devuelve mas de uno es porque ya esta el turno entonces no deja reservar otro igual
                     "SELECT COUNT(*) FROM turnos WHERE paciente_id = ? AND medico_id = ? AND fecha = ?"
             );
             stmt.setInt(1, pacienteId);
@@ -313,6 +350,7 @@ public class ControllerPaciente {
         }
         return false;
     }
+
     public static String obtenerPlan(Paciente paciente) {
         try {
             PreparedStatement stmt = con.prepareStatement(
@@ -332,8 +370,4 @@ public class ControllerPaciente {
             return "Error al consultar el plan";
         }
     }
-
 }
-
-
-

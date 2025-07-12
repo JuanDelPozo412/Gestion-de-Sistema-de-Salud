@@ -4,11 +4,13 @@ public class PlanSalud {
     private int planId;
     private String nombrePlan;
     private String descripcion;
+    private double descuentoPorcentaje;
 
-    public PlanSalud(int planId, String nombrePlan, String descripcion) {
+    public PlanSalud(int planId, String nombrePlan, String descripcion,double descuentoPorcentaje) {
         this.planId = planId;
         this.nombrePlan = nombrePlan;
         this.descripcion = descripcion;
+        this.descuentoPorcentaje = descuentoPorcentaje;
     }
 
     public int getPlanId() {
@@ -33,6 +35,14 @@ public class PlanSalud {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public double getDescuentoPorcentaje() {
+        return descuentoPorcentaje;
+    }
+
+    public void setDescuentoPorcentaje(double descuentoPorcentaje) {
+        this.descuentoPorcentaje = descuentoPorcentaje;
     }
 
     @Override
