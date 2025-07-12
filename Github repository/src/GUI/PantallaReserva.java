@@ -4,10 +4,12 @@ import BLL.Paciente;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
+import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import DLL.ControllerPaciente;
 
 public class PantallaReserva extends JFrame {
     private JComboBox<String> comboEspecialidad;
@@ -22,14 +24,27 @@ public class PantallaReserva extends JFrame {
         this.paciente = paciente;
 
         setTitle("Reservar Turno");
-        setSize(400, 350);
+        setSize(400, 400);
         setLayout(null);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+        double precioFinal = ControllerPaciente.calcularPrecioFinal(paciente);
+
+        JLabel lblPrecioTitulo = new JLabel("Precio Final (con desc.):");
+        lblPrecioTitulo.setBounds(30, 190, 200, 25);
+        lblPrecioTitulo.setFont(new Font("Tahoma", Font.BOLD, 14));
+        add(lblPrecioTitulo);
+
+        JLabel lblPrecioValor = new JLabel(String.format("$ %.2f", precioFinal));
+        lblPrecioValor.setBounds(220, 190, 150, 25);
+        lblPrecioValor.setFont(new Font("Tahoma", Font.BOLD, 14));
+        add(lblPrecioValor);
+
         JLabel lblEspecialidad = new JLabel("Especialidad:");
         lblEspecialidad.setBounds(30, 30, 100, 20);
         add(lblEspecialidad);
+
 
         comboEspecialidad = new JComboBox<>();
         comboEspecialidad.setBounds(150, 30, 200, 25);
@@ -65,11 +80,11 @@ public class PantallaReserva extends JFrame {
         add(comboHora);
 
         btnReservar = new JButton("Reservar Turno");
-        btnReservar.setBounds(100, 200, 180, 30);
+        btnReservar.setBounds(100, 240, 180, 30);
         add(btnReservar);
 
         lblMensaje = new JLabel("");
-        lblMensaje.setBounds(30, 240, 340, 30);
+        lblMensaje.setBounds(30, 280, 340, 30);
         add(lblMensaje);
 
 

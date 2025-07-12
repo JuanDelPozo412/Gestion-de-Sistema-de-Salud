@@ -7,13 +7,15 @@ public class Turno {
     private Medico medico;
     private Timestamp fecha;
     private String estado;
+    private double precio;
 
-    public Turno(int idTurno, Paciente paciente, Medico medico, Timestamp fecha, String estado) {
+    public Turno(int idTurno, Paciente paciente, Medico medico, Timestamp fecha, String estado, double precio) {
         this.idTurno = idTurno;
         Paciente = paciente;
         this.medico = medico;
         this.fecha = fecha;
         this.estado = estado;
+        this.precio = precio;
     }
     public Turno(){
 
@@ -58,5 +60,13 @@ public class Turno {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 }

@@ -1,11 +1,14 @@
 package GUI;
+
 import java.awt.EventQueue;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
 import BLL.Administrador;
 import BLL.Medico;
 import BLL.Paciente;
 import BLL.Usuario;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -102,7 +105,7 @@ public class PantallaRegister extends JFrame {
         contentPane.add(inputContrasenia);
 
         JComboBox selectTipo = new JComboBox();
-        selectTipo.setModel(new DefaultComboBoxModel(new String[] {"Paciente", "Medico", "Administrador"}));
+        selectTipo.setModel(new DefaultComboBoxModel(new String[]{"Paciente", "Medico", "Administrador"}));
         selectTipo.setBounds(38, 441, 193, 22);
         contentPane.add(selectTipo);
 
@@ -135,103 +138,102 @@ public class PantallaRegister extends JFrame {
 
         JButton botonRegistro = new JButton("Registrarse");
         botonRegistro.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                boolean isValid = true;
-                StringBuilder errorMessage = new StringBuilder();
-                String nombre = inputNombre.getText();
-                String apellido = inputApellido.getText();
-                String mail = inputMail.getText();
-                String dni = inputDni.getText();
-                String contrasenia = inputContrasenia.getText();
-                Date fechaNacimiento = new Date(); // por ahora fija
-                String tipo = (String) selectTipo.getSelectedItem();
-                String datoExtra = inputDatoExtra.getText();
+                                            public void actionPerformed(ActionEvent e) {
+                                                boolean isValid = true;
+                                                StringBuilder errorMessage = new StringBuilder();
+                                                String nombre = inputNombre.getText();
+                                                String apellido = inputApellido.getText();
+                                                String mail = inputMail.getText();
+                                                String dni = inputDni.getText();
+                                                String contrasenia = inputContrasenia.getText();
+                                                Date fechaNacimiento = new Date(); // por ahora fija
+                                                String tipo = (String) selectTipo.getSelectedItem();
+                                                String datoExtra = inputDatoExtra.getText();
 
 
+                                                if (inputNombre.getText().trim().isEmpty()) {
+                                                    isValid = false;
+                                                    errorMessage.append("El campo Nombre no puede estar vacío.\n");
+                                                    inputNombre.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                                                }
+                                                if (inputApellido.getText().isEmpty()) {
+                                                    isValid = false;
+                                                    errorMessage.append("El campo apellido no puede estar vacio.\n");
+                                                    inputApellido.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                                                }
+                                                if (inputDni.getText().trim().isEmpty()) {
+                                                    isValid = false;
+                                                    errorMessage.append("El campo DNI no puede estar vacío.\n");
+                                                    inputDni.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                                                } else if (!dni.matches("\\d+")) {
+                                                    isValid = false;
+                                                    errorMessage.append("El campo DNI debe contener solo números.\n");
+                                                    inputDni.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+
+                                                }
+                                                if (inputMail.getText().isEmpty()) {
+                                                    isValid = false;
+                                                    errorMessage.append("El campo Mail no puede estar vacío.\n");
+                                                    inputMail.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                                                } else if (!mail.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")) {
+
+                                                    isValid = false;
+                                                    errorMessage.append("El formato del Mail es inválido.\n");
+                                                    inputMail.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                                                }
+
+                                                if (inputContrasenia.getText().isEmpty()) {
+                                                    isValid = false;
+                                                    errorMessage.append("El campo Contraseña no puede estar vacío.\n");
+                                                    inputContrasenia.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                                                } else if (contrasenia.length() < 6) {
+                                                    isValid = false;
+                                                    errorMessage.append("La Contraseña debe tener al menos 6 caracteres.\n");
+                                                    inputContrasenia.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                                                }
+                                                if (isValid) {
+
+                                                    JOptionPane.showMessageDialog(null, "Formulario validado procediendo al registro", "Usuario Registrado correctamente", JOptionPane.INFORMATION_MESSAGE);
+                                                    Usuario registrar = null;
+                                                    switch (tipo.toLowerCase()) {
+                                                        case "paciente":
+                                                            registrar = new Paciente(
+                                                                    0, nombre, apellido, mail, dni, contrasenia,
+                                                                    fechaNacimiento, tipo.toLowerCase(),
+                                                                    null, null, 1
+                                                            );
+                                                            break;
+
+                                                        case "medico":
+                                                            registrar = new Medico(
+                                                                    0, nombre, apellido, mail, dni, contrasenia,
+                                                                    fechaNacimiento, tipo.toLowerCase(), datoExtra
+                                                            );
+                                                            break;
+
+                                                        case "administrador":
+                                                            registrar = new Administrador(
+                                                                    0, nombre, apellido, mail, dni, contrasenia,
+                                                                    fechaNacimiento, tipo.toLowerCase(), datoExtra
+                                                            );
+                                                            break;
+                                                    }
 
 
-                if (inputNombre.getText().trim().isEmpty()) {
-                    isValid = false;
-                    errorMessage.append("El campo Nombre no puede estar vacío.\n");
-                    inputNombre.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
-                }
-                if (inputApellido.getText().isEmpty()) {
-                    isValid = false;
-                    errorMessage.append("El campo apellido no puede estar vacio.\n");
-                    inputApellido.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
-                }
-                if (inputDni.getText().trim().isEmpty()) {
-                    isValid = false;
-                    errorMessage.append("El campo DNI no puede estar vacío.\n");
-                    inputDni.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
-                } else if (!dni.matches("\\d+")) {
-                    isValid = false;
-                    errorMessage.append("El campo DNI debe contener solo números.\n");
-                    inputDni.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                                                    if (registrar != null) {
+                                                        Usuario.RegistrarUsuario(registrar);
+                                                    }
 
-                }
-                if (inputMail.getText().isEmpty()) {
-                    isValid = false;
-                    errorMessage.append("El campo Mail no puede estar vacío.\n");
-                    inputMail.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
-                } else if (!mail.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")) {
+                                                } else {
 
-                    isValid = false;
-                    errorMessage.append("El formato del Mail es inválido.\n");
-                    inputMail.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
-                }
-
-                if (inputContrasenia.getText().isEmpty()) {
-                    isValid = false;
-                    errorMessage.append("El campo Contraseña no puede estar vacío.\n");
-                    inputContrasenia.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
-                } else if (contrasenia.length() < 6) {
-                    isValid = false;
-                    errorMessage.append("La Contraseña debe tener al menos 6 caracteres.\n");
-                    inputContrasenia.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
-                }
-                if (isValid) {
-
-                    JOptionPane.showMessageDialog(null, "Formulario validado procediendo al registro", "Usuario Registrado correctamente", JOptionPane.INFORMATION_MESSAGE);
-                    Usuario registrar = null;
-                    switch (tipo.toLowerCase()) {
-                        case "paciente":
-                            registrar = new Paciente(
-                                    0, nombre, apellido, mail, dni, contrasenia,
-                                    fechaNacimiento, tipo.toLowerCase(),
-                                    null, null, 1
-                            );
-                            break;
-
-                        case "medico":
-                            registrar = new Medico(
-                                    0, nombre, apellido, mail, dni, contrasenia,
-                                    fechaNacimiento, tipo.toLowerCase(), datoExtra
-                            );
-                            break;
-
-                        case "administrador":
-                            registrar = new Administrador(
-                                    0, nombre, apellido, mail, dni, contrasenia,
-                                    fechaNacimiento, tipo.toLowerCase(), datoExtra
-                            );
-                            break;
-                    }
+                                                    JOptionPane.showMessageDialog(null, errorMessage.toString(), "Errores de Validación", JOptionPane.WARNING_MESSAGE);
+                                                }
 
 
-                        if (registrar != null) {
-                            Usuario.RegistrarUsuario(registrar);
-                        }
-
-                    } else {
-
-                        JOptionPane.showMessageDialog(null, errorMessage.toString(), "Errores de Validación", JOptionPane.WARNING_MESSAGE);
-                    }
-
-
-            }
-       }
-);      botonRegistro.setBounds(85, 520, 120, 23);
+                                            }
+                                        }
+        );
+        botonRegistro.setBounds(85, 520, 120, 23);
         contentPane.add(botonRegistro);
     }
 }
