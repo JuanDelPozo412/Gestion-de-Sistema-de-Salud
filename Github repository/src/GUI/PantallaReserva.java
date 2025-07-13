@@ -33,7 +33,6 @@ public class PantallaReserva extends JFrame {
 
         JLabel lblPrecioTitulo = new JLabel("Precio Final (con desc.):");
         lblPrecioTitulo.setBounds(30, 190, 200, 25);
-        lblPrecioTitulo.setFont(new Font("Tahoma", Font.BOLD, 14));
         add(lblPrecioTitulo);
 
         JLabel lblPrecioValor = new JLabel(String.format("$ %.2f", precioFinal));
