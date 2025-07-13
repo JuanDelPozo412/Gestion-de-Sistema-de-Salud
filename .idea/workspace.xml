@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2b82fae6-f9f3-4263-a10a-4b66b5f50fc9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/GUI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/GUI/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Github repository/src/GUI/PantallaReserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/GUI/PantallaReserva.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/DLL/ControllerPaciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/DLL/ControllerPaciente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Github repository/src/GUI/PantallaPaciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/Github repository/src/GUI/PantallaPaciente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaRegister$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaRegister$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gestion-de-Sistema-de-Salud/GUI/PantallaRegister.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1752291589250</updated>
       <workItem from="1752291591547" duration="28000" />
-      <workItem from="1752419220140" duration="1222000" />
+      <workItem from="1752419220140" duration="1891000" />
     </task>
     <servers />
   </component>

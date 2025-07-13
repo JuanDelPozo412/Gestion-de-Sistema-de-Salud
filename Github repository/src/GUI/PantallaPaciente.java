@@ -93,7 +93,7 @@ public class PantallaPaciente extends JFrame {
         btnFiltrar.setBounds(300, 6, 90, 25);
         panelTurnos.add(btnFiltrar);
 
-        model = new DefaultTableModel(new String[]{"ID", "Médico", "Especialidad", "Fecha", "Estado"}, 0);
+        model = new DefaultTableModel(new String[]{"ID", "Médico", "Especialidad", "Fecha", "Estado", "Precio"}, 0);
         table = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(10, 40, 660, 150);
@@ -207,7 +207,7 @@ public class PantallaPaciente extends JFrame {
         List<Turno> turnos = paciente.obtenerTurnosFiltrados(filtro);
         for (Turno t : turnos) {
             model.addRow(new Object[]{
-                    t.getIdTurno(), t.getMedico().getNombre(), t.getMedico().getEspecialidad(), t.getFecha(), t.getEstado()
+                    t.getIdTurno(), t.getMedico().getNombre(), t.getMedico().getEspecialidad(), t.getFecha(), t.getEstado(),t.getPrecio()
             });
         }
     }
